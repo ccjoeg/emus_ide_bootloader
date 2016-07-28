@@ -1,0 +1,1314 @@
+Archive member included because of file (symbol)
+
+/home/joeg/emus_ide_bootloader/arm-4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv6-m/libc_s.a(lib_a-exit.o)
+                              /home/joeg/emus_ide_bootloader/arm-4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv6-m/crt0.o (exit)
+/home/joeg/emus_ide_bootloader/arm-4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv6-m/libc_s.a(lib_a-impure.o)
+                              /home/joeg/emus_ide_bootloader/arm-4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv6-m/libc_s.a(lib_a-exit.o) (_global_impure_ptr)
+/home/joeg/emus_ide_bootloader/arm-4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv6-m/libc_s.a(lib_a-init.o)
+                              /home/joeg/emus_ide_bootloader/arm-4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv6-m/crt0.o (__libc_init_array)
+/home/joeg/emus_ide_bootloader/arm-4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv6-m/libc_s.a(lib_a-memset.o)
+                              /home/joeg/emus_ide_bootloader/arm-4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv6-m/crt0.o (memset)
+/home/joeg/emus_ide_bootloader/arm-4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv6-m/libnosys.a(_exit.o)
+                              /home/joeg/emus_ide_bootloader/arm-4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv6-m/libc_s.a(lib_a-exit.o) (_exit)
+
+Allocating common symbols
+Common symbol       size              file
+
+SystemCoreClock     0x4               build/system_efm32zg.o
+rawPacket           0x110             build/xmodem.o
+descr               0x10              build/flash.o
+
+Discarded input sections
+
+ .text          0x0000000000000000        0x0 /home/joeg/emus_ide_bootloader/arm-4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/armv6-m/crti.o
+ .data          0x0000000000000000        0x0 /home/joeg/emus_ide_bootloader/arm-4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/armv6-m/crti.o
+ .bss           0x0000000000000000        0x0 /home/joeg/emus_ide_bootloader/arm-4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/armv6-m/crti.o
+ .data          0x0000000000000000        0x4 /home/joeg/emus_ide_bootloader/arm-4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/armv6-m/crtbegin.o
+ .data          0x0000000000000000        0x0 /home/joeg/emus_ide_bootloader/arm-4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv6-m/crt0.o
+ .bss           0x0000000000000000        0x0 /home/joeg/emus_ide_bootloader/arm-4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv6-m/crt0.o
+ .ARM.extab     0x0000000000000000        0x0 /home/joeg/emus_ide_bootloader/arm-4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv6-m/crt0.o
+ .group         0x0000000000000000        0x8 build/system_efm32zg.o
+ .group         0x0000000000000000        0x8 build/system_efm32zg.o
+ .group         0x0000000000000000        0x8 build/system_efm32zg.o
+ .group         0x0000000000000000        0x8 build/system_efm32zg.o
+ .group         0x0000000000000000        0x8 build/system_efm32zg.o
+ .group         0x0000000000000000        0x8 build/system_efm32zg.o
+ .group         0x0000000000000000        0x8 build/system_efm32zg.o
+ .group         0x0000000000000000        0x8 build/system_efm32zg.o
+ .group         0x0000000000000000        0x8 build/system_efm32zg.o
+ .group         0x0000000000000000        0x8 build/system_efm32zg.o
+ .group         0x0000000000000000        0x8 build/system_efm32zg.o
+ .group         0x0000000000000000        0x8 build/system_efm32zg.o
+ .group         0x0000000000000000        0x8 build/system_efm32zg.o
+ .group         0x0000000000000000        0x8 build/system_efm32zg.o
+ .group         0x0000000000000000        0x8 build/system_efm32zg.o
+ .group         0x0000000000000000        0x8 build/system_efm32zg.o
+ .group         0x0000000000000000        0x8 build/system_efm32zg.o
+ .group         0x0000000000000000        0x8 build/system_efm32zg.o
+ .group         0x0000000000000000        0x8 build/system_efm32zg.o
+ .group         0x0000000000000000        0x8 build/system_efm32zg.o
+ .group         0x0000000000000000        0x8 build/system_efm32zg.o
+ .group         0x0000000000000000        0x8 build/system_efm32zg.o
+ .group         0x0000000000000000        0x8 build/system_efm32zg.o
+ .group         0x0000000000000000        0x8 build/system_efm32zg.o
+ .group         0x0000000000000000        0x8 build/system_efm32zg.o
+ .group         0x0000000000000000        0x8 build/system_efm32zg.o
+ .group         0x0000000000000000        0x8 build/system_efm32zg.o
+ .group         0x0000000000000000        0x8 build/system_efm32zg.o
+ .group         0x0000000000000000        0x8 build/system_efm32zg.o
+ .group         0x0000000000000000        0x8 build/system_efm32zg.o
+ .group         0x0000000000000000        0x8 build/system_efm32zg.o
+ .group         0x0000000000000000        0x8 build/system_efm32zg.o
+ .group         0x0000000000000000        0x8 build/system_efm32zg.o
+ .group         0x0000000000000000        0x8 build/system_efm32zg.o
+ .group         0x0000000000000000        0x8 build/system_efm32zg.o
+ .group         0x0000000000000000        0x8 build/system_efm32zg.o
+ .group         0x0000000000000000        0x8 build/system_efm32zg.o
+ .group         0x0000000000000000        0x8 build/system_efm32zg.o
+ .group         0x0000000000000000        0x8 build/system_efm32zg.o
+ .group         0x0000000000000000        0x8 build/system_efm32zg.o
+ .group         0x0000000000000000        0x8 build/system_efm32zg.o
+ .group         0x0000000000000000        0x8 build/system_efm32zg.o
+ .group         0x0000000000000000        0x8 build/system_efm32zg.o
+ .group         0x0000000000000000        0x8 build/system_efm32zg.o
+ .group         0x0000000000000000        0x8 build/system_efm32zg.o
+ .group         0x0000000000000000        0x8 build/system_efm32zg.o
+ .group         0x0000000000000000        0x8 build/system_efm32zg.o
+ .group         0x0000000000000000        0x8 build/system_efm32zg.o
+ .group         0x0000000000000000        0x8 build/system_efm32zg.o
+ .group         0x0000000000000000        0x8 build/system_efm32zg.o
+ .group         0x0000000000000000        0x8 build/system_efm32zg.o
+ .text          0x0000000000000000        0x0 build/system_efm32zg.o
+ .data          0x0000000000000000        0x0 build/system_efm32zg.o
+ .bss           0x0000000000000000        0x0 build/system_efm32zg.o
+ .text.SystemMaxCoreClockGet
+                0x0000000000000000        0x8 build/system_efm32zg.o
+ .text.SystemHFClockGet
+                0x0000000000000000       0x98 build/system_efm32zg.o
+ .text.SystemCoreClockGet
+                0x0000000000000000       0x20 build/system_efm32zg.o
+ .text.SystemHFXOClockGet
+                0x0000000000000000        0xc build/system_efm32zg.o
+ .text.SystemHFXOClockSet
+                0x0000000000000000       0x1c build/system_efm32zg.o
+ .text.SystemLFRCOClockGet
+                0x0000000000000000        0x6 build/system_efm32zg.o
+ .text.SystemULFRCOClockGet
+                0x0000000000000000        0x6 build/system_efm32zg.o
+ .text.SystemLFXOClockGet
+                0x0000000000000000        0xc build/system_efm32zg.o
+ .text.SystemLFXOClockSet
+                0x0000000000000000       0x1c build/system_efm32zg.o
+ .data.SystemLFXOClock
+                0x0000000000000000        0x4 build/system_efm32zg.o
+ .data.SystemHFXOClock
+                0x0000000000000000        0x4 build/system_efm32zg.o
+ COMMON         0x0000000000000000        0x4 build/system_efm32zg.o
+ .group         0x0000000000000000        0x8 build/xmodem.o
+ .group         0x0000000000000000        0x8 build/xmodem.o
+ .group         0x0000000000000000        0x8 build/xmodem.o
+ .group         0x0000000000000000        0x8 build/xmodem.o
+ .group         0x0000000000000000        0x8 build/xmodem.o
+ .group         0x0000000000000000        0x8 build/xmodem.o
+ .group         0x0000000000000000        0x8 build/xmodem.o
+ .group         0x0000000000000000        0x8 build/xmodem.o
+ .group         0x0000000000000000        0x8 build/xmodem.o
+ .group         0x0000000000000000        0x8 build/xmodem.o
+ .group         0x0000000000000000        0x8 build/xmodem.o
+ .group         0x0000000000000000        0x8 build/xmodem.o
+ .group         0x0000000000000000        0x8 build/xmodem.o
+ .group         0x0000000000000000        0x8 build/xmodem.o
+ .group         0x0000000000000000        0x8 build/xmodem.o
+ .group         0x0000000000000000        0x8 build/xmodem.o
+ .group         0x0000000000000000        0x8 build/xmodem.o
+ .group         0x0000000000000000        0x8 build/xmodem.o
+ .group         0x0000000000000000        0x8 build/xmodem.o
+ .group         0x0000000000000000        0x8 build/xmodem.o
+ .group         0x0000000000000000        0x8 build/xmodem.o
+ .group         0x0000000000000000        0x8 build/xmodem.o
+ .group         0x0000000000000000        0x8 build/xmodem.o
+ .group         0x0000000000000000        0x8 build/xmodem.o
+ .group         0x0000000000000000        0x8 build/xmodem.o
+ .group         0x0000000000000000        0x8 build/xmodem.o
+ .group         0x0000000000000000        0x8 build/xmodem.o
+ .group         0x0000000000000000        0x8 build/xmodem.o
+ .group         0x0000000000000000        0x8 build/xmodem.o
+ .group         0x0000000000000000        0x8 build/xmodem.o
+ .group         0x0000000000000000        0x8 build/xmodem.o
+ .group         0x0000000000000000        0x8 build/xmodem.o
+ .group         0x0000000000000000        0x8 build/xmodem.o
+ .group         0x0000000000000000        0x8 build/xmodem.o
+ .group         0x0000000000000000        0x8 build/xmodem.o
+ .group         0x0000000000000000        0x8 build/xmodem.o
+ .group         0x0000000000000000        0x8 build/xmodem.o
+ .group         0x0000000000000000        0x8 build/xmodem.o
+ .group         0x0000000000000000        0x8 build/xmodem.o
+ .group         0x0000000000000000        0x8 build/xmodem.o
+ .group         0x0000000000000000        0x8 build/xmodem.o
+ .group         0x0000000000000000        0x8 build/xmodem.o
+ .group         0x0000000000000000        0x8 build/xmodem.o
+ .group         0x0000000000000000        0x8 build/xmodem.o
+ .group         0x0000000000000000        0x8 build/xmodem.o
+ .group         0x0000000000000000        0x8 build/xmodem.o
+ .group         0x0000000000000000        0x8 build/xmodem.o
+ .group         0x0000000000000000        0x8 build/xmodem.o
+ .group         0x0000000000000000        0x8 build/xmodem.o
+ .group         0x0000000000000000        0x8 build/xmodem.o
+ .group         0x0000000000000000        0x8 build/xmodem.o
+ .group         0x0000000000000000        0x8 build/xmodem.o
+ .group         0x0000000000000000        0x8 build/xmodem.o
+ .group         0x0000000000000000        0x8 build/xmodem.o
+ .group         0x0000000000000000        0x8 build/xmodem.o
+ .group         0x0000000000000000        0x8 build/xmodem.o
+ .group         0x0000000000000000        0x8 build/xmodem.o
+ .group         0x0000000000000000        0x8 build/xmodem.o
+ .group         0x0000000000000000        0x8 build/xmodem.o
+ .group         0x0000000000000000        0x8 build/xmodem.o
+ .group         0x0000000000000000        0x8 build/xmodem.o
+ .text          0x0000000000000000        0x0 build/xmodem.o
+ .data          0x0000000000000000        0x0 build/xmodem.o
+ .bss           0x0000000000000000        0x0 build/xmodem.o
+ .debug_macro   0x0000000000000000      0x81a build/xmodem.o
+ .debug_macro   0x0000000000000000       0x58 build/xmodem.o
+ .debug_macro   0x0000000000000000       0x16 build/xmodem.o
+ .debug_macro   0x0000000000000000       0x35 build/xmodem.o
+ .debug_macro   0x0000000000000000       0xa3 build/xmodem.o
+ .debug_macro   0x0000000000000000       0x52 build/xmodem.o
+ .debug_macro   0x0000000000000000       0x16 build/xmodem.o
+ .debug_macro   0x0000000000000000       0x43 build/xmodem.o
+ .debug_macro   0x0000000000000000      0x180 build/xmodem.o
+ .debug_macro   0x0000000000000000      0x26f build/xmodem.o
+ .debug_macro   0x0000000000000000       0x12 build/xmodem.o
+ .debug_macro   0x0000000000000000       0x3a build/xmodem.o
+ .debug_macro   0x0000000000000000       0x1f build/xmodem.o
+ .debug_macro   0x0000000000000000       0x12 build/xmodem.o
+ .debug_macro   0x0000000000000000      0x2a6 build/xmodem.o
+ .debug_macro   0x0000000000000000       0x10 build/xmodem.o
+ .debug_macro   0x0000000000000000       0x35 build/xmodem.o
+ .debug_macro   0x0000000000000000       0xde build/xmodem.o
+ .debug_macro   0x0000000000000000       0xe4 build/xmodem.o
+ .debug_macro   0x0000000000000000      0x250 build/xmodem.o
+ .debug_macro   0x0000000000000000      0x2ac build/xmodem.o
+ .debug_macro   0x0000000000000000      0xf37 build/xmodem.o
+ .debug_macro   0x0000000000000000      0x82b build/xmodem.o
+ .debug_macro   0x0000000000000000       0xfa build/xmodem.o
+ .debug_macro   0x0000000000000000      0x1af build/xmodem.o
+ .debug_macro   0x0000000000000000     0x16d9 build/xmodem.o
+ .debug_macro   0x0000000000000000      0xf4d build/xmodem.o
+ .debug_macro   0x0000000000000000      0x6b8 build/xmodem.o
+ .debug_macro   0x0000000000000000     0x1b3c build/xmodem.o
+ .debug_macro   0x0000000000000000      0x516 build/xmodem.o
+ .debug_macro   0x0000000000000000      0x20b build/xmodem.o
+ .debug_macro   0x0000000000000000     0x1bdb build/xmodem.o
+ .debug_macro   0x0000000000000000      0x33a build/xmodem.o
+ .debug_macro   0x0000000000000000      0xee0 build/xmodem.o
+ .debug_macro   0x0000000000000000      0xf6c build/xmodem.o
+ .debug_macro   0x0000000000000000      0x9f5 build/xmodem.o
+ .debug_macro   0x0000000000000000     0x1066 build/xmodem.o
+ .debug_macro   0x0000000000000000      0x37d build/xmodem.o
+ .debug_macro   0x0000000000000000      0x1c5 build/xmodem.o
+ .debug_macro   0x0000000000000000      0x219 build/xmodem.o
+ .debug_macro   0x0000000000000000       0x40 build/xmodem.o
+ .debug_macro   0x0000000000000000      0x154 build/xmodem.o
+ .debug_macro   0x0000000000000000       0xe2 build/xmodem.o
+ .debug_macro   0x0000000000000000       0x9a build/xmodem.o
+ .debug_macro   0x0000000000000000      0x24d build/xmodem.o
+ .debug_macro   0x0000000000000000       0x27 build/xmodem.o
+ .debug_macro   0x0000000000000000       0xbe build/xmodem.o
+ .debug_macro   0x0000000000000000       0xbe build/xmodem.o
+ .group         0x0000000000000000        0x8 build/leuart.o
+ .group         0x0000000000000000        0x8 build/leuart.o
+ .group         0x0000000000000000        0x8 build/leuart.o
+ .group         0x0000000000000000        0x8 build/leuart.o
+ .group         0x0000000000000000        0x8 build/leuart.o
+ .group         0x0000000000000000        0x8 build/leuart.o
+ .group         0x0000000000000000        0x8 build/leuart.o
+ .group         0x0000000000000000        0x8 build/leuart.o
+ .group         0x0000000000000000        0x8 build/leuart.o
+ .group         0x0000000000000000        0x8 build/leuart.o
+ .group         0x0000000000000000        0x8 build/leuart.o
+ .group         0x0000000000000000        0x8 build/leuart.o
+ .group         0x0000000000000000        0x8 build/leuart.o
+ .group         0x0000000000000000        0x8 build/leuart.o
+ .group         0x0000000000000000        0x8 build/leuart.o
+ .group         0x0000000000000000        0x8 build/leuart.o
+ .group         0x0000000000000000        0x8 build/leuart.o
+ .group         0x0000000000000000        0x8 build/leuart.o
+ .group         0x0000000000000000        0x8 build/leuart.o
+ .group         0x0000000000000000        0x8 build/leuart.o
+ .group         0x0000000000000000        0x8 build/leuart.o
+ .group         0x0000000000000000        0x8 build/leuart.o
+ .group         0x0000000000000000        0x8 build/leuart.o
+ .group         0x0000000000000000        0x8 build/leuart.o
+ .group         0x0000000000000000        0x8 build/leuart.o
+ .group         0x0000000000000000        0x8 build/leuart.o
+ .group         0x0000000000000000        0x8 build/leuart.o
+ .group         0x0000000000000000        0x8 build/leuart.o
+ .group         0x0000000000000000        0x8 build/leuart.o
+ .group         0x0000000000000000        0x8 build/leuart.o
+ .group         0x0000000000000000        0x8 build/leuart.o
+ .group         0x0000000000000000        0x8 build/leuart.o
+ .group         0x0000000000000000        0x8 build/leuart.o
+ .group         0x0000000000000000        0x8 build/leuart.o
+ .group         0x0000000000000000        0x8 build/leuart.o
+ .group         0x0000000000000000        0x8 build/leuart.o
+ .group         0x0000000000000000        0x8 build/leuart.o
+ .group         0x0000000000000000        0x8 build/leuart.o
+ .group         0x0000000000000000        0x8 build/leuart.o
+ .group         0x0000000000000000        0x8 build/leuart.o
+ .group         0x0000000000000000        0x8 build/leuart.o
+ .group         0x0000000000000000        0x8 build/leuart.o
+ .group         0x0000000000000000        0x8 build/leuart.o
+ .group         0x0000000000000000        0x8 build/leuart.o
+ .group         0x0000000000000000        0x8 build/leuart.o
+ .group         0x0000000000000000        0x8 build/leuart.o
+ .group         0x0000000000000000        0x8 build/leuart.o
+ .group         0x0000000000000000        0x8 build/leuart.o
+ .group         0x0000000000000000        0x8 build/leuart.o
+ .group         0x0000000000000000        0x8 build/leuart.o
+ .group         0x0000000000000000        0x8 build/leuart.o
+ .group         0x0000000000000000        0x8 build/leuart.o
+ .text          0x0000000000000000        0x0 build/leuart.o
+ .data          0x0000000000000000        0x0 build/leuart.o
+ .bss           0x0000000000000000        0x0 build/leuart.o
+ .debug_macro   0x0000000000000000      0x81a build/leuart.o
+ .debug_macro   0x0000000000000000      0x26f build/leuart.o
+ .debug_macro   0x0000000000000000       0x12 build/leuart.o
+ .debug_macro   0x0000000000000000       0x3a build/leuart.o
+ .debug_macro   0x0000000000000000       0x16 build/leuart.o
+ .debug_macro   0x0000000000000000       0x44 build/leuart.o
+ .debug_macro   0x0000000000000000      0x209 build/leuart.o
+ .debug_macro   0x0000000000000000       0x1f build/leuart.o
+ .debug_macro   0x0000000000000000       0x12 build/leuart.o
+ .debug_macro   0x0000000000000000       0x58 build/leuart.o
+ .debug_macro   0x0000000000000000       0x35 build/leuart.o
+ .debug_macro   0x0000000000000000       0xa3 build/leuart.o
+ .debug_macro   0x0000000000000000      0x166 build/leuart.o
+ .debug_macro   0x0000000000000000       0x52 build/leuart.o
+ .debug_macro   0x0000000000000000       0x16 build/leuart.o
+ .debug_macro   0x0000000000000000       0x43 build/leuart.o
+ .debug_macro   0x0000000000000000      0x180 build/leuart.o
+ .debug_macro   0x0000000000000000      0x2a6 build/leuart.o
+ .debug_macro   0x0000000000000000       0x10 build/leuart.o
+ .debug_macro   0x0000000000000000       0x35 build/leuart.o
+ .debug_macro   0x0000000000000000       0xde build/leuart.o
+ .debug_macro   0x0000000000000000       0xe4 build/leuart.o
+ .debug_macro   0x0000000000000000      0x250 build/leuart.o
+ .debug_macro   0x0000000000000000      0x2ac build/leuart.o
+ .debug_macro   0x0000000000000000      0xf37 build/leuart.o
+ .debug_macro   0x0000000000000000      0x82b build/leuart.o
+ .debug_macro   0x0000000000000000       0xfa build/leuart.o
+ .debug_macro   0x0000000000000000      0x1af build/leuart.o
+ .debug_macro   0x0000000000000000     0x16d9 build/leuart.o
+ .debug_macro   0x0000000000000000      0xf4d build/leuart.o
+ .debug_macro   0x0000000000000000      0x6b8 build/leuart.o
+ .debug_macro   0x0000000000000000     0x1b3c build/leuart.o
+ .debug_macro   0x0000000000000000      0x516 build/leuart.o
+ .debug_macro   0x0000000000000000      0x20b build/leuart.o
+ .debug_macro   0x0000000000000000     0x1bdb build/leuart.o
+ .debug_macro   0x0000000000000000      0x33a build/leuart.o
+ .debug_macro   0x0000000000000000      0xee0 build/leuart.o
+ .debug_macro   0x0000000000000000      0xf6c build/leuart.o
+ .debug_macro   0x0000000000000000      0x9f5 build/leuart.o
+ .debug_macro   0x0000000000000000     0x1066 build/leuart.o
+ .debug_macro   0x0000000000000000      0x37d build/leuart.o
+ .debug_macro   0x0000000000000000      0x1c5 build/leuart.o
+ .debug_macro   0x0000000000000000      0x219 build/leuart.o
+ .debug_macro   0x0000000000000000       0x40 build/leuart.o
+ .debug_macro   0x0000000000000000      0x154 build/leuart.o
+ .debug_macro   0x0000000000000000       0xe2 build/leuart.o
+ .debug_macro   0x0000000000000000       0x9a build/leuart.o
+ .debug_macro   0x0000000000000000      0x24d build/leuart.o
+ .debug_macro   0x0000000000000000       0x27 build/leuart.o
+ .debug_macro   0x0000000000000000       0xbe build/leuart.o
+ .debug_macro   0x0000000000000000       0xbe build/leuart.o
+ .debug_macro   0x0000000000000000       0x40 build/leuart.o
+ .group         0x0000000000000000        0x8 build/flash.o
+ .group         0x0000000000000000        0x8 build/flash.o
+ .group         0x0000000000000000        0x8 build/flash.o
+ .group         0x0000000000000000        0x8 build/flash.o
+ .group         0x0000000000000000        0x8 build/flash.o
+ .group         0x0000000000000000        0x8 build/flash.o
+ .group         0x0000000000000000        0x8 build/flash.o
+ .group         0x0000000000000000        0x8 build/flash.o
+ .group         0x0000000000000000        0x8 build/flash.o
+ .group         0x0000000000000000        0x8 build/flash.o
+ .group         0x0000000000000000        0x8 build/flash.o
+ .group         0x0000000000000000        0x8 build/flash.o
+ .group         0x0000000000000000        0x8 build/flash.o
+ .group         0x0000000000000000        0x8 build/flash.o
+ .group         0x0000000000000000        0x8 build/flash.o
+ .group         0x0000000000000000        0x8 build/flash.o
+ .group         0x0000000000000000        0x8 build/flash.o
+ .group         0x0000000000000000        0x8 build/flash.o
+ .group         0x0000000000000000        0x8 build/flash.o
+ .group         0x0000000000000000        0x8 build/flash.o
+ .group         0x0000000000000000        0x8 build/flash.o
+ .group         0x0000000000000000        0x8 build/flash.o
+ .group         0x0000000000000000        0x8 build/flash.o
+ .group         0x0000000000000000        0x8 build/flash.o
+ .group         0x0000000000000000        0x8 build/flash.o
+ .group         0x0000000000000000        0x8 build/flash.o
+ .group         0x0000000000000000        0x8 build/flash.o
+ .group         0x0000000000000000        0x8 build/flash.o
+ .group         0x0000000000000000        0x8 build/flash.o
+ .group         0x0000000000000000        0x8 build/flash.o
+ .group         0x0000000000000000        0x8 build/flash.o
+ .group         0x0000000000000000        0x8 build/flash.o
+ .group         0x0000000000000000        0x8 build/flash.o
+ .group         0x0000000000000000        0x8 build/flash.o
+ .group         0x0000000000000000        0x8 build/flash.o
+ .group         0x0000000000000000        0x8 build/flash.o
+ .group         0x0000000000000000        0x8 build/flash.o
+ .group         0x0000000000000000        0x8 build/flash.o
+ .group         0x0000000000000000        0x8 build/flash.o
+ .group         0x0000000000000000        0x8 build/flash.o
+ .group         0x0000000000000000        0x8 build/flash.o
+ .group         0x0000000000000000        0x8 build/flash.o
+ .group         0x0000000000000000        0x8 build/flash.o
+ .group         0x0000000000000000        0x8 build/flash.o
+ .group         0x0000000000000000        0x8 build/flash.o
+ .group         0x0000000000000000        0x8 build/flash.o
+ .group         0x0000000000000000        0x8 build/flash.o
+ .group         0x0000000000000000        0x8 build/flash.o
+ .group         0x0000000000000000        0x8 build/flash.o
+ .group         0x0000000000000000        0x8 build/flash.o
+ .group         0x0000000000000000        0x8 build/flash.o
+ .group         0x0000000000000000        0x8 build/flash.o
+ .text          0x0000000000000000        0x0 build/flash.o
+ .data          0x0000000000000000        0x0 build/flash.o
+ .bss           0x0000000000000000        0x0 build/flash.o
+ .text.FLASH_writeWord
+                0x0000000000000000       0x28 build/flash.o
+ .debug_macro   0x0000000000000000      0x81a build/flash.o
+ .debug_macro   0x0000000000000000      0x26f build/flash.o
+ .debug_macro   0x0000000000000000       0x12 build/flash.o
+ .debug_macro   0x0000000000000000       0x3a build/flash.o
+ .debug_macro   0x0000000000000000       0x16 build/flash.o
+ .debug_macro   0x0000000000000000       0x44 build/flash.o
+ .debug_macro   0x0000000000000000      0x209 build/flash.o
+ .debug_macro   0x0000000000000000       0x1f build/flash.o
+ .debug_macro   0x0000000000000000       0x12 build/flash.o
+ .debug_macro   0x0000000000000000       0x58 build/flash.o
+ .debug_macro   0x0000000000000000       0x35 build/flash.o
+ .debug_macro   0x0000000000000000       0xa3 build/flash.o
+ .debug_macro   0x0000000000000000      0x166 build/flash.o
+ .debug_macro   0x0000000000000000       0x52 build/flash.o
+ .debug_macro   0x0000000000000000       0x16 build/flash.o
+ .debug_macro   0x0000000000000000       0x43 build/flash.o
+ .debug_macro   0x0000000000000000      0x180 build/flash.o
+ .debug_macro   0x0000000000000000      0x2a6 build/flash.o
+ .debug_macro   0x0000000000000000       0x10 build/flash.o
+ .debug_macro   0x0000000000000000       0x35 build/flash.o
+ .debug_macro   0x0000000000000000       0xde build/flash.o
+ .debug_macro   0x0000000000000000       0xe4 build/flash.o
+ .debug_macro   0x0000000000000000      0x250 build/flash.o
+ .debug_macro   0x0000000000000000      0x2ac build/flash.o
+ .debug_macro   0x0000000000000000      0xf37 build/flash.o
+ .debug_macro   0x0000000000000000      0x82b build/flash.o
+ .debug_macro   0x0000000000000000       0xfa build/flash.o
+ .debug_macro   0x0000000000000000      0x1af build/flash.o
+ .debug_macro   0x0000000000000000     0x16d9 build/flash.o
+ .debug_macro   0x0000000000000000      0xf4d build/flash.o
+ .debug_macro   0x0000000000000000      0x6b8 build/flash.o
+ .debug_macro   0x0000000000000000     0x1b3c build/flash.o
+ .debug_macro   0x0000000000000000      0x516 build/flash.o
+ .debug_macro   0x0000000000000000      0x20b build/flash.o
+ .debug_macro   0x0000000000000000     0x1bdb build/flash.o
+ .debug_macro   0x0000000000000000      0x33a build/flash.o
+ .debug_macro   0x0000000000000000      0xee0 build/flash.o
+ .debug_macro   0x0000000000000000      0xf6c build/flash.o
+ .debug_macro   0x0000000000000000      0x9f5 build/flash.o
+ .debug_macro   0x0000000000000000     0x1066 build/flash.o
+ .debug_macro   0x0000000000000000      0x37d build/flash.o
+ .debug_macro   0x0000000000000000      0x1c5 build/flash.o
+ .debug_macro   0x0000000000000000      0x219 build/flash.o
+ .debug_macro   0x0000000000000000       0x40 build/flash.o
+ .debug_macro   0x0000000000000000      0x154 build/flash.o
+ .debug_macro   0x0000000000000000       0xe2 build/flash.o
+ .debug_macro   0x0000000000000000       0x9a build/flash.o
+ .debug_macro   0x0000000000000000      0x24d build/flash.o
+ .debug_macro   0x0000000000000000       0x27 build/flash.o
+ .debug_macro   0x0000000000000000       0xbe build/flash.o
+ .debug_macro   0x0000000000000000       0xbe build/flash.o
+ .debug_macro   0x0000000000000000       0x40 build/flash.o
+ .group         0x0000000000000000        0x8 build/crc.o
+ .group         0x0000000000000000        0x8 build/crc.o
+ .group         0x0000000000000000        0x8 build/crc.o
+ .group         0x0000000000000000        0x8 build/crc.o
+ .group         0x0000000000000000        0x8 build/crc.o
+ .group         0x0000000000000000        0x8 build/crc.o
+ .group         0x0000000000000000        0x8 build/crc.o
+ .group         0x0000000000000000        0x8 build/crc.o
+ .group         0x0000000000000000        0x8 build/crc.o
+ .group         0x0000000000000000        0x8 build/crc.o
+ .group         0x0000000000000000        0x8 build/crc.o
+ .group         0x0000000000000000        0x8 build/crc.o
+ .group         0x0000000000000000        0x8 build/crc.o
+ .group         0x0000000000000000        0x8 build/crc.o
+ .group         0x0000000000000000        0x8 build/crc.o
+ .group         0x0000000000000000        0x8 build/crc.o
+ .group         0x0000000000000000        0x8 build/crc.o
+ .group         0x0000000000000000        0x8 build/crc.o
+ .group         0x0000000000000000        0x8 build/crc.o
+ .group         0x0000000000000000        0x8 build/crc.o
+ .group         0x0000000000000000        0x8 build/crc.o
+ .group         0x0000000000000000        0x8 build/crc.o
+ .group         0x0000000000000000        0x8 build/crc.o
+ .group         0x0000000000000000        0x8 build/crc.o
+ .group         0x0000000000000000        0x8 build/crc.o
+ .group         0x0000000000000000        0x8 build/crc.o
+ .group         0x0000000000000000        0x8 build/crc.o
+ .group         0x0000000000000000        0x8 build/crc.o
+ .group         0x0000000000000000        0x8 build/crc.o
+ .group         0x0000000000000000        0x8 build/crc.o
+ .group         0x0000000000000000        0x8 build/crc.o
+ .group         0x0000000000000000        0x8 build/crc.o
+ .group         0x0000000000000000        0x8 build/crc.o
+ .group         0x0000000000000000        0x8 build/crc.o
+ .group         0x0000000000000000        0x8 build/crc.o
+ .group         0x0000000000000000        0x8 build/crc.o
+ .group         0x0000000000000000        0x8 build/crc.o
+ .group         0x0000000000000000        0x8 build/crc.o
+ .group         0x0000000000000000        0x8 build/crc.o
+ .group         0x0000000000000000        0x8 build/crc.o
+ .group         0x0000000000000000        0x8 build/crc.o
+ .group         0x0000000000000000        0x8 build/crc.o
+ .group         0x0000000000000000        0x8 build/crc.o
+ .group         0x0000000000000000        0x8 build/crc.o
+ .group         0x0000000000000000        0x8 build/crc.o
+ .group         0x0000000000000000        0x8 build/crc.o
+ .group         0x0000000000000000        0x8 build/crc.o
+ .group         0x0000000000000000        0x8 build/crc.o
+ .group         0x0000000000000000        0x8 build/crc.o
+ .group         0x0000000000000000        0x8 build/crc.o
+ .group         0x0000000000000000        0x8 build/crc.o
+ .text          0x0000000000000000        0x0 build/crc.o
+ .data          0x0000000000000000        0x0 build/crc.o
+ .bss           0x0000000000000000        0x0 build/crc.o
+ .debug_macro   0x0000000000000000      0x81a build/crc.o
+ .debug_macro   0x0000000000000000       0x16 build/crc.o
+ .debug_macro   0x0000000000000000       0x44 build/crc.o
+ .debug_macro   0x0000000000000000      0x209 build/crc.o
+ .debug_macro   0x0000000000000000      0x26f build/crc.o
+ .debug_macro   0x0000000000000000       0x12 build/crc.o
+ .debug_macro   0x0000000000000000       0x3a build/crc.o
+ .debug_macro   0x0000000000000000       0x1f build/crc.o
+ .debug_macro   0x0000000000000000       0x12 build/crc.o
+ .debug_macro   0x0000000000000000       0x58 build/crc.o
+ .debug_macro   0x0000000000000000       0x35 build/crc.o
+ .debug_macro   0x0000000000000000       0xa3 build/crc.o
+ .debug_macro   0x0000000000000000      0x166 build/crc.o
+ .debug_macro   0x0000000000000000       0x52 build/crc.o
+ .debug_macro   0x0000000000000000       0x16 build/crc.o
+ .debug_macro   0x0000000000000000       0x43 build/crc.o
+ .debug_macro   0x0000000000000000      0x180 build/crc.o
+ .debug_macro   0x0000000000000000      0x2a6 build/crc.o
+ .debug_macro   0x0000000000000000       0x10 build/crc.o
+ .debug_macro   0x0000000000000000       0x35 build/crc.o
+ .debug_macro   0x0000000000000000       0xde build/crc.o
+ .debug_macro   0x0000000000000000       0xe4 build/crc.o
+ .debug_macro   0x0000000000000000      0x250 build/crc.o
+ .debug_macro   0x0000000000000000      0x2ac build/crc.o
+ .debug_macro   0x0000000000000000      0xf37 build/crc.o
+ .debug_macro   0x0000000000000000      0x82b build/crc.o
+ .debug_macro   0x0000000000000000       0xfa build/crc.o
+ .debug_macro   0x0000000000000000      0x1af build/crc.o
+ .debug_macro   0x0000000000000000     0x16d9 build/crc.o
+ .debug_macro   0x0000000000000000      0xf4d build/crc.o
+ .debug_macro   0x0000000000000000      0x6b8 build/crc.o
+ .debug_macro   0x0000000000000000     0x1b3c build/crc.o
+ .debug_macro   0x0000000000000000      0x516 build/crc.o
+ .debug_macro   0x0000000000000000      0x20b build/crc.o
+ .debug_macro   0x0000000000000000     0x1bdb build/crc.o
+ .debug_macro   0x0000000000000000      0x33a build/crc.o
+ .debug_macro   0x0000000000000000      0xee0 build/crc.o
+ .debug_macro   0x0000000000000000      0xf6c build/crc.o
+ .debug_macro   0x0000000000000000      0x9f5 build/crc.o
+ .debug_macro   0x0000000000000000     0x1066 build/crc.o
+ .debug_macro   0x0000000000000000      0x37d build/crc.o
+ .debug_macro   0x0000000000000000      0x1c5 build/crc.o
+ .debug_macro   0x0000000000000000      0x219 build/crc.o
+ .debug_macro   0x0000000000000000       0x40 build/crc.o
+ .debug_macro   0x0000000000000000      0x154 build/crc.o
+ .debug_macro   0x0000000000000000       0xe2 build/crc.o
+ .debug_macro   0x0000000000000000       0x9a build/crc.o
+ .debug_macro   0x0000000000000000      0x24d build/crc.o
+ .debug_macro   0x0000000000000000       0x27 build/crc.o
+ .debug_macro   0x0000000000000000       0xbe build/crc.o
+ .debug_macro   0x0000000000000000       0xbe build/crc.o
+ .group         0x0000000000000000        0x8 build/bootloader.o
+ .group         0x0000000000000000        0x8 build/bootloader.o
+ .group         0x0000000000000000        0x8 build/bootloader.o
+ .group         0x0000000000000000        0x8 build/bootloader.o
+ .group         0x0000000000000000        0x8 build/bootloader.o
+ .group         0x0000000000000000        0x8 build/bootloader.o
+ .group         0x0000000000000000        0x8 build/bootloader.o
+ .group         0x0000000000000000        0x8 build/bootloader.o
+ .group         0x0000000000000000        0x8 build/bootloader.o
+ .group         0x0000000000000000        0x8 build/bootloader.o
+ .group         0x0000000000000000        0x8 build/bootloader.o
+ .group         0x0000000000000000        0x8 build/bootloader.o
+ .group         0x0000000000000000        0x8 build/bootloader.o
+ .group         0x0000000000000000        0x8 build/bootloader.o
+ .group         0x0000000000000000        0x8 build/bootloader.o
+ .group         0x0000000000000000        0x8 build/bootloader.o
+ .group         0x0000000000000000        0x8 build/bootloader.o
+ .group         0x0000000000000000        0x8 build/bootloader.o
+ .group         0x0000000000000000        0x8 build/bootloader.o
+ .group         0x0000000000000000        0x8 build/bootloader.o
+ .group         0x0000000000000000        0x8 build/bootloader.o
+ .group         0x0000000000000000        0x8 build/bootloader.o
+ .group         0x0000000000000000        0x8 build/bootloader.o
+ .group         0x0000000000000000        0x8 build/bootloader.o
+ .group         0x0000000000000000        0x8 build/bootloader.o
+ .group         0x0000000000000000        0x8 build/bootloader.o
+ .group         0x0000000000000000        0x8 build/bootloader.o
+ .group         0x0000000000000000        0x8 build/bootloader.o
+ .group         0x0000000000000000        0x8 build/bootloader.o
+ .group         0x0000000000000000        0x8 build/bootloader.o
+ .group         0x0000000000000000        0x8 build/bootloader.o
+ .group         0x0000000000000000        0x8 build/bootloader.o
+ .group         0x0000000000000000        0x8 build/bootloader.o
+ .group         0x0000000000000000        0x8 build/bootloader.o
+ .group         0x0000000000000000        0x8 build/bootloader.o
+ .group         0x0000000000000000        0x8 build/bootloader.o
+ .group         0x0000000000000000        0x8 build/bootloader.o
+ .group         0x0000000000000000        0x8 build/bootloader.o
+ .group         0x0000000000000000        0x8 build/bootloader.o
+ .group         0x0000000000000000        0x8 build/bootloader.o
+ .group         0x0000000000000000        0x8 build/bootloader.o
+ .group         0x0000000000000000        0x8 build/bootloader.o
+ .group         0x0000000000000000        0x8 build/bootloader.o
+ .group         0x0000000000000000        0x8 build/bootloader.o
+ .group         0x0000000000000000        0x8 build/bootloader.o
+ .group         0x0000000000000000        0x8 build/bootloader.o
+ .group         0x0000000000000000        0x8 build/bootloader.o
+ .group         0x0000000000000000        0x8 build/bootloader.o
+ .group         0x0000000000000000        0x8 build/bootloader.o
+ .group         0x0000000000000000        0x8 build/bootloader.o
+ .group         0x0000000000000000        0x8 build/bootloader.o
+ .group         0x0000000000000000        0x8 build/bootloader.o
+ .group         0x0000000000000000        0x8 build/bootloader.o
+ .group         0x0000000000000000        0x8 build/bootloader.o
+ .text          0x0000000000000000        0x0 build/bootloader.o
+ .data          0x0000000000000000        0x0 build/bootloader.o
+ .bss           0x0000000000000000        0x0 build/bootloader.o
+ .data.unknownString
+                0x0000000000000000        0x6 build/bootloader.o
+ .data.failString
+                0x0000000000000000        0x9 build/bootloader.o
+ .data.okString
+                0x0000000000000000        0x7 build/bootloader.o
+ .debug_macro   0x0000000000000000      0x81a build/bootloader.o
+ .debug_macro   0x0000000000000000      0x26f build/bootloader.o
+ .debug_macro   0x0000000000000000       0x12 build/bootloader.o
+ .debug_macro   0x0000000000000000       0x3a build/bootloader.o
+ .debug_macro   0x0000000000000000       0x16 build/bootloader.o
+ .debug_macro   0x0000000000000000       0x44 build/bootloader.o
+ .debug_macro   0x0000000000000000      0x209 build/bootloader.o
+ .debug_macro   0x0000000000000000       0x1f build/bootloader.o
+ .debug_macro   0x0000000000000000       0x12 build/bootloader.o
+ .debug_macro   0x0000000000000000       0x58 build/bootloader.o
+ .debug_macro   0x0000000000000000       0x35 build/bootloader.o
+ .debug_macro   0x0000000000000000       0xa3 build/bootloader.o
+ .debug_macro   0x0000000000000000      0x166 build/bootloader.o
+ .debug_macro   0x0000000000000000       0x52 build/bootloader.o
+ .debug_macro   0x0000000000000000       0x16 build/bootloader.o
+ .debug_macro   0x0000000000000000       0x43 build/bootloader.o
+ .debug_macro   0x0000000000000000      0x180 build/bootloader.o
+ .debug_macro   0x0000000000000000      0x2a6 build/bootloader.o
+ .debug_macro   0x0000000000000000       0x10 build/bootloader.o
+ .debug_macro   0x0000000000000000       0x35 build/bootloader.o
+ .debug_macro   0x0000000000000000       0xde build/bootloader.o
+ .debug_macro   0x0000000000000000       0xe4 build/bootloader.o
+ .debug_macro   0x0000000000000000      0x250 build/bootloader.o
+ .debug_macro   0x0000000000000000      0x2ac build/bootloader.o
+ .debug_macro   0x0000000000000000      0xf37 build/bootloader.o
+ .debug_macro   0x0000000000000000      0x82b build/bootloader.o
+ .debug_macro   0x0000000000000000       0xfa build/bootloader.o
+ .debug_macro   0x0000000000000000      0x1af build/bootloader.o
+ .debug_macro   0x0000000000000000     0x16d9 build/bootloader.o
+ .debug_macro   0x0000000000000000      0xf4d build/bootloader.o
+ .debug_macro   0x0000000000000000      0x6b8 build/bootloader.o
+ .debug_macro   0x0000000000000000     0x1b3c build/bootloader.o
+ .debug_macro   0x0000000000000000      0x516 build/bootloader.o
+ .debug_macro   0x0000000000000000      0x20b build/bootloader.o
+ .debug_macro   0x0000000000000000     0x1bdb build/bootloader.o
+ .debug_macro   0x0000000000000000      0x33a build/bootloader.o
+ .debug_macro   0x0000000000000000      0xee0 build/bootloader.o
+ .debug_macro   0x0000000000000000      0xf6c build/bootloader.o
+ .debug_macro   0x0000000000000000      0x9f5 build/bootloader.o
+ .debug_macro   0x0000000000000000     0x1066 build/bootloader.o
+ .debug_macro   0x0000000000000000      0x37d build/bootloader.o
+ .debug_macro   0x0000000000000000      0x1c5 build/bootloader.o
+ .debug_macro   0x0000000000000000      0x219 build/bootloader.o
+ .debug_macro   0x0000000000000000       0x40 build/bootloader.o
+ .debug_macro   0x0000000000000000      0x154 build/bootloader.o
+ .debug_macro   0x0000000000000000       0xe2 build/bootloader.o
+ .debug_macro   0x0000000000000000       0x9a build/bootloader.o
+ .debug_macro   0x0000000000000000      0x24d build/bootloader.o
+ .debug_macro   0x0000000000000000       0x27 build/bootloader.o
+ .debug_macro   0x0000000000000000       0xbe build/bootloader.o
+ .debug_macro   0x0000000000000000       0xbe build/bootloader.o
+ .debug_macro   0x0000000000000000       0x52 build/bootloader.o
+ .debug_macro   0x0000000000000000       0x40 build/bootloader.o
+ .group         0x0000000000000000        0x8 build/boot.o
+ .group         0x0000000000000000        0x8 build/boot.o
+ .group         0x0000000000000000        0x8 build/boot.o
+ .group         0x0000000000000000        0x8 build/boot.o
+ .group         0x0000000000000000        0x8 build/boot.o
+ .group         0x0000000000000000        0x8 build/boot.o
+ .group         0x0000000000000000        0x8 build/boot.o
+ .group         0x0000000000000000        0x8 build/boot.o
+ .group         0x0000000000000000        0x8 build/boot.o
+ .group         0x0000000000000000        0x8 build/boot.o
+ .group         0x0000000000000000        0x8 build/boot.o
+ .group         0x0000000000000000        0x8 build/boot.o
+ .group         0x0000000000000000        0x8 build/boot.o
+ .group         0x0000000000000000        0x8 build/boot.o
+ .group         0x0000000000000000        0x8 build/boot.o
+ .group         0x0000000000000000        0x8 build/boot.o
+ .group         0x0000000000000000        0x8 build/boot.o
+ .group         0x0000000000000000        0x8 build/boot.o
+ .group         0x0000000000000000        0x8 build/boot.o
+ .group         0x0000000000000000        0x8 build/boot.o
+ .group         0x0000000000000000        0x8 build/boot.o
+ .group         0x0000000000000000        0x8 build/boot.o
+ .group         0x0000000000000000        0x8 build/boot.o
+ .group         0x0000000000000000        0x8 build/boot.o
+ .group         0x0000000000000000        0x8 build/boot.o
+ .group         0x0000000000000000        0x8 build/boot.o
+ .group         0x0000000000000000        0x8 build/boot.o
+ .group         0x0000000000000000        0x8 build/boot.o
+ .group         0x0000000000000000        0x8 build/boot.o
+ .group         0x0000000000000000        0x8 build/boot.o
+ .group         0x0000000000000000        0x8 build/boot.o
+ .group         0x0000000000000000        0x8 build/boot.o
+ .group         0x0000000000000000        0x8 build/boot.o
+ .group         0x0000000000000000        0x8 build/boot.o
+ .group         0x0000000000000000        0x8 build/boot.o
+ .group         0x0000000000000000        0x8 build/boot.o
+ .group         0x0000000000000000        0x8 build/boot.o
+ .group         0x0000000000000000        0x8 build/boot.o
+ .group         0x0000000000000000        0x8 build/boot.o
+ .group         0x0000000000000000        0x8 build/boot.o
+ .group         0x0000000000000000        0x8 build/boot.o
+ .group         0x0000000000000000        0x8 build/boot.o
+ .group         0x0000000000000000        0x8 build/boot.o
+ .group         0x0000000000000000        0x8 build/boot.o
+ .group         0x0000000000000000        0x8 build/boot.o
+ .group         0x0000000000000000        0x8 build/boot.o
+ .group         0x0000000000000000        0x8 build/boot.o
+ .group         0x0000000000000000        0x8 build/boot.o
+ .group         0x0000000000000000        0x8 build/boot.o
+ .group         0x0000000000000000        0x8 build/boot.o
+ .group         0x0000000000000000        0x8 build/boot.o
+ .group         0x0000000000000000        0x8 build/boot.o
+ .group         0x0000000000000000        0x8 build/boot.o
+ .group         0x0000000000000000        0x8 build/boot.o
+ .group         0x0000000000000000        0x8 build/boot.o
+ .group         0x0000000000000000        0x8 build/boot.o
+ .group         0x0000000000000000        0x8 build/boot.o
+ .group         0x0000000000000000        0x8 build/boot.o
+ .group         0x0000000000000000        0x8 build/boot.o
+ .group         0x0000000000000000        0x8 build/boot.o
+ .group         0x0000000000000000        0x8 build/boot.o
+ .group         0x0000000000000000        0x8 build/boot.o
+ .text          0x0000000000000000        0x0 build/boot.o
+ .data          0x0000000000000000        0x0 build/boot.o
+ .bss           0x0000000000000000        0x0 build/boot.o
+ .text.BOOT_checkFirmwareIsValid
+                0x0000000000000000       0x18 build/boot.o
+ .text.BOOT_jump
+                0x0000000000000000        0xc build/boot.o
+ .debug_macro   0x0000000000000000      0x81a build/boot.o
+ .debug_macro   0x0000000000000000       0x58 build/boot.o
+ .debug_macro   0x0000000000000000       0x16 build/boot.o
+ .debug_macro   0x0000000000000000       0x35 build/boot.o
+ .debug_macro   0x0000000000000000       0xa3 build/boot.o
+ .debug_macro   0x0000000000000000       0x16 build/boot.o
+ .debug_macro   0x0000000000000000       0x97 build/boot.o
+ .debug_macro   0x0000000000000000       0x10 build/boot.o
+ .debug_macro   0x0000000000000000       0xef build/boot.o
+ .debug_macro   0x0000000000000000       0x4a build/boot.o
+ .debug_macro   0x0000000000000000       0x52 build/boot.o
+ .debug_macro   0x0000000000000000       0x16 build/boot.o
+ .debug_macro   0x0000000000000000       0x43 build/boot.o
+ .debug_macro   0x0000000000000000      0x180 build/boot.o
+ .debug_macro   0x0000000000000000       0x10 build/boot.o
+ .debug_macro   0x0000000000000000       0x22 build/boot.o
+ .debug_macro   0x0000000000000000       0xbd build/boot.o
+ .debug_macro   0x0000000000000000       0x16 build/boot.o
+ .debug_macro   0x0000000000000000      0x14a build/boot.o
+ .debug_macro   0x0000000000000000       0x22 build/boot.o
+ .debug_macro   0x0000000000000000      0x20f build/boot.o
+ .debug_macro   0x0000000000000000      0x26f build/boot.o
+ .debug_macro   0x0000000000000000       0x12 build/boot.o
+ .debug_macro   0x0000000000000000       0x3a build/boot.o
+ .debug_macro   0x0000000000000000       0x1f build/boot.o
+ .debug_macro   0x0000000000000000       0x12 build/boot.o
+ .debug_macro   0x0000000000000000      0x2a6 build/boot.o
+ .debug_macro   0x0000000000000000       0x10 build/boot.o
+ .debug_macro   0x0000000000000000       0x35 build/boot.o
+ .debug_macro   0x0000000000000000       0xde build/boot.o
+ .debug_macro   0x0000000000000000       0xe4 build/boot.o
+ .debug_macro   0x0000000000000000      0x250 build/boot.o
+ .debug_macro   0x0000000000000000      0x2ac build/boot.o
+ .debug_macro   0x0000000000000000      0xf37 build/boot.o
+ .debug_macro   0x0000000000000000      0x82b build/boot.o
+ .debug_macro   0x0000000000000000       0xfa build/boot.o
+ .debug_macro   0x0000000000000000      0x1af build/boot.o
+ .debug_macro   0x0000000000000000     0x16d9 build/boot.o
+ .debug_macro   0x0000000000000000      0xf4d build/boot.o
+ .debug_macro   0x0000000000000000      0x6b8 build/boot.o
+ .debug_macro   0x0000000000000000     0x1b3c build/boot.o
+ .debug_macro   0x0000000000000000      0x516 build/boot.o
+ .debug_macro   0x0000000000000000      0x20b build/boot.o
+ .debug_macro   0x0000000000000000     0x1bdb build/boot.o
+ .debug_macro   0x0000000000000000      0x33a build/boot.o
+ .debug_macro   0x0000000000000000      0xee0 build/boot.o
+ .debug_macro   0x0000000000000000      0xf6c build/boot.o
+ .debug_macro   0x0000000000000000      0x9f5 build/boot.o
+ .debug_macro   0x0000000000000000     0x1066 build/boot.o
+ .debug_macro   0x0000000000000000      0x37d build/boot.o
+ .debug_macro   0x0000000000000000      0x1c5 build/boot.o
+ .debug_macro   0x0000000000000000      0x219 build/boot.o
+ .debug_macro   0x0000000000000000       0x40 build/boot.o
+ .debug_macro   0x0000000000000000      0x154 build/boot.o
+ .debug_macro   0x0000000000000000       0xe2 build/boot.o
+ .debug_macro   0x0000000000000000       0x9a build/boot.o
+ .debug_macro   0x0000000000000000      0x24d build/boot.o
+ .debug_macro   0x0000000000000000       0x27 build/boot.o
+ .debug_macro   0x0000000000000000       0xbe build/boot.o
+ .debug_macro   0x0000000000000000       0xbe build/boot.o
+ .debug_macro   0x0000000000000000       0x40 build/boot.o
+ .group         0x0000000000000000        0x8 build/startup_efm32zg.o
+ .group         0x0000000000000000        0x8 build/startup_efm32zg.o
+ .group         0x0000000000000000        0x8 build/startup_efm32zg.o
+ .group         0x0000000000000000        0x8 build/startup_efm32zg.o
+ .text          0x0000000000000000        0x0 build/startup_efm32zg.o
+ .data          0x0000000000000000        0x0 build/startup_efm32zg.o
+ .bss           0x0000000000000000        0x0 build/startup_efm32zg.o
+ .debug_macro   0x0000000000000000      0x81a build/startup_efm32zg.o
+ .debug_macro   0x0000000000000000       0x16 build/startup_efm32zg.o
+ .debug_macro   0x0000000000000000       0x44 build/startup_efm32zg.o
+ .debug_macro   0x0000000000000000      0x209 build/startup_efm32zg.o
+ .text          0x0000000000000000        0x0 /home/joeg/emus_ide_bootloader/arm-4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv6-m/libc_s.a(lib_a-exit.o)
+ .data          0x0000000000000000        0x0 /home/joeg/emus_ide_bootloader/arm-4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv6-m/libc_s.a(lib_a-exit.o)
+ .bss           0x0000000000000000        0x0 /home/joeg/emus_ide_bootloader/arm-4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv6-m/libc_s.a(lib_a-exit.o)
+ .text          0x0000000000000000        0x0 /home/joeg/emus_ide_bootloader/arm-4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv6-m/libc_s.a(lib_a-impure.o)
+ .data          0x0000000000000000        0x0 /home/joeg/emus_ide_bootloader/arm-4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv6-m/libc_s.a(lib_a-impure.o)
+ .bss           0x0000000000000000        0x0 /home/joeg/emus_ide_bootloader/arm-4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv6-m/libc_s.a(lib_a-impure.o)
+ .data._impure_ptr
+                0x0000000000000000        0x4 /home/joeg/emus_ide_bootloader/arm-4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv6-m/libc_s.a(lib_a-impure.o)
+ .text          0x0000000000000000        0x0 /home/joeg/emus_ide_bootloader/arm-4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv6-m/libc_s.a(lib_a-init.o)
+ .data          0x0000000000000000        0x0 /home/joeg/emus_ide_bootloader/arm-4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv6-m/libc_s.a(lib_a-init.o)
+ .bss           0x0000000000000000        0x0 /home/joeg/emus_ide_bootloader/arm-4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv6-m/libc_s.a(lib_a-init.o)
+ .text          0x0000000000000000        0x0 /home/joeg/emus_ide_bootloader/arm-4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv6-m/libc_s.a(lib_a-memset.o)
+ .data          0x0000000000000000        0x0 /home/joeg/emus_ide_bootloader/arm-4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv6-m/libc_s.a(lib_a-memset.o)
+ .bss           0x0000000000000000        0x0 /home/joeg/emus_ide_bootloader/arm-4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv6-m/libc_s.a(lib_a-memset.o)
+ .text          0x0000000000000000        0x0 /home/joeg/emus_ide_bootloader/arm-4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv6-m/libnosys.a(_exit.o)
+ .data          0x0000000000000000        0x0 /home/joeg/emus_ide_bootloader/arm-4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv6-m/libnosys.a(_exit.o)
+ .bss           0x0000000000000000        0x0 /home/joeg/emus_ide_bootloader/arm-4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv6-m/libnosys.a(_exit.o)
+ .text          0x0000000000000000        0x0 /home/joeg/emus_ide_bootloader/arm-4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/armv6-m/crtend.o
+ .data          0x0000000000000000        0x0 /home/joeg/emus_ide_bootloader/arm-4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/armv6-m/crtend.o
+ .bss           0x0000000000000000        0x0 /home/joeg/emus_ide_bootloader/arm-4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/armv6-m/crtend.o
+ .text          0x0000000000000000        0x0 /home/joeg/emus_ide_bootloader/arm-4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/armv6-m/crtn.o
+ .data          0x0000000000000000        0x0 /home/joeg/emus_ide_bootloader/arm-4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/armv6-m/crtn.o
+ .bss           0x0000000000000000        0x0 /home/joeg/emus_ide_bootloader/arm-4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/armv6-m/crtn.o
+
+Memory Configuration
+
+Name             Origin             Length             Attributes
+FLASH            0x0000000000000000 0x0000000000008000 xr
+RAM              0x0000000020000000 0x0000000000001000 xrw
+*default*        0x0000000000000000 0xffffffffffffffff
+
+Linker script and memory map
+
+LOAD /home/joeg/emus_ide_bootloader/arm-4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/armv6-m/crti.o
+LOAD /home/joeg/emus_ide_bootloader/arm-4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/armv6-m/crtbegin.o
+LOAD /home/joeg/emus_ide_bootloader/arm-4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv6-m/crt0.o
+LOAD build/system_efm32zg.o
+LOAD build/xmodem.o
+LOAD build/leuart.o
+LOAD build/flash.o
+LOAD build/crc.o
+LOAD build/bootloader.o
+LOAD build/boot.o
+LOAD build/startup_efm32zg.o
+START GROUP
+LOAD /home/joeg/emus_ide_bootloader/arm-4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/armv6-m/libgcc.a
+LOAD /home/joeg/emus_ide_bootloader/arm-4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv6-m/libc_s.a
+LOAD /home/joeg/emus_ide_bootloader/arm-4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv6-m/libnosys.a
+END GROUP
+START GROUP
+LOAD /home/joeg/emus_ide_bootloader/arm-4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/armv6-m/libgcc.a
+LOAD /home/joeg/emus_ide_bootloader/arm-4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv6-m/libg_s.a
+LOAD /home/joeg/emus_ide_bootloader/arm-4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv6-m/libc_s.a
+END GROUP
+START GROUP
+LOAD /home/joeg/emus_ide_bootloader/arm-4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/armv6-m/libgcc.a
+LOAD /home/joeg/emus_ide_bootloader/arm-4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv6-m/libc_s.a
+END GROUP
+LOAD /home/joeg/emus_ide_bootloader/arm-4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/armv6-m/crtend.o
+LOAD /home/joeg/emus_ide_bootloader/arm-4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/armv6-m/crtn.o
+
+.text           0x0000000000000000      0x624
+ *(.vectors)
+ .vectors       0x0000000000000000       0x8c build/startup_efm32zg.o
+                0x0000000000000000                __Vectors
+                0x000000000000008c                __Vectors_End = .
+                0x000000000000008c                __Vectors_Size = (__Vectors_End - __Vectors)
+                0x000000000000008c                __end__ = .
+ *(.text*)
+ .text          0x000000000000008c       0x60 /home/joeg/emus_ide_bootloader/arm-4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/armv6-m/crtbegin.o
+ .text          0x00000000000000ec       0x78 /home/joeg/emus_ide_bootloader/arm-4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv6-m/crt0.o
+                0x00000000000000ec                _mainCRTStartup
+                0x00000000000000ec                _start
+ .text.SystemInit
+                0x0000000000000164        0x2 build/system_efm32zg.o
+                0x0000000000000164                SystemInit
+ *fill*         0x0000000000000166        0x2 
+ .text.XMODEM_download
+                0x0000000000000168       0xe4 build/xmodem.o
+                0x0000000000000168                XMODEM_download
+ .text.USART_rxByte
+                0x000000000000024c       0x24 build/leuart.o
+                0x000000000000024c                USART_rxByte
+ .text.USART_txByte
+                0x0000000000000270       0x10 build/leuart.o
+                0x0000000000000270                USART_txByte
+ .text.USART_printHex
+                0x0000000000000280       0x22 build/leuart.o
+                0x0000000000000280                USART_printHex
+ .text.USART_printString
+                0x00000000000002a2       0x14 build/leuart.o
+                0x00000000000002a2                USART_printString
+ *fill*         0x00000000000002b6        0x2 
+ .text.USART_init
+                0x00000000000002b8       0x18 build/leuart.o
+                0x00000000000002b8                USART_init
+ .text.FLASH_init
+                0x00000000000002d0       0x28 build/flash.o
+                0x00000000000002d0                FLASH_init
+ .text.FLASH_writeBlock
+                0x00000000000002f8       0x58 build/flash.o
+                0x00000000000002f8                FLASH_writeBlock
+ .text.FLASH_eraseOneBlock
+                0x0000000000000350       0x34 build/flash.o
+                0x0000000000000350                FLASH_eraseOneBlock
+ .text.CRC_calc
+                0x0000000000000384       0x2e build/crc.o
+                0x0000000000000384                CRC_calc
+ *fill*         0x00000000000003b2        0x2 
+ .text.verify   0x00000000000003b4       0x28 build/bootloader.o
+                0x00000000000003b4                verify
+ .text.commandlineLoop
+                0x00000000000003dc       0x70 build/bootloader.o
+                0x00000000000003dc                commandlineLoop
+ .text.startup.main
+                0x000000000000044c       0x90 build/bootloader.o
+                0x000000000000044c                main
+ .text.BOOT_boot
+                0x00000000000004dc       0x54 build/boot.o
+                0x00000000000004dc                BOOT_boot
+ .text.Default_Handler
+                0x0000000000000530        0x2 build/startup_efm32zg.o
+                0x0000000000000530                I2C0_IRQHandler
+                0x0000000000000530                HardFault_Handler
+                0x0000000000000530                SysTick_Handler
+                0x0000000000000530                USART1_RX_IRQHandler
+                0x0000000000000530                PendSV_Handler
+                0x0000000000000530                NMI_Handler
+                0x0000000000000530                USART1_TX_IRQHandler
+                0x0000000000000530                MSC_IRQHandler
+                0x0000000000000530                ADC0_IRQHandler
+                0x0000000000000530                LEUART0_IRQHandler
+                0x0000000000000530                GPIO_EVEN_IRQHandler
+                0x0000000000000530                RTC_IRQHandler
+                0x0000000000000530                TIMER0_IRQHandler
+                0x0000000000000530                TIMER1_IRQHandler
+                0x0000000000000530                Default_Handler
+                0x0000000000000530                PCNT0_IRQHandler
+                0x0000000000000530                ACMP0_IRQHandler
+                0x0000000000000530                SVC_Handler
+                0x0000000000000530                CMU_IRQHandler
+                0x0000000000000530                GPIO_ODD_IRQHandler
+                0x0000000000000530                AES_IRQHandler
+                0x0000000000000530                VCMP_IRQHandler
+                0x0000000000000530                DMA_IRQHandler
+ *fill*         0x0000000000000532        0x2 
+ .text.Reset_Handler
+                0x0000000000000534       0x2c build/startup_efm32zg.o
+                0x0000000000000534                Reset_Handler
+ .text.exit     0x0000000000000560       0x2c /home/joeg/emus_ide_bootloader/arm-4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv6-m/libc_s.a(lib_a-exit.o)
+                0x0000000000000560                exit
+ .text.__libc_init_array
+                0x000000000000058c       0x4c /home/joeg/emus_ide_bootloader/arm-4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv6-m/libc_s.a(lib_a-init.o)
+                0x000000000000058c                __libc_init_array
+ .text.memset   0x00000000000005d8       0x10 /home/joeg/emus_ide_bootloader/arm-4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv6-m/libc_s.a(lib_a-memset.o)
+                0x00000000000005d8                memset
+ .text._exit    0x00000000000005e8        0x4 /home/joeg/emus_ide_bootloader/arm-4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv6-m/libnosys.a(_exit.o)
+                0x00000000000005e8                _exit
+ *(.init)
+ .init          0x00000000000005ec        0x4 /home/joeg/emus_ide_bootloader/arm-4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/armv6-m/crti.o
+                0x00000000000005ec                _init
+ .init          0x00000000000005f0        0x8 /home/joeg/emus_ide_bootloader/arm-4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/armv6-m/crtn.o
+ *(.fini)
+ .fini          0x00000000000005f8        0x4 /home/joeg/emus_ide_bootloader/arm-4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/armv6-m/crti.o
+                0x00000000000005f8                _fini
+ .fini          0x00000000000005fc        0x8 /home/joeg/emus_ide_bootloader/arm-4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/armv6-m/crtn.o
+ *crtbegin.o(.ctors)
+ *crtbegin?.o(.ctors)
+ *(EXCLUDE_FILE(*crtend.o *crtend?.o) .ctors)
+ *(SORT(.ctors.*))
+ *(.ctors)
+ *crtbegin.o(.dtors)
+ *crtbegin?.o(.dtors)
+ *(EXCLUDE_FILE(*crtend.o *crtend?.o) .dtors)
+ *(SORT(.dtors.*))
+ *(.dtors)
+ *(.rodata*)
+ .rodata.str1.1
+                0x0000000000000604       0x14 build/bootloader.o
+                                         0x17 (size before relaxing)
+ .rodata.str1.1
+                0x0000000000000618        0x2 /home/joeg/emus_ide_bootloader/arm-4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv6-m/libc_s.a(lib_a-impure.o)
+ *fill*         0x000000000000061a        0x2 
+ .rodata._global_impure_ptr
+                0x000000000000061c        0x4 /home/joeg/emus_ide_bootloader/arm-4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv6-m/libc_s.a(lib_a-impure.o)
+                0x000000000000061c                _global_impure_ptr
+ *(.eh_frame*)
+ .eh_frame      0x0000000000000620        0x0 /home/joeg/emus_ide_bootloader/arm-4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/armv6-m/crtbegin.o
+ .eh_frame      0x0000000000000620        0x4 /home/joeg/emus_ide_bootloader/arm-4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/armv6-m/crtend.o
+
+.glue_7         0x0000000000000624        0x0
+ .glue_7        0x0000000000000000        0x0 linker stubs
+
+.glue_7t        0x0000000000000624        0x0
+ .glue_7t       0x0000000000000000        0x0 linker stubs
+
+.vfp11_veneer   0x0000000000000624        0x0
+ .vfp11_veneer  0x0000000000000000        0x0 linker stubs
+
+.v4_bx          0x0000000000000624        0x0
+ .v4_bx         0x0000000000000000        0x0 linker stubs
+
+.iplt           0x0000000000000624        0x0
+ .iplt          0x0000000000000000        0x0 /home/joeg/emus_ide_bootloader/arm-4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/armv6-m/crtbegin.o
+
+.ARM.extab
+ *(.ARM.extab* .gnu.linkonce.armextab.*)
+                0x0000000000000624                __exidx_start = .
+
+.ARM.exidx      0x0000000000000624        0x8
+ *(.ARM.exidx* .gnu.linkonce.armexidx.*)
+ .ARM.exidx     0x0000000000000624        0x8 /home/joeg/emus_ide_bootloader/arm-4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv6-m/crt0.o
+                0x000000000000062c                __exidx_end = .
+                0x000000000000062c                __etext = .
+
+.rel.dyn        0x000000000000062c        0x0
+ .rel.iplt      0x0000000000000000        0x0 /home/joeg/emus_ide_bootloader/arm-4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/armv6-m/crtbegin.o
+
+.data           0x0000000020000000       0x84 load address 0x000000000000062c
+                0x0000000020000000                __data_start__ = .
+ *(vtable)
+ *(.data*)
+ .data.crcString
+                0x0000000020000000        0x8 build/bootloader.o
+                0x0000000020000000                crcString
+ .data.newLineString
+                0x0000000020000008        0x3 build/bootloader.o
+                0x0000000020000008                newLineString
+ .data.readyString
+                0x000000002000000b        0xa build/bootloader.o
+                0x000000002000000b                readyString
+ *fill*         0x0000000020000015        0x3 
+ .data.impure_data
+                0x0000000020000018       0x60 /home/joeg/emus_ide_bootloader/arm-4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv6-m/libc_s.a(lib_a-impure.o)
+                0x0000000020000078                . = ALIGN (0x4)
+ *(.ram)
+                0x0000000020000078                . = ALIGN (0x4)
+                0x0000000020000078                PROVIDE (__preinit_array_start, .)
+ *(.preinit_array)
+                0x0000000020000078                PROVIDE (__preinit_array_end, .)
+                0x0000000020000078                . = ALIGN (0x4)
+                0x0000000020000078                PROVIDE (__init_array_start, .)
+ *(SORT(.init_array.*))
+ *(.init_array)
+ .init_array    0x0000000020000078        0x4 /home/joeg/emus_ide_bootloader/arm-4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/armv6-m/crtbegin.o
+                0x000000002000007c                PROVIDE (__init_array_end, .)
+                0x000000002000007c                . = ALIGN (0x4)
+                0x000000002000007c                PROVIDE (__fini_array_start, .)
+ *(SORT(.fini_array.*))
+ *(.fini_array)
+ .fini_array    0x000000002000007c        0x4 /home/joeg/emus_ide_bootloader/arm-4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/armv6-m/crtbegin.o
+                0x0000000020000080                PROVIDE (__fini_array_end, .)
+ *(.jcr*)
+ .jcr           0x0000000020000080        0x0 /home/joeg/emus_ide_bootloader/arm-4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/armv6-m/crtbegin.o
+ .jcr           0x0000000020000080        0x4 /home/joeg/emus_ide_bootloader/arm-4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/armv6-m/crtend.o
+                0x0000000020000084                . = ALIGN (0x4)
+                0x0000000020000084                __data_end__ = .
+
+.igot.plt       0x0000000020000084        0x0 load address 0x00000000000006b0
+ .igot.plt      0x0000000000000000        0x0 /home/joeg/emus_ide_bootloader/arm-4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/armv6-m/crtbegin.o
+
+.bss            0x0000000020000100      0x210 load address 0x0000000000000800
+                0x0000000020000100                . = ALIGN (0x4)
+                0x0000000020000100                __bss_start__ = .
+ *(.bss*)
+ .bss           0x0000000020000100       0x1c /home/joeg/emus_ide_bootloader/arm-4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/armv6-m/crtbegin.o
+ *(COMMON)
+ COMMON         0x000000002000011c      0x110 build/xmodem.o
+                0x000000002000011c                rawPacket
+ *fill*         0x000000002000022c       0xd4 
+ COMMON         0x0000000020000300       0x10 build/flash.o
+                0x0000000020000300                descr
+                0x0000000020000310                . = ALIGN (0x4)
+                0x0000000020000310                __bss_end__ = .
+
+.heap           0x0000000020000310        0x0
+                0x0000000020000310                __HeapBase = .
+                0x0000000020000310                __end__ = .
+                0x0000000020000310                end = __end__
+                0x0000000020000310                _end = __end__
+ *(.heap*)
+                0x0000000020000310                __HeapLimit = .
+
+.stack_dummy    0x0000000020000310      0x400
+ *(.stack*)
+ .stack         0x0000000020000310      0x400 build/startup_efm32zg.o
+                0x0000000020001000                __StackTop = (ORIGIN (RAM) + 0x1000)
+                0x0000000020000c00                __StackLimit = (__StackTop - SIZEOF (.stack_dummy))
+                0x0000000020001000                PROVIDE (__stack, __StackTop)
+                0x0000000000000001                ASSERT ((__StackLimit >= __HeapLimit), region RAM overflowed with stack)
+                0x0000000000000001                ASSERT ((0x8000 >= (__etext + SIZEOF (.data))), FLASH memory overflowed !)
+OUTPUT(exe/efmusb.out elf32-littlearm)
+
+.ARM.attributes
+                0x0000000000000000       0x28
+ .ARM.attributes
+                0x0000000000000000       0x1e /home/joeg/emus_ide_bootloader/arm-4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/armv6-m/crti.o
+ .ARM.attributes
+                0x000000000000001e       0x2c /home/joeg/emus_ide_bootloader/arm-4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/armv6-m/crtbegin.o
+ .ARM.attributes
+                0x000000000000004a       0x1b /home/joeg/emus_ide_bootloader/arm-4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv6-m/crt0.o
+ .ARM.attributes
+                0x0000000000000065       0x31 build/system_efm32zg.o
+ .ARM.attributes
+                0x0000000000000096       0x31 build/xmodem.o
+ .ARM.attributes
+                0x00000000000000c7       0x31 build/leuart.o
+ .ARM.attributes
+                0x00000000000000f8       0x31 build/flash.o
+ .ARM.attributes
+                0x0000000000000129       0x31 build/crc.o
+ .ARM.attributes
+                0x000000000000015a       0x31 build/bootloader.o
+ .ARM.attributes
+                0x000000000000018b       0x31 build/boot.o
+ .ARM.attributes
+                0x00000000000001bc       0x31 build/startup_efm32zg.o
+ .ARM.attributes
+                0x00000000000001ed       0x2c /home/joeg/emus_ide_bootloader/arm-4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv6-m/libc_s.a(lib_a-exit.o)
+ .ARM.attributes
+                0x0000000000000219       0x2c /home/joeg/emus_ide_bootloader/arm-4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv6-m/libc_s.a(lib_a-impure.o)
+ .ARM.attributes
+                0x0000000000000245       0x2c /home/joeg/emus_ide_bootloader/arm-4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv6-m/libc_s.a(lib_a-init.o)
+ .ARM.attributes
+                0x0000000000000271       0x2c /home/joeg/emus_ide_bootloader/arm-4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv6-m/libc_s.a(lib_a-memset.o)
+ .ARM.attributes
+                0x000000000000029d       0x2c /home/joeg/emus_ide_bootloader/arm-4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv6-m/libnosys.a(_exit.o)
+ .ARM.attributes
+                0x00000000000002c9       0x2c /home/joeg/emus_ide_bootloader/arm-4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/armv6-m/crtend.o
+ .ARM.attributes
+                0x00000000000002f5       0x1e /home/joeg/emus_ide_bootloader/arm-4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/armv6-m/crtn.o
+
+.comment        0x0000000000000000       0x80
+ .comment       0x0000000000000000       0x80 build/system_efm32zg.o
+                                         0x81 (size before relaxing)
+ .comment       0x0000000000000000       0x81 build/xmodem.o
+ .comment       0x0000000000000000       0x81 build/leuart.o
+ .comment       0x0000000000000000       0x81 build/flash.o
+ .comment       0x0000000000000000       0x81 build/crc.o
+ .comment       0x0000000000000000       0x81 build/bootloader.o
+ .comment       0x0000000000000000       0x81 build/boot.o
+ .comment       0x0000000000000000       0x81 build/startup_efm32zg.o
+
+.debug_info     0x0000000000000000     0x28d8
+ .debug_info    0x0000000000000000      0x450 build/system_efm32zg.o
+ .debug_info    0x0000000000000450      0x74b build/xmodem.o
+ .debug_info    0x0000000000000b9b      0x341 build/leuart.o
+ .debug_info    0x0000000000000edc      0x5a6 build/flash.o
+ .debug_info    0x0000000000001482      0x122 build/crc.o
+ .debug_info    0x00000000000015a4      0x9e0 build/bootloader.o
+ .debug_info    0x0000000000001f84      0x797 build/boot.o
+ .debug_info    0x000000000000271b      0x1bd build/startup_efm32zg.o
+
+.debug_abbrev   0x0000000000000000      0xb1f
+ .debug_abbrev  0x0000000000000000      0x17d build/system_efm32zg.o
+ .debug_abbrev  0x000000000000017d      0x1e7 build/xmodem.o
+ .debug_abbrev  0x0000000000000364      0x13f build/leuart.o
+ .debug_abbrev  0x00000000000004a3      0x14b build/flash.o
+ .debug_abbrev  0x00000000000005ee       0x9d build/crc.o
+ .debug_abbrev  0x000000000000068b      0x216 build/bootloader.o
+ .debug_abbrev  0x00000000000008a1      0x175 build/boot.o
+ .debug_abbrev  0x0000000000000a16      0x109 build/startup_efm32zg.o
+
+.debug_loc      0x0000000000000000      0x892
+ .debug_loc     0x0000000000000000       0xfc build/system_efm32zg.o
+ .debug_loc     0x00000000000000fc      0x2fb build/xmodem.o
+ .debug_loc     0x00000000000003f7      0x113 build/leuart.o
+ .debug_loc     0x000000000000050a      0x13b build/flash.o
+ .debug_loc     0x0000000000000645       0x9f build/crc.o
+ .debug_loc     0x00000000000006e4       0xee build/bootloader.o
+ .debug_loc     0x00000000000007d2       0x2c build/boot.o
+ .debug_loc     0x00000000000007fe       0x94 build/startup_efm32zg.o
+
+.debug_aranges  0x0000000000000000      0x1a8
+ .debug_aranges
+                0x0000000000000000       0x68 build/system_efm32zg.o
+ .debug_aranges
+                0x0000000000000068       0x20 build/xmodem.o
+ .debug_aranges
+                0x0000000000000088       0x40 build/leuart.o
+ .debug_aranges
+                0x00000000000000c8       0x38 build/flash.o
+ .debug_aranges
+                0x0000000000000100       0x20 build/crc.o
+ .debug_aranges
+                0x0000000000000120       0x30 build/bootloader.o
+ .debug_aranges
+                0x0000000000000150       0x30 build/boot.o
+ .debug_aranges
+                0x0000000000000180       0x28 build/startup_efm32zg.o
+
+.debug_ranges   0x0000000000000000      0x140
+ .debug_ranges  0x0000000000000000       0x58 build/system_efm32zg.o
+ .debug_ranges  0x0000000000000058       0x28 build/xmodem.o
+ .debug_ranges  0x0000000000000080       0x30 build/leuart.o
+ .debug_ranges  0x00000000000000b0       0x28 build/flash.o
+ .debug_ranges  0x00000000000000d8       0x10 build/crc.o
+ .debug_ranges  0x00000000000000e8       0x20 build/bootloader.o
+ .debug_ranges  0x0000000000000108       0x20 build/boot.o
+ .debug_ranges  0x0000000000000128       0x18 build/startup_efm32zg.o
+
+.debug_macro    0x0000000000000000    0x1063f
+ .debug_macro   0x0000000000000000      0x2ab build/system_efm32zg.o
+ .debug_macro   0x00000000000002ab      0x81a build/system_efm32zg.o
+ .debug_macro   0x0000000000000ac5       0x16 build/system_efm32zg.o
+ .debug_macro   0x0000000000000adb       0x44 build/system_efm32zg.o
+ .debug_macro   0x0000000000000b1f      0x209 build/system_efm32zg.o
+ .debug_macro   0x0000000000000d28      0x26f build/system_efm32zg.o
+ .debug_macro   0x0000000000000f97       0x12 build/system_efm32zg.o
+ .debug_macro   0x0000000000000fa9       0x3a build/system_efm32zg.o
+ .debug_macro   0x0000000000000fe3       0x1f build/system_efm32zg.o
+ .debug_macro   0x0000000000001002       0x12 build/system_efm32zg.o
+ .debug_macro   0x0000000000001014       0x58 build/system_efm32zg.o
+ .debug_macro   0x000000000000106c       0x35 build/system_efm32zg.o
+ .debug_macro   0x00000000000010a1       0xa3 build/system_efm32zg.o
+ .debug_macro   0x0000000000001144      0x166 build/system_efm32zg.o
+ .debug_macro   0x00000000000012aa       0x52 build/system_efm32zg.o
+ .debug_macro   0x00000000000012fc       0x16 build/system_efm32zg.o
+ .debug_macro   0x0000000000001312       0x43 build/system_efm32zg.o
+ .debug_macro   0x0000000000001355      0x180 build/system_efm32zg.o
+ .debug_macro   0x00000000000014d5      0x2a6 build/system_efm32zg.o
+ .debug_macro   0x000000000000177b       0x10 build/system_efm32zg.o
+ .debug_macro   0x000000000000178b       0x35 build/system_efm32zg.o
+ .debug_macro   0x00000000000017c0       0xde build/system_efm32zg.o
+ .debug_macro   0x000000000000189e       0xe4 build/system_efm32zg.o
+ .debug_macro   0x0000000000001982      0x250 build/system_efm32zg.o
+ .debug_macro   0x0000000000001bd2      0x2ac build/system_efm32zg.o
+ .debug_macro   0x0000000000001e7e      0xf37 build/system_efm32zg.o
+ .debug_macro   0x0000000000002db5      0x82b build/system_efm32zg.o
+ .debug_macro   0x00000000000035e0       0xfa build/system_efm32zg.o
+ .debug_macro   0x00000000000036da      0x1af build/system_efm32zg.o
+ .debug_macro   0x0000000000003889     0x16d9 build/system_efm32zg.o
+ .debug_macro   0x0000000000004f62      0xf4d build/system_efm32zg.o
+ .debug_macro   0x0000000000005eaf      0x6b8 build/system_efm32zg.o
+ .debug_macro   0x0000000000006567     0x1b3c build/system_efm32zg.o
+ .debug_macro   0x00000000000080a3      0x516 build/system_efm32zg.o
+ .debug_macro   0x00000000000085b9      0x20b build/system_efm32zg.o
+ .debug_macro   0x00000000000087c4     0x1bdb build/system_efm32zg.o
+ .debug_macro   0x000000000000a39f      0x33a build/system_efm32zg.o
+ .debug_macro   0x000000000000a6d9      0xee0 build/system_efm32zg.o
+ .debug_macro   0x000000000000b5b9      0xf6c build/system_efm32zg.o
+ .debug_macro   0x000000000000c525      0x9f5 build/system_efm32zg.o
+ .debug_macro   0x000000000000cf1a     0x1066 build/system_efm32zg.o
+ .debug_macro   0x000000000000df80      0x37d build/system_efm32zg.o
+ .debug_macro   0x000000000000e2fd      0x1c5 build/system_efm32zg.o
+ .debug_macro   0x000000000000e4c2      0x219 build/system_efm32zg.o
+ .debug_macro   0x000000000000e6db       0x40 build/system_efm32zg.o
+ .debug_macro   0x000000000000e71b      0x154 build/system_efm32zg.o
+ .debug_macro   0x000000000000e86f       0xe2 build/system_efm32zg.o
+ .debug_macro   0x000000000000e951       0x9a build/system_efm32zg.o
+ .debug_macro   0x000000000000e9eb      0x24d build/system_efm32zg.o
+ .debug_macro   0x000000000000ec38       0x27 build/system_efm32zg.o
+ .debug_macro   0x000000000000ec5f       0xbe build/system_efm32zg.o
+ .debug_macro   0x000000000000ed1d       0xbe build/system_efm32zg.o
+ .debug_macro   0x000000000000eddb      0x308 build/xmodem.o
+ .debug_macro   0x000000000000f0e3       0x16 build/xmodem.o
+ .debug_macro   0x000000000000f0f9       0x97 build/xmodem.o
+ .debug_macro   0x000000000000f190       0x10 build/xmodem.o
+ .debug_macro   0x000000000000f1a0       0xef build/xmodem.o
+ .debug_macro   0x000000000000f28f       0x4a build/xmodem.o
+ .debug_macro   0x000000000000f2d9       0x10 build/xmodem.o
+ .debug_macro   0x000000000000f2e9       0x22 build/xmodem.o
+ .debug_macro   0x000000000000f30b       0xbd build/xmodem.o
+ .debug_macro   0x000000000000f3c8       0x16 build/xmodem.o
+ .debug_macro   0x000000000000f3de      0x14a build/xmodem.o
+ .debug_macro   0x000000000000f528      0x20f build/xmodem.o
+ .debug_macro   0x000000000000f737       0x52 build/xmodem.o
+ .debug_macro   0x000000000000f789       0x40 build/xmodem.o
+ .debug_macro   0x000000000000f7c9      0x2a1 build/leuart.o
+ .debug_macro   0x000000000000fa6a      0x2a1 build/flash.o
+ .debug_macro   0x000000000000fd0b      0x297 build/crc.o
+ .debug_macro   0x000000000000ffa2      0x2de build/bootloader.o
+ .debug_macro   0x0000000000010280       0x22 build/bootloader.o
+ .debug_macro   0x00000000000102a2      0x2fc build/boot.o
+ .debug_macro   0x000000000001059e       0x4c build/boot.o
+ .debug_macro   0x00000000000105ea       0x55 build/startup_efm32zg.o
+
+.debug_line     0x0000000000000000     0x2e58
+ .debug_line    0x0000000000000000      0x6a7 build/system_efm32zg.o
+ .debug_line    0x00000000000006a7      0x67b build/xmodem.o
+ .debug_line    0x0000000000000d22      0x644 build/leuart.o
+ .debug_line    0x0000000000001366      0x655 build/flash.o
+ .debug_line    0x00000000000019bb      0x5e6 build/crc.o
+ .debug_line    0x0000000000001fa1      0x671 build/bootloader.o
+ .debug_line    0x0000000000002612      0x65f build/boot.o
+ .debug_line    0x0000000000002c71      0x1e7 build/startup_efm32zg.o
+
+.debug_str      0x0000000000000000    0x5a8da
+ .debug_str     0x0000000000000000    0x594d6 build/system_efm32zg.o
+                                      0x596e9 (size before relaxing)
+ .debug_str     0x00000000000594d6      0xef2 build/xmodem.o
+                                      0x5a38b (size before relaxing)
+ .debug_str     0x000000000005a3c8       0x5e build/leuart.o
+                                      0x59692 (size before relaxing)
+ .debug_str     0x000000000005a426       0xf7 build/flash.o
+                                      0x597a4 (size before relaxing)
+ .debug_str     0x000000000005a51d        0xd build/crc.o
+                                      0x5945f (size before relaxing)
+ .debug_str     0x000000000005a52a      0x261 build/bootloader.o
+                                      0x59ab6 (size before relaxing)
+ .debug_str     0x000000000005a78b       0x71 build/boot.o
+                                      0x5a307 (size before relaxing)
+ .debug_str     0x000000000005a7fc       0xde build/startup_efm32zg.o
+                                       0x2f12 (size before relaxing)
+
+.debug_frame    0x0000000000000000      0x368
+ .debug_frame   0x0000000000000000       0xc8 build/system_efm32zg.o
+ .debug_frame   0x00000000000000c8       0x34 build/xmodem.o
+ .debug_frame   0x00000000000000fc       0x74 build/leuart.o
+ .debug_frame   0x0000000000000170       0x64 build/flash.o
+ .debug_frame   0x00000000000001d4       0x28 build/crc.o
+ .debug_frame   0x00000000000001fc       0x60 build/bootloader.o
+ .debug_frame   0x000000000000025c       0x40 build/boot.o
+ .debug_frame   0x000000000000029c       0x38 build/startup_efm32zg.o
+ .debug_frame   0x00000000000002d4       0x28 /home/joeg/emus_ide_bootloader/arm-4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv6-m/libc_s.a(lib_a-exit.o)
+ .debug_frame   0x00000000000002fc       0x2c /home/joeg/emus_ide_bootloader/arm-4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv6-m/libc_s.a(lib_a-init.o)
+ .debug_frame   0x0000000000000328       0x20 /home/joeg/emus_ide_bootloader/arm-4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv6-m/libc_s.a(lib_a-memset.o)
+ .debug_frame   0x0000000000000348       0x20 /home/joeg/emus_ide_bootloader/arm-4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv6-m/libnosys.a(_exit.o)

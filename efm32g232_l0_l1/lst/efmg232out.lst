@@ -1,0 +1,1288 @@
+
+exe/efmg232.out:     file format elf32-littlearm
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .text         00000620  00000000  00000000  00008000  2**2
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  1 .ARM.exidx    00000008  00000620  00000620  00008620  2**2
+                  CONTENTS, ALLOC, LOAD, READONLY, DATA
+  2 .data         00000084  20000000  00000628  00010000  2**2
+                  CONTENTS, ALLOC, LOAD, DATA
+  3 .bss          00000210  20000100  00000800  00010100  2**8
+                  ALLOC
+  4 .heap         00000c00  20000310  20000310  00010088  2**3
+                  CONTENTS
+  5 .stack_dummy  00000400  20000f10  20000f10  00010c88  2**3
+                  CONTENTS
+  6 .ARM.attributes 00000029  00000000  00000000  00011088  2**0
+                  CONTENTS, READONLY
+  7 .comment      00000080  00000000  00000000  000110b1  2**0
+                  CONTENTS, READONLY
+  8 .debug_info   00002cca  00000000  00000000  00011131  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  9 .debug_abbrev 00000c5f  00000000  00000000  00013dfb  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 10 .debug_loc    0000079c  00000000  00000000  00014a5a  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 11 .debug_aranges 000001a8  00000000  00000000  000151f6  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 12 .debug_ranges 00000170  00000000  00000000  0001539e  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 13 .debug_macro  00011c28  00000000  00000000  0001550e  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 14 .debug_line   000025a4  00000000  00000000  00027136  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 15 .debug_str    00065987  00000000  00000000  000296da  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 16 .debug_frame  00000344  00000000  00000000  0008f064  2**2
+                  CONTENTS, READONLY, DEBUGGING
+
+Disassembly of section .text:
+
+00000000 <__Vectors>:
+   0:	00 40 00 20 35 05 00 00 31 05 00 00 31 05 00 00     .@. 5...1...1...
+  10:	31 05 00 00 31 05 00 00 31 05 00 00 31 05 00 00     1...1...1...1...
+  20:	31 05 00 00 31 05 00 00 31 05 00 00 31 05 00 00     1...1...1...1...
+  30:	31 05 00 00 31 05 00 00 31 05 00 00 31 05 00 00     1...1...1...1...
+  40:	31 05 00 00 31 05 00 00 31 05 00 00 31 05 00 00     1...1...1...1...
+  50:	31 05 00 00 31 05 00 00 31 05 00 00 31 05 00 00     1...1...1...1...
+  60:	31 05 00 00 31 05 00 00 31 05 00 00 31 05 00 00     1...1...1...1...
+  70:	31 05 00 00 31 05 00 00 31 05 00 00 31 05 00 00     1...1...1...1...
+  80:	31 05 00 00 31 05 00 00 31 05 00 00 31 05 00 00     1...1...1...1...
+  90:	31 05 00 00 31 05 00 00 31 05 00 00 31 05 00 00     1...1...1...1...
+  a0:	31 05 00 00 31 05 00 00 31 05 00 00 31 05 00 00     1...1...1...1...
+  b0:	31 05 00 00 31 05 00 00 31 05 00 00                 1...1...1...
+
+000000bc <__do_global_dtors_aux>:
+  bc:	b510      	push	{r4, lr}
+  be:	4c05      	ldr	r4, [pc, #20]	; (d4 <__do_global_dtors_aux+0x18>)
+  c0:	7823      	ldrb	r3, [r4, #0]
+  c2:	b933      	cbnz	r3, d2 <__do_global_dtors_aux+0x16>
+  c4:	4b04      	ldr	r3, [pc, #16]	; (d8 <__do_global_dtors_aux+0x1c>)
+  c6:	b113      	cbz	r3, ce <__do_global_dtors_aux+0x12>
+  c8:	4804      	ldr	r0, [pc, #16]	; (dc <__do_global_dtors_aux+0x20>)
+  ca:	f3af 8000 	nop.w
+  ce:	2301      	movs	r3, #1
+  d0:	7023      	strb	r3, [r4, #0]
+  d2:	bd10      	pop	{r4, pc}
+  d4:	20000100 	.word	0x20000100
+  d8:	00000000 	.word	0x00000000
+  dc:	0000061c 	.word	0x0000061c
+
+000000e0 <frame_dummy>:
+  e0:	b508      	push	{r3, lr}
+  e2:	4b06      	ldr	r3, [pc, #24]	; (fc <frame_dummy+0x1c>)
+  e4:	b11b      	cbz	r3, ee <frame_dummy+0xe>
+  e6:	4806      	ldr	r0, [pc, #24]	; (100 <frame_dummy+0x20>)
+  e8:	4906      	ldr	r1, [pc, #24]	; (104 <frame_dummy+0x24>)
+  ea:	f3af 8000 	nop.w
+  ee:	4806      	ldr	r0, [pc, #24]	; (108 <frame_dummy+0x28>)
+  f0:	6803      	ldr	r3, [r0, #0]
+  f2:	b113      	cbz	r3, fa <frame_dummy+0x1a>
+  f4:	4b05      	ldr	r3, [pc, #20]	; (10c <frame_dummy+0x2c>)
+  f6:	b103      	cbz	r3, fa <frame_dummy+0x1a>
+  f8:	4798      	blx	r3
+  fa:	bd08      	pop	{r3, pc}
+  fc:	00000000 	.word	0x00000000
+ 100:	0000061c 	.word	0x0000061c
+ 104:	20000104 	.word	0x20000104
+ 108:	20000080 	.word	0x20000080
+ 10c:	00000000 	.word	0x00000000
+
+00000110 <_mainCRTStartup>:
+ 110:	4b15      	ldr	r3, [pc, #84]	; (168 <_mainCRTStartup+0x58>)
+ 112:	2b00      	cmp	r3, #0
+ 114:	bf08      	it	eq
+ 116:	4b13      	ldreq	r3, [pc, #76]	; (164 <_mainCRTStartup+0x54>)
+ 118:	469d      	mov	sp, r3
+ 11a:	f5a3 3a80 	sub.w	sl, r3, #65536	; 0x10000
+ 11e:	2100      	movs	r1, #0
+ 120:	468b      	mov	fp, r1
+ 122:	460f      	mov	r7, r1
+ 124:	4813      	ldr	r0, [pc, #76]	; (174 <_mainCRTStartup+0x64>)
+ 126:	4a14      	ldr	r2, [pc, #80]	; (178 <_mainCRTStartup+0x68>)
+ 128:	1a12      	subs	r2, r2, r0
+ 12a:	f000 fa53 	bl	5d4 <memset>
+ 12e:	4b0f      	ldr	r3, [pc, #60]	; (16c <_mainCRTStartup+0x5c>)
+ 130:	2b00      	cmp	r3, #0
+ 132:	d000      	beq.n	136 <_mainCRTStartup+0x26>
+ 134:	4798      	blx	r3
+ 136:	4b0e      	ldr	r3, [pc, #56]	; (170 <_mainCRTStartup+0x60>)
+ 138:	2b00      	cmp	r3, #0
+ 13a:	d000      	beq.n	13e <_mainCRTStartup+0x2e>
+ 13c:	4798      	blx	r3
+ 13e:	2000      	movs	r0, #0
+ 140:	2100      	movs	r1, #0
+ 142:	0004      	movs	r4, r0
+ 144:	000d      	movs	r5, r1
+ 146:	480d      	ldr	r0, [pc, #52]	; (17c <_mainCRTStartup+0x6c>)
+ 148:	2800      	cmp	r0, #0
+ 14a:	d002      	beq.n	152 <_mainCRTStartup+0x42>
+ 14c:	480c      	ldr	r0, [pc, #48]	; (180 <_mainCRTStartup+0x70>)
+ 14e:	f3af 8000 	nop.w
+ 152:	f000 fa19 	bl	588 <__libc_init_array>
+ 156:	0020      	movs	r0, r4
+ 158:	0029      	movs	r1, r5
+ 15a:	f000 f979 	bl	450 <main>
+ 15e:	f000 f9ff 	bl	560 <exit>
+ 162:	bf00      	nop
+ 164:	00080000 	.word	0x00080000
+ 168:	20004000 	.word	0x20004000
+	...
+ 174:	20000100 	.word	0x20000100
+ 178:	20000310 	.word	0x20000310
+	...
+
+00000184 <SystemInit>:
+ *   This function is invoked during system init, before the main() routine
+ *   and any data has been initialized. For this reason, it cannot do any
+ *   initialization of variables etc.
+ *****************************************************************************/
+void SystemInit(void)
+{
+ 184:	4770      	bx	lr
+	...
+
+00000188 <XMODEM_download>:
+ *
+ * @param endAddress
+ *   The last address. This is only used for clearing the flash
+ *****************************************************************************/
+ void XMODEM_download(uint32_t baseAddress, uint32_t endAddress)
+{
+ 188:	b5f8      	push	{r3, r4, r5, r6, r7, lr}
+ 18a:	4607      	mov	r7, r0
+ 18c:	460d      	mov	r5, r1
+  uint32_t      i;
+  uint32_t      addr;
+  uint32_t      byte;
+  uint32_t      sequenceNumber = 1;
+
+  for (addr = baseAddress; addr < endAddress; addr += FLASH_PAGE_SIZE)
+ 18e:	4604      	mov	r4, r0
+ 190:	42ac      	cmp	r4, r5
+ 192:	d207      	bcs.n	1a4 <XMODEM_download+0x1c>
+  {
+    FLASH_eraseOneBlock(addr);
+ 194:	4620      	mov	r0, r4
+ 196:	f000 f8df 	bl	358 <FLASH_eraseOneBlock>
+  uint32_t      i;
+  uint32_t      addr;
+  uint32_t      byte;
+  uint32_t      sequenceNumber = 1;
+
+  for (addr = baseAddress; addr < endAddress; addr += FLASH_PAGE_SIZE)
+ 19a:	f504 7400 	add.w	r4, r4, #512	; 0x200
+ 19e:	e7f7      	b.n	190 <XMODEM_download+0x8>
+   * response, we resend the start transmission packet.
+   * Note: This is a fairly long delay between retransmissions(~6 s). */
+  while (1)
+  {
+    USART_txByte(XMODEM_NCG);
+    for (i = 0; i < 10000000; i++)
+ 1a0:	3b01      	subs	r3, #1
+ 1a2:	d103      	bne.n	1ac <XMODEM_download+0x24>
+  /* Send one start transmission packet. Wait for a response. If there is no
+   * response, we resend the start transmission packet.
+   * Note: This is a fairly long delay between retransmissions(~6 s). */
+  while (1)
+  {
+    USART_txByte(XMODEM_NCG);
+ 1a4:	2043      	movs	r0, #67	; 0x43
+ 1a6:	f000 f86b 	bl	280 <USART_txByte>
+ 1aa:	4b29      	ldr	r3, [pc, #164]	; (250 <XMODEM_download+0xc8>)
+    for (i = 0; i < 10000000; i++)
+    {
+#if defined( BOOTLOADER_LEUART_CLOCKEN )
+      if (BOOTLOADER_USART->STATUS & LEUART_STATUS_RXDATAV)
+#else
+      if (BOOTLOADER_USART->STATUS & USART_STATUS_RXDATAV)
+ 1ac:	4a29      	ldr	r2, [pc, #164]	; (254 <XMODEM_download+0xcc>)
+ 1ae:	6912      	ldr	r2, [r2, #16]
+ 1b0:	0612      	lsls	r2, r2, #24
+ 1b2:	d5f5      	bpl.n	1a0 <XMODEM_download+0x18>
+ 1b4:	2501      	movs	r5, #1
+ 1b6:	e010      	b.n	1da <XMODEM_download+0x52>
+      break;
+    }
+
+    /* If the header is not a start of header (SOH), then cancel *
+     * the transfer. */
+    if (pkt->header != XMODEM_SOH)
+ 1b8:	2801      	cmp	r0, #1
+ 1ba:	d148      	bne.n	24e <XMODEM_download+0xc6>
+ 1bc:	2602      	movs	r6, #2
+
+    /* Fill the remaining bytes packet */
+    /* Byte 0 is padding, byte 1 is header */
+    for (byte = 2; byte < sizeof(XMODEM_packet); byte++)
+    {
+      *(((uint8_t *) pkt) + byte) = USART_rxByte();
+ 1be:	f000 f84f 	bl	260 <USART_rxByte>
+ 1c2:	55a0      	strb	r0, [r4, r6]
+      //return -1;
+    }
+
+    /* Fill the remaining bytes packet */
+    /* Byte 0 is padding, byte 1 is header */
+    for (byte = 2; byte < sizeof(XMODEM_packet); byte++)
+ 1c4:	3601      	adds	r6, #1
+ 1c6:	2e86      	cmp	r6, #134	; 0x86
+ 1c8:	d1f9      	bne.n	1be <XMODEM_download+0x36>
+{
+  uint16_t packetCRC;
+  uint16_t calculatedCRC;
+
+  /* Check the packet number integrity */
+  if (pkt->packetNumber + pkt->packetNumberC != 255)
+ 1ca:	78a2      	ldrb	r2, [r4, #2]
+ 1cc:	78e3      	ldrb	r3, [r4, #3]
+ 1ce:	4413      	add	r3, r2
+ 1d0:	2bff      	cmp	r3, #255	; 0xff
+ 1d2:	d011      	beq.n	1f8 <XMODEM_download+0x70>
+    }
+
+    if (XMODEM_verifyPacketChecksum(pkt, sequenceNumber) != 0)
+    {
+      /* On a malformed packet, we send a NAK, and start over */
+      USART_txByte(XMODEM_NAK);
+ 1d4:	2015      	movs	r0, #21
+
+
+
+    sequenceNumber++;
+    /* Send ACK */
+    USART_txByte(XMODEM_ACK);
+ 1d6:	f000 f853 	bl	280 <USART_txByte>
+  }
+xmodem_transfer:
+  while (1)
+  {
+    /* Swap buffer for packet buffer */
+    pkt = (XMODEM_packet *) rawPacket[sequenceNumber & 1];
+ 1da:	4b1f      	ldr	r3, [pc, #124]	; (258 <XMODEM_download+0xd0>)
+ 1dc:	2288      	movs	r2, #136	; 0x88
+ 1de:	f005 0401 	and.w	r4, r5, #1
+ 1e2:	fb02 3404 	mla	r4, r2, r4, r3
+
+    /* Fetch the first byte of the packet explicitly, as it defines the
+     * rest of the packet */
+    pkt->header = USART_rxByte();
+ 1e6:	f000 f83b 	bl	260 <USART_rxByte>
+
+    /* Check for end of transfer */
+    if (pkt->header == XMODEM_EOT)
+ 1ea:	2804      	cmp	r0, #4
+    /* Swap buffer for packet buffer */
+    pkt = (XMODEM_packet *) rawPacket[sequenceNumber & 1];
+
+    /* Fetch the first byte of the packet explicitly, as it defines the
+     * rest of the packet */
+    pkt->header = USART_rxByte();
+ 1ec:	7060      	strb	r0, [r4, #1]
+
+    /* Check for end of transfer */
+    if (pkt->header == XMODEM_EOT)
+ 1ee:	d1e3      	bne.n	1b8 <XMODEM_download+0x30>
+    {
+      /* Acknowledget End of transfer */
+      USART_txByte(XMODEM_ACK);
+ 1f0:	2006      	movs	r0, #6
+ 1f2:	f000 f845 	bl	280 <USART_txByte>
+    sequenceNumber++;
+    /* Send ACK */
+    USART_txByte(XMODEM_ACK);
+  }
+  /* Wait for the last DMA transfer to finish. */
+  while (DMA->CHENS & DMA_CHENS_CH0ENS) ;
+ 1f6:	e019      	b.n	22c <XMODEM_download+0xa4>
+  {
+    return -1;
+  }
+
+  /* Check that the packet number matches the excpected number */
+  if (pkt->packetNumber != (sequenceNumber % 256))
+ 1f8:	f103 4300 	add.w	r3, r3, #2147483648	; 0x80000000
+ 1fc:	402b      	ands	r3, r5
+ 1fe:	2b00      	cmp	r3, #0
+ 200:	da03      	bge.n	20a <XMODEM_download+0x82>
+ 202:	3b01      	subs	r3, #1
+ 204:	f063 03ff 	orn	r3, r3, #255	; 0xff
+ 208:	3301      	adds	r3, #1
+ 20a:	429a      	cmp	r2, r3
+ 20c:	d1e2      	bne.n	1d4 <XMODEM_download+0x4c>
+  {
+    return -1;
+  }
+
+  calculatedCRC = CRC_calc((uint8_t *) pkt->data, (uint8_t *) &(pkt->crcHigh));
+ 20e:	1d26      	adds	r6, r4, #4
+ 210:	4630      	mov	r0, r6
+ 212:	f104 0184 	add.w	r1, r4, #132	; 0x84
+ 216:	f000 f8b9 	bl	38c <CRC_calc>
+  packetCRC     = pkt->crcHigh << 8 | pkt->crcLow;
+ 21a:	f894 2084 	ldrb.w	r2, [r4, #132]	; 0x84
+ 21e:	f894 3085 	ldrb.w	r3, [r4, #133]	; 0x85
+
+  /* Check the CRC value */
+  if (calculatedCRC != packetCRC)
+ 222:	ea43 2302 	orr.w	r3, r3, r2, lsl #8
+ 226:	4298      	cmp	r0, r3
+ 228:	d1d4      	bne.n	1d4 <XMODEM_download+0x4c>
+ 22a:	e004      	b.n	236 <XMODEM_download+0xae>
+    sequenceNumber++;
+    /* Send ACK */
+    USART_txByte(XMODEM_ACK);
+  }
+  /* Wait for the last DMA transfer to finish. */
+  while (DMA->CHENS & DMA_CHENS_CH0ENS) ;
+ 22c:	4b0b      	ldr	r3, [pc, #44]	; (25c <XMODEM_download+0xd4>)
+ 22e:	6a9b      	ldr	r3, [r3, #40]	; 0x28
+ 230:	07db      	lsls	r3, r3, #31
+ 232:	d4fb      	bmi.n	22c <XMODEM_download+0xa4>
+ 234:	bdf8      	pop	{r3, r4, r5, r6, r7, pc}
+      USART_txByte(XMODEM_NAK);
+      continue;
+    }
+
+    /* Write data to flash */
+    FLASH_writeBlock((void *) baseAddress,
+ 236:	f105 7100 	add.w	r1, r5, #33554432	; 0x2000000
+ 23a:	3901      	subs	r1, #1
+ 23c:	4638      	mov	r0, r7
+ 23e:	01c9      	lsls	r1, r1, #7
+ 240:	2280      	movs	r2, #128	; 0x80
+ 242:	4633      	mov	r3, r6
+ 244:	f000 f85c 	bl	300 <FLASH_writeBlock>
+                     XMODEM_DATA_SIZE,
+                     (uint8_t const *) pkt->data);
+
+
+
+    sequenceNumber++;
+ 248:	3501      	adds	r5, #1
+    /* Send ACK */
+    USART_txByte(XMODEM_ACK);
+ 24a:	2006      	movs	r0, #6
+ 24c:	e7c3      	b.n	1d6 <XMODEM_download+0x4e>
+ 24e:	bdf8      	pop	{r3, r4, r5, r6, r7, pc}
+ 250:	00989680 	.word	0x00989680
+ 254:	4000c000 	.word	0x4000c000
+ 258:	2000011c 	.word	0x2000011c
+ 25c:	400c2000 	.word	0x400c2000
+
+00000260 <USART_rxByte>:
+/**************************************************************************//**
+ * @brief Transmit single byte to BOOTLOADER_USART
+ *****************************************************************************/
+ uint8_t USART_rxByte(void)
+{
+  uint32_t timer = 1000000;
+ 260:	4805      	ldr	r0, [pc, #20]	; (278 <USART_rxByte+0x18>)
+  while (!(BOOTLOADER_USART->STATUS & LEUART_STATUS_RXDATAV) && --timer ) ;
+ 262:	4b06      	ldr	r3, [pc, #24]	; (27c <USART_rxByte+0x1c>)
+ 264:	691a      	ldr	r2, [r3, #16]
+ 266:	0692      	lsls	r2, r2, #26
+ 268:	d402      	bmi.n	270 <USART_rxByte+0x10>
+ 26a:	3801      	subs	r0, #1
+ 26c:	d1f9      	bne.n	262 <USART_rxByte+0x2>
+ 26e:	4770      	bx	lr
+  if (timer > 0)
+ 270:	b108      	cbz	r0, 276 <USART_rxByte+0x16>
+  {
+    return((uint8_t)(BOOTLOADER_USART->RXDATA & 0xFF));
+ 272:	69d8      	ldr	r0, [r3, #28]
+ 274:	b2c0      	uxtb	r0, r0
+  }
+  else
+  {
+    return 0;
+  }
+}
+ 276:	4770      	bx	lr
+ 278:	000f4240 	.word	0x000f4240
+ 27c:	4000c000 	.word	0x4000c000
+
+00000280 <USART_txByte>:
+ * @brief Transmit single byte to BOOTLOADER_USART
+ *****************************************************************************/
+ void USART_txByte(uint8_t data)
+{
+  /* Check that transmit buffer is empty */
+  while (!(BOOTLOADER_USART->STATUS & LEUART_STATUS_TXBL)) ;
+ 280:	4b02      	ldr	r3, [pc, #8]	; (28c <USART_txByte+0xc>)
+ 282:	691a      	ldr	r2, [r3, #16]
+ 284:	06d2      	lsls	r2, r2, #27
+ 286:	d5fb      	bpl.n	280 <USART_txByte>
+
+  BOOTLOADER_USART->TXDATA = (uint32_t) data;
+ 288:	6358      	str	r0, [r3, #52]	; 0x34
+ 28a:	4770      	bx	lr
+ 28c:	4000c000 	.word	0x4000c000
+
+00000290 <USART_printHex>:
+ *
+ * @param integer
+ *   The integer to be printed.
+ ******************************************************************************/
+ void USART_printHex(uint32_t integer)
+{
+ 290:	b538      	push	{r3, r4, r5, lr}
+ 292:	2408      	movs	r4, #8
+ 294:	4605      	mov	r5, r0
+  uint8_t c;
+  int i, digit;
+
+  for (i = 0; i <= 7; i++)
+  {
+    digit = integer >> 28;
+ 296:	0f2b      	lsrs	r3, r5, #28
+    c = digit + 0x30;
+    if (digit >= 10)
+ 298:	2b09      	cmp	r3, #9
+  int i, digit;
+
+  for (i = 0; i <= 7; i++)
+  {
+    digit = integer >> 28;
+    c = digit + 0x30;
+ 29a:	b2d8      	uxtb	r0, r3
+ 29c:	bfd4      	ite	le
+ 29e:	3030      	addle	r0, #48	; 0x30
+    if (digit >= 10)
+    {
+      c += 7;
+ 2a0:	3037      	addgt	r0, #55	; 0x37
+    }
+    USART_txByte(c);
+ 2a2:	f7ff ffed 	bl	280 <USART_txByte>
+ void USART_printHex(uint32_t integer)
+{
+  uint8_t c;
+  int i, digit;
+
+  for (i = 0; i <= 7; i++)
+ 2a6:	3c01      	subs	r4, #1
+    if (digit >= 10)
+    {
+      c += 7;
+    }
+    USART_txByte(c);
+    integer <<= 4;
+ 2a8:	ea4f 1505 	mov.w	r5, r5, lsl #4
+ void USART_printHex(uint32_t integer)
+{
+  uint8_t c;
+  int i, digit;
+
+  for (i = 0; i <= 7; i++)
+ 2ac:	d1f3      	bne.n	296 <USART_printHex+0x6>
+      c += 7;
+    }
+    USART_txByte(c);
+    integer <<= 4;
+  }
+}
+ 2ae:	bd38      	pop	{r3, r4, r5, pc}
+
+000002b0 <USART_printString>:
+
+/**************************************************************************//**
+ * @brief Transmit null-terminated string to BOOTLOADER_USART
+ *****************************************************************************/
+ void USART_printString(uint8_t *string)
+{
+ 2b0:	b510      	push	{r4, lr}
+ 2b2:	1e44      	subs	r4, r0, #1
+  while (*string != 0)
+ 2b4:	f814 0f01 	ldrb.w	r0, [r4, #1]!
+ 2b8:	b110      	cbz	r0, 2c0 <USART_printString+0x10>
+  {
+    USART_txByte(*string++);
+ 2ba:	f7ff ffe1 	bl	280 <USART_txByte>
+ 2be:	e7f9      	b.n	2b4 <USART_printString+0x4>
+  }
+}
+ 2c0:	bd10      	pop	{r4, pc}
+	...
+
+000002c4 <USART_init>:
+void USART_init(uint32_t clkdiv)
+{
+  /* Configure BOOTLOADER_USART */
+
+  /* Set the clock division */
+  BOOTLOADER_USART->CLKDIV = clkdiv;
+ 2c4:	4b03      	ldr	r3, [pc, #12]	; (2d4 <USART_init+0x10>)
+
+  /* Enable RX and TX pins and set location 0 */
+  BOOTLOADER_USART->ROUTE = BOOTLOADER_USART_LOCATION |
+ 2c6:	2203      	movs	r2, #3
+void USART_init(uint32_t clkdiv)
+{
+  /* Configure BOOTLOADER_USART */
+
+  /* Set the clock division */
+  BOOTLOADER_USART->CLKDIV = clkdiv;
+ 2c8:	6158      	str	r0, [r3, #20]
+
+  /* Enable RX and TX pins and set location 0 */
+  BOOTLOADER_USART->ROUTE = BOOTLOADER_USART_LOCATION |
+ 2ca:	655a      	str	r2, [r3, #84]	; 0x54
+                 LEUART_ROUTE_RXPEN | LEUART_ROUTE_TXPEN;
+
+  /* Enable RX/TX */
+  BOOTLOADER_USART->CMD = LEUART_CMD_RXEN | LEUART_CMD_TXEN;
+ 2cc:	2205      	movs	r2, #5
+ 2ce:	60da      	str	r2, [r3, #12]
+ 2d0:	4770      	bx	lr
+ 2d2:	bf00      	nop
+ 2d4:	4000c000 	.word	0x4000c000
+
+000002d8 <FLASH_init>:
+*   Initializes the Flash programmer
+*******************************************************************************/
+void FLASH_init(void)
+{
+  /* Write MSC unlock code to enable interface */
+  MSC->LOCK = MSC_UNLOCK_CODE;
+ 2d8:	4b07      	ldr	r3, [pc, #28]	; (2f8 <FLASH_init+0x20>)
+ 2da:	f641 3271 	movw	r2, #7025	; 0x1b71
+ 2de:	63da      	str	r2, [r3, #60]	; 0x3c
+  /* Enable memory controller */
+  MSC->WRITECTRL |= MSC_WRITECTRL_WREN;
+ 2e0:	689a      	ldr	r2, [r3, #8]
+ 2e2:	f042 0201 	orr.w	r2, r2, #1
+ 2e6:	609a      	str	r2, [r3, #8]
+  /* Enable DMA */
+  DMA->CONFIG = DMA_CONFIG_EN;
+ 2e8:	f503 5300 	add.w	r3, r3, #8192	; 0x2000
+ 2ec:	2201      	movs	r2, #1
+ 2ee:	605a      	str	r2, [r3, #4]
+  /* Setup the DMA control block. */
+  DMA->CTRLBASE = (uint32_t) &descr;
+ 2f0:	4a02      	ldr	r2, [pc, #8]	; (2fc <FLASH_init+0x24>)
+ 2f2:	609a      	str	r2, [r3, #8]
+ 2f4:	4770      	bx	lr
+ 2f6:	bf00      	nop
+ 2f8:	400c0000 	.word	0x400c0000
+ 2fc:	20000300 	.word	0x20000300
+
+00000300 <FLASH_writeBlock>:
+ *****************************************************************************/
+ void FLASH_writeBlock(void *block_start,
+                                uint32_t offset_into_block,
+                                uint32_t count,
+                                uint8_t const *buffer)
+{
+ 300:	b570      	push	{r4, r5, r6, lr}
+  /* Check for an active transfer. If a transfer is in progress,
+   * we have to delay. Normally, the USART transfer takes more time
+   * than writing, but we have to make sure. */
+  while (DMA->CHENS & DMA_CHENS_CH0ENS) ;
+ 302:	4d10      	ldr	r5, [pc, #64]	; (344 <FLASH_writeBlock+0x44>)
+ 304:	6aac      	ldr	r4, [r5, #40]	; 0x28
+ 306:	07e4      	lsls	r4, r4, #31
+ 308:	d4fb      	bmi.n	302 <FLASH_writeBlock+0x2>
+
+  /* Set up a basic memory to peripheral DMA transfer. */
+  /* Load the start address into the MSC */
+  MSC->ADDRB    = ((uint32_t) block_start) + offset_into_block;
+ 30a:	4c0f      	ldr	r4, [pc, #60]	; (348 <FLASH_writeBlock+0x48>)
+ 30c:	4408      	add	r0, r1
+  MSC->WRITECMD = MSC_WRITECMD_LADDRIM;
+
+  /* Set the MSC as the destination. */
+  descr.DSTEND = (void *)(&(MSC->WDATA));
+ 30e:	4e0f      	ldr	r6, [pc, #60]	; (34c <FLASH_writeBlock+0x4c>)
+ 310:	490f      	ldr	r1, [pc, #60]	; (350 <FLASH_writeBlock+0x50>)
+   * than writing, but we have to make sure. */
+  while (DMA->CHENS & DMA_CHENS_CH0ENS) ;
+
+  /* Set up a basic memory to peripheral DMA transfer. */
+  /* Load the start address into the MSC */
+  MSC->ADDRB    = ((uint32_t) block_start) + offset_into_block;
+ 312:	6120      	str	r0, [r4, #16]
+  MSC->WRITECMD = MSC_WRITECMD_LADDRIM;
+ 314:	2001      	movs	r0, #1
+ 316:	60e0      	str	r0, [r4, #12]
+
+  /* Set the MSC as the destination. */
+  descr.DSTEND = (void *)(&(MSC->WDATA));
+ 318:	604e      	str	r6, [r1, #4]
+
+  /* Set up the end pointer to copy from the buffer. */
+  descr.SRCEND = (void *)(buffer + count - 4);
+ 31a:	1f16      	subs	r6, r2, #4
+               | DMA_CTRL_CYCLE_CTRL_BASIC /* Basic transfer */
+                                           /* Number of transfers minus two. */
+                                           /* This field contains the number of transfers minus 1. */
+                                           /* Because one word is transerred using WRITETRIG we need to */
+                                           /* Substract one more. */
+               | (((count / 4) - 2) << _DMA_CTRL_N_MINUS_1_SHIFT);
+ 31c:	0892      	lsrs	r2, r2, #2
+ 31e:	3a02      	subs	r2, #2
+ 320:	0112      	lsls	r2, r2, #4
+ 322:	f042 426a 	orr.w	r2, r2, #3925868544	; 0xea000000
+
+  /* Set the MSC as the destination. */
+  descr.DSTEND = (void *)(&(MSC->WDATA));
+
+  /* Set up the end pointer to copy from the buffer. */
+  descr.SRCEND = (void *)(buffer + count - 4);
+ 326:	441e      	add	r6, r3
+               | DMA_CTRL_CYCLE_CTRL_BASIC /* Basic transfer */
+                                           /* Number of transfers minus two. */
+                                           /* This field contains the number of transfers minus 1. */
+                                           /* Because one word is transerred using WRITETRIG we need to */
+                                           /* Substract one more. */
+               | (((count / 4) - 2) << _DMA_CTRL_N_MINUS_1_SHIFT);
+ 328:	4302      	orrs	r2, r0
+
+  /* Set the MSC as the destination. */
+  descr.DSTEND = (void *)(&(MSC->WDATA));
+
+  /* Set up the end pointer to copy from the buffer. */
+  descr.SRCEND = (void *)(buffer + count - 4);
+ 32a:	600e      	str	r6, [r1, #0]
+
+  /* Control information */
+  descr.CTRL = DMA_CTRL_DST_INC_NONE       /* Do not increment destination */
+ 32c:	608a      	str	r2, [r1, #8]
+                                           /* Because one word is transerred using WRITETRIG we need to */
+                                           /* Substract one more. */
+               | (((count / 4) - 2) << _DMA_CTRL_N_MINUS_1_SHIFT);
+
+  /* Set channel to trigger on MSC ready for data */
+  DMA->CH[0].CTRL = DMA_CH_CTRL_SOURCESEL_MSC
+ 32e:	4a09      	ldr	r2, [pc, #36]	; (354 <FLASH_writeBlock+0x54>)
+ 330:	f44f 1140 	mov.w	r1, #3145728	; 0x300000
+ 334:	6011      	str	r1, [r2, #0]
+                    | DMA_CH_CTRL_SIGSEL_MSCWDATA;
+
+  /* Load first word into the DMA */
+  MSC->WDATA = *((uint32_t *)(buffer));
+ 336:	681b      	ldr	r3, [r3, #0]
+ 338:	61a3      	str	r3, [r4, #24]
+
+  /* Activate channel 0 */
+  DMA->CHENS = DMA_CHENS_CH0ENS;
+
+  /* Trigger the transfer */
+  MSC->WRITECMD = MSC_WRITECMD_WRITETRIG;
+ 33a:	2310      	movs	r3, #16
+
+  /* Load first word into the DMA */
+  MSC->WDATA = *((uint32_t *)(buffer));
+
+  /* Activate channel 0 */
+  DMA->CHENS = DMA_CHENS_CH0ENS;
+ 33c:	62a8      	str	r0, [r5, #40]	; 0x28
+
+  /* Trigger the transfer */
+  MSC->WRITECMD = MSC_WRITECMD_WRITETRIG;
+ 33e:	60e3      	str	r3, [r4, #12]
+ 340:	bd70      	pop	{r4, r5, r6, pc}
+ 342:	bf00      	nop
+ 344:	400c2000 	.word	0x400c2000
+ 348:	400c0000 	.word	0x400c0000
+ 34c:	400c0018 	.word	0x400c0018
+ 350:	20000300 	.word	0x20000300
+ 354:	400c3100 	.word	0x400c3100
+
+00000358 <FLASH_eraseOneBlock>:
+ *
+ * This function will not return until the block has been erased.
+ *****************************************************************************/
+void FLASH_eraseOneBlock(uint32_t blockStart)
+{
+  uint32_t acc = 0xFFFFFFFF;
+ 358:	f04f 33ff 	mov.w	r3, #4294967295	; 0xffffffff
+  uint32_t *ptr;
+
+  /* Optimization - check if block is allready erased.
+   * This will typically happen when the chip is new. */
+  for (ptr = (uint32_t *) blockStart; ptr < (uint32_t *)(blockStart + FLASH_PAGE_SIZE); ptr++)
+ 35c:	4602      	mov	r2, r0
+ 35e:	f500 7100 	add.w	r1, r0, #512	; 0x200
+ 362:	428a      	cmp	r2, r1
+ 364:	d203      	bcs.n	36e <FLASH_eraseOneBlock+0x16>
+    acc &= *ptr;
+ 366:	f852 1b04 	ldr.w	r1, [r2], #4
+ 36a:	400b      	ands	r3, r1
+ 36c:	e7f7      	b.n	35e <FLASH_eraseOneBlock+0x6>
+
+  /* If the accumulator is unchanged, there is no need to do an erase. */
+  if (acc == 0xFFFFFFFF)
+ 36e:	3301      	adds	r3, #1
+ 370:	d008      	beq.n	384 <FLASH_eraseOneBlock+0x2c>
+    return;
+
+  /* Load address */
+  MSC->ADDRB    = blockStart;
+ 372:	4b05      	ldr	r3, [pc, #20]	; (388 <FLASH_eraseOneBlock+0x30>)
+  MSC->WRITECMD = MSC_WRITECMD_LADDRIM;
+ 374:	2201      	movs	r2, #1
+  /* If the accumulator is unchanged, there is no need to do an erase. */
+  if (acc == 0xFFFFFFFF)
+    return;
+
+  /* Load address */
+  MSC->ADDRB    = blockStart;
+ 376:	6118      	str	r0, [r3, #16]
+  MSC->WRITECMD = MSC_WRITECMD_LADDRIM;
+ 378:	60da      	str	r2, [r3, #12]
+
+  /* Send Erase Page command */
+  MSC->WRITECMD = MSC_WRITECMD_ERASEPAGE;
+ 37a:	2202      	movs	r2, #2
+ 37c:	60da      	str	r2, [r3, #12]
+
+  /* Waiting for erase to complete */
+  while ((MSC->STATUS & MSC_STATUS_BUSY)) ;
+ 37e:	69da      	ldr	r2, [r3, #28]
+ 380:	07d2      	lsls	r2, r2, #31
+ 382:	d4fc      	bmi.n	37e <FLASH_eraseOneBlock+0x26>
+ 384:	4770      	bx	lr
+ 386:	bf00      	nop
+ 388:	400c0000 	.word	0x400c0000
+
+0000038c <CRC_calc>:
+ *
+ * @return
+ *   The computed CRC value.
+ *****************************************************************************/
+ uint16_t CRC_calc(uint8_t *start, uint8_t *end)
+{
+ 38c:	4603      	mov	r3, r0
+  uint16_t crc = 0x0;
+ 38e:	2000      	movs	r0, #0
+  uint8_t  *data;
+
+  for (data = start; data < end; data++)
+ 390:	428b      	cmp	r3, r1
+ 392:	d20e      	bcs.n	3b2 <CRC_calc+0x26>
+  {
+    crc  = (crc >> 8) | (crc << 8);
+    crc ^= *data;
+ 394:	f813 2b01 	ldrb.w	r2, [r3], #1
+ 398:	ba40      	rev16	r0, r0
+ 39a:	b280      	uxth	r0, r0
+ 39c:	4050      	eors	r0, r2
+    crc ^= (crc & 0xff) >> 4;
+ 39e:	f3c0 1203 	ubfx	r2, r0, #4, #4
+ 3a2:	4050      	eors	r0, r2
+    crc ^= crc << 12;
+ 3a4:	ea80 3000 	eor.w	r0, r0, r0, lsl #12
+ 3a8:	b280      	uxth	r0, r0
+    crc ^= (crc & 0xff) << 5;
+ 3aa:	b2c2      	uxtb	r2, r0
+ 3ac:	ea80 1042 	eor.w	r0, r0, r2, lsl #5
+ 3b0:	e7ee      	b.n	390 <CRC_calc+0x4>
+  }
+  return crc;
+}
+ 3b2:	4770      	bx	lr
+
+000003b4 <verify>:
+ *   The start of the block to calculate CRC of.
+ * @param end
+ *   The end of the block. This byte is not included in the checksum.
+ *****************************************************************************/
+void verify(uint32_t start, uint32_t end)
+{
+ 3b4:	b538      	push	{r3, r4, r5, lr}
+ 3b6:	4604      	mov	r4, r0
+ 3b8:	460d      	mov	r5, r1
+  USART_printString(crcString);
+ 3ba:	4807      	ldr	r0, [pc, #28]	; (3d8 <verify+0x24>)
+ 3bc:	f7ff ff78 	bl	2b0 <USART_printString>
+  USART_printHex(CRC_calc((void *) start, (void *) end));
+ 3c0:	4629      	mov	r1, r5
+ 3c2:	4620      	mov	r0, r4
+ 3c4:	f7ff ffe2 	bl	38c <CRC_calc>
+ 3c8:	f7ff ff62 	bl	290 <USART_printHex>
+  USART_printString(newLineString);
+}
+ 3cc:	e8bd 4038 	ldmia.w	sp!, {r3, r4, r5, lr}
+ *****************************************************************************/
+void verify(uint32_t start, uint32_t end)
+{
+  USART_printString(crcString);
+  USART_printHex(CRC_calc((void *) start, (void *) end));
+  USART_printString(newLineString);
+ 3d0:	4802      	ldr	r0, [pc, #8]	; (3dc <verify+0x28>)
+ 3d2:	f7ff bf6d 	b.w	2b0 <USART_printString>
+ 3d6:	bf00      	nop
+ 3d8:	20000000 	.word	0x20000000
+ 3dc:	20000008 	.word	0x20000008
+
+000003e0 <commandlineLoop>:
+ * @brief
+ *   The main command line loop. Placed in Ram so that it can still run after
+ *   a destructive write operation.
+ *****************************************************************************/
+void commandlineLoop(void)
+{
+ 3e0:	b538      	push	{r3, r4, r5, lr}
+  uint32_t flashSize;
+  uint8_t  c;
+
+  /* Find the size of the flash. DEVINFO->MSIZE is the
+   * size in KB so left shift by 10. */
+  flashSize = ((DEVINFO->MSIZE & _DEVINFO_MSIZE_FLASH_MASK) >> _DEVINFO_MSIZE_FLASH_SHIFT)
+ 3e2:	4b17      	ldr	r3, [pc, #92]	; (440 <commandlineLoop+0x60>)
+ 3e4:	6c9d      	ldr	r5, [r3, #72]	; 0x48
+ 3e6:	b2ad      	uxth	r5, r5
+ 3e8:	02ad      	lsls	r5, r5, #10
+
+  /* The main command loop */
+  while (1)
+    {
+      /* Retrieve new character */
+      c = USART_rxByte();
+ 3ea:	f7ff ff39 	bl	260 <USART_rxByte>
+      /* Echo */
+      if (c != 0)
+ 3ee:	4604      	mov	r4, r0
+ 3f0:	2800      	cmp	r0, #0
+ 3f2:	d0fa      	beq.n	3ea <commandlineLoop+0xa>
+	{
+	  USART_txByte(c);
+ 3f4:	f7ff ff44 	bl	280 <USART_txByte>
+	}
+      switch (c)
+ 3f8:	2c72      	cmp	r4, #114	; 0x72
+ 3fa:	d01d      	beq.n	438 <commandlineLoop+0x58>
+ 3fc:	d806      	bhi.n	40c <commandlineLoop+0x2c>
+ 3fe:	2c62      	cmp	r4, #98	; 0x62
+ 400:	d013      	beq.n	42a <commandlineLoop+0x4a>
+ 402:	2c63      	cmp	r4, #99	; 0x63
+ 404:	d1f1      	bne.n	3ea <commandlineLoop+0xa>
+	case 'v':
+	  verify(0, flashSize);
+	  break;
+	  /* Verify content by calculating CRC of application area */
+	case 'c':
+	  verify(BOOTLOADER_SIZE, flashSize);
+ 406:	f44f 6000 	mov.w	r0, #2048	; 0x800
+ 40a:	e011      	b.n	430 <commandlineLoop+0x50>
+      /* Echo */
+      if (c != 0)
+	{
+	  USART_txByte(c);
+	}
+      switch (c)
+ 40c:	2c75      	cmp	r4, #117	; 0x75
+ 40e:	d003      	beq.n	418 <commandlineLoop+0x38>
+ 410:	2c76      	cmp	r4, #118	; 0x76
+ 412:	d1ea      	bne.n	3ea <commandlineLoop+0xa>
+	case 'b':
+	  BOOT_boot();
+	  break;
+	  /* Verify content by calculating CRC of entire flash */
+	case 'v':
+	  verify(0, flashSize);
+ 414:	2000      	movs	r0, #0
+ 416:	e00b      	b.n	430 <commandlineLoop+0x50>
+	}
+      switch (c)
+	{
+	  /* Upload command */
+	case 'u':
+	  USART_printString(readyString);
+ 418:	480a      	ldr	r0, [pc, #40]	; (444 <commandlineLoop+0x64>)
+ 41a:	f7ff ff49 	bl	2b0 <USART_printString>
+	  XMODEM_download(BOOTLOADER_SIZE, flashSize);
+ 41e:	f44f 6000 	mov.w	r0, #2048	; 0x800
+ 422:	4629      	mov	r1, r5
+ 424:	f7ff feb0 	bl	188 <XMODEM_download>
+	  break;
+ 428:	e7df      	b.n	3ea <commandlineLoop+0xa>
+	  /* Boot into new program */
+	case 'b':
+	  BOOT_boot();
+ 42a:	f000 f855 	bl	4d8 <BOOT_boot>
+	  break;
+ 42e:	e7dc      	b.n	3ea <commandlineLoop+0xa>
+	case 'v':
+	  verify(0, flashSize);
+	  break;
+	  /* Verify content by calculating CRC of application area */
+	case 'c':
+	  verify(BOOTLOADER_SIZE, flashSize);
+ 430:	4629      	mov	r1, r5
+ 432:	f7ff ffbf 	bl	3b4 <verify>
+	  break;
+ 436:	e7d8      	b.n	3ea <commandlineLoop+0xa>
+	  /* Reset command */
+	case 'r':
+	  /* Write to the Application Interrupt/Reset Command Register to reset
+	   * the EFM32. See section 9.3.7 in the reference manual. */
+	  SCB->AIRCR = 0x05FA0004;
+ 438:	4a03      	ldr	r2, [pc, #12]	; (448 <commandlineLoop+0x68>)
+ 43a:	4b04      	ldr	r3, [pc, #16]	; (44c <commandlineLoop+0x6c>)
+ 43c:	60da      	str	r2, [r3, #12]
+	  break;
+ 43e:	e7d4      	b.n	3ea <commandlineLoop+0xa>
+ 440:	0fe081b0 	.word	0x0fe081b0
+ 444:	2000000b 	.word	0x2000000b
+ 448:	05fa0004 	.word	0x05fa0004
+ 44c:	e000ed00 	.word	0xe000ed00
+
+00000450 <main>:
+
+/**************************************************************************//**
+ * @brief  Main function
+ *****************************************************************************/
+int main(void)
+{
+ 450:	b510      	push	{r4, lr}
+  uint32_t clkdiv;
+  uint32_t tuning;
+
+  /* Enable clocks for peripherals. */
+  CMU->HFPERCLKDIV = CMU_HFPERCLKDIV_HFPERCLKEN;
+ 452:	4b1b      	ldr	r3, [pc, #108]	; (4c0 <main+0x70>)
+ 454:	f44f 7280 	mov.w	r2, #256	; 0x100
+ 458:	609a      	str	r2, [r3, #8]
+  CMU->HFPERCLKEN0 = CMU_HFPERCLKEN0_GPIO | BOOTLOADER_USART_CLOCKEN;
+ 45a:	f241 0201 	movw	r2, #4097	; 0x1001
+ 45e:	645a      	str	r2, [r3, #68]	; 0x44
+
+  /* Enable LE and DMA interface */
+  CMU->HFCORECLKEN0 = CMU_HFCORECLKEN0_LE | CMU_HFCORECLKEN0_DMA;
+ 460:	2206      	movs	r2, #6
+ 462:	641a      	str	r2, [r3, #64]	; 0x40
+
+  /* Enable LFRCO for RTC */
+  CMU->OSCENCMD = CMU_OSCENCMD_LFRCOEN;
+ 464:	2240      	movs	r2, #64	; 0x40
+ 466:	621a      	str	r2, [r3, #32]
+#endif
+
+#if defined ( _DEVINFO_HFRCOCAL1_BAND28_MASK )
+  /* Change to 28MHz internal osciallator to increase speed of
+   * bootloader */
+  tuning = (DEVINFO->HFRCOCAL1 & _DEVINFO_HFRCOCAL1_BAND28_MASK)
+ 468:	4c16      	ldr	r4, [pc, #88]	; (4c4 <main+0x74>)
+  CMU->HFCORECLKEN0 = CMU_HFCORECLKEN0_LE | CMU_HFCORECLKEN0_DMA;
+
+  /* Enable LFRCO for RTC */
+  CMU->OSCENCMD = CMU_OSCENCMD_LFRCOEN;
+  /* Setup LFA to use LFRCRO */
+  CMU->LFCLKSEL = CMU_LFCLKSEL_LFA_LFRCO | CMU_LFCLKSEL_LFB_HFCORECLKLEDIV2;
+ 46a:	220d      	movs	r2, #13
+ 46c:	629a      	str	r2, [r3, #40]	; 0x28
+#endif
+
+#if defined ( _DEVINFO_HFRCOCAL1_BAND28_MASK )
+  /* Change to 28MHz internal osciallator to increase speed of
+   * bootloader */
+  tuning = (DEVINFO->HFRCOCAL1 & _DEVINFO_HFRCOCAL1_BAND28_MASK)
+ 46e:	6b22      	ldr	r2, [r4, #48]	; 0x30
+#else
+  clkdiv = 0; /// fix me
+#endif
+
+  /* Initialize the UART */
+  USART_init(clkdiv);
+ 470:	2000      	movs	r0, #0
+#endif
+
+#if defined ( _DEVINFO_HFRCOCAL1_BAND28_MASK )
+  /* Change to 28MHz internal osciallator to increase speed of
+   * bootloader */
+  tuning = (DEVINFO->HFRCOCAL1 & _DEVINFO_HFRCOCAL1_BAND28_MASK)
+ 472:	f3c2 2207 	ubfx	r2, r2, #8, #8
+           >> _DEVINFO_HFRCOCAL1_BAND28_SHIFT;
+
+  CMU->HFRCOCTRL = CMU_HFRCOCTRL_BAND_28MHZ | tuning;
+ 476:	f442 62a0 	orr.w	r2, r2, #1280	; 0x500
+ 47a:	60da      	str	r2, [r3, #12]
+   * 0 : TX - Pin E10, RX - Pin E11
+   * Configure GPIO pins LOCATION 1 as push pull (TX)
+   * and input (RX)
+   * To avoid false start, configure output as high
+   */
+  GPIO->P[4].DOUT = (1 << 10);
+ 47c:	f5a3 2342 	sub.w	r3, r3, #794624	; 0xc2000
+ 480:	f44f 6280 	mov.w	r2, #1024	; 0x400
+ 484:	f8c3 209c 	str.w	r2, [r3, #156]	; 0x9c
+  GPIO->P[4].MODEH = GPIO_P_MODEH_MODE10_PUSHPULL | GPIO_P_MODEH_MODE11_INPUT;
+ 488:	f44f 52a0 	mov.w	r2, #5120	; 0x1400
+ 48c:	f8c3 2098 	str.w	r2, [r3, #152]	; 0x98
+#else
+  clkdiv = 0; /// fix me
+#endif
+
+  /* Initialize the UART */
+  USART_init(clkdiv);
+ 490:	f7ff ff18 	bl	2c4 <USART_init>
+
+  /* Print a message to show that we are in bootloader mode */
+  USART_printString((uint8_t*) "\r\n\r\n");
+ 494:	480c      	ldr	r0, [pc, #48]	; (4c8 <main+0x78>)
+ 496:	f7ff ff0b 	bl	2b0 <USART_printString>
+  USART_printString((uint8_t*)BOOTLOADER_VERSION_STRING);
+ 49a:	480c      	ldr	r0, [pc, #48]	; (4cc <main+0x7c>)
+ 49c:	f7ff ff08 	bl	2b0 <USART_printString>
+  USART_printString((uint8_t*)" ChipID: ");
+ 4a0:	480b      	ldr	r0, [pc, #44]	; (4d0 <main+0x80>)
+ 4a2:	f7ff ff05 	bl	2b0 <USART_printString>
+  /* Print the chip ID. This is useful for production tracking */
+  USART_printHex(DEVINFO->UNIQUEH);
+ 4a6:	6c60      	ldr	r0, [r4, #68]	; 0x44
+ 4a8:	f7ff fef2 	bl	290 <USART_printHex>
+  USART_printHex(DEVINFO->UNIQUEL);
+ 4ac:	6c20      	ldr	r0, [r4, #64]	; 0x40
+ 4ae:	f7ff feef 	bl	290 <USART_printHex>
+  USART_printString((uint8_t*)"\r\n");
+ 4b2:	4808      	ldr	r0, [pc, #32]	; (4d4 <main+0x84>)
+ 4b4:	f7ff fefc 	bl	2b0 <USART_printString>
+
+  /* Initialize flash for writing */
+  FLASH_init();
+ 4b8:	f7ff ff0e 	bl	2d8 <FLASH_init>
+
+  /* Start executing command line */
+  commandlineLoop();
+ 4bc:	f7ff ff90 	bl	3e0 <commandlineLoop>
+ 4c0:	400c8000 	.word	0x400c8000
+ 4c4:	0fe081b0 	.word	0x0fe081b0
+ 4c8:	00000600 	.word	0x00000600
+ 4cc:	00000605 	.word	0x00000605
+ 4d0:	0000060a 	.word	0x0000060a
+ 4d4:	00000602 	.word	0x00000602
+
+000004d8 <BOOT_boot>:
+  GPIO->IEN         = _GPIO_IEN_RESETVALUE;
+  GPIO->IFC         = 0xFFFFFFFF;
+#endif
+
+  /* Clear all interrupts set. */
+  NVIC->ICER[0]     = 0xFFFFFFFF;
+ 4d8:	4b12      	ldr	r3, [pc, #72]	; (524 <BOOT_boot+0x4c>)
+ 4da:	f04f 32ff 	mov.w	r2, #4294967295	; 0xffffffff
+ 4de:	f8c3 2080 	str.w	r2, [r3, #128]	; 0x80
+#if ( __CORTEX_M != 0 )
+  NVIC->ICER[1]     = 0xFFFFFFFF;
+ 4e2:	f8c3 2084 	str.w	r2, [r3, #132]	; 0x84
+#endif
+  RTC->CTRL         = _RTC_CTRL_RESETVALUE;
+ 4e6:	4a10      	ldr	r2, [pc, #64]	; (528 <BOOT_boot+0x50>)
+ 4e8:	2300      	movs	r3, #0
+ 4ea:	6013      	str	r3, [r2, #0]
+  RTC->COMP0        = _RTC_COMP0_RESETVALUE;
+ 4ec:	6093      	str	r3, [r2, #8]
+  RTC->IEN          = _RTC_IEN_RESETVALUE;
+ 4ee:	61d3      	str	r3, [r2, #28]
+  /* Reset GPIO settings */
+  GPIO->P[5].MODEL  = _GPIO_P_MODEL_RESETVALUE;
+ 4f0:	f5a2 22f4 	sub.w	r2, r2, #499712	; 0x7a000
+ 4f4:	f8c2 30b8 	str.w	r3, [r2, #184]	; 0xb8
+  /* Disable RTC clock */
+  CMU->LFACLKEN0    = _CMU_LFACLKEN0_RESETVALUE;
+  CMU->LFCLKSEL     = _CMU_LFCLKSEL_RESETVALUE;
+ 4f8:	2105      	movs	r1, #5
+  RTC->COMP0        = _RTC_COMP0_RESETVALUE;
+  RTC->IEN          = _RTC_IEN_RESETVALUE;
+  /* Reset GPIO settings */
+  GPIO->P[5].MODEL  = _GPIO_P_MODEL_RESETVALUE;
+  /* Disable RTC clock */
+  CMU->LFACLKEN0    = _CMU_LFACLKEN0_RESETVALUE;
+ 4fa:	f502 2242 	add.w	r2, r2, #794624	; 0xc2000
+ 4fe:	6593      	str	r3, [r2, #88]	; 0x58
+  CMU->LFCLKSEL     = _CMU_LFCLKSEL_RESETVALUE;
+ 500:	6291      	str	r1, [r2, #40]	; 0x28
+  /* Disable LFRCO */
+  CMU->OSCENCMD     = CMU_OSCENCMD_LFRCODIS;
+ 502:	2180      	movs	r1, #128	; 0x80
+ 504:	6211      	str	r1, [r2, #32]
+  /* Disable LE interface */
+  CMU->HFCORECLKEN0 = _CMU_HFCORECLKEN0_RESETVALUE;
+  /* Reset clocks */
+  CMU->HFPERCLKDIV  = _CMU_HFPERCLKDIV_RESETVALUE;
+ 506:	f44f 7180 	mov.w	r1, #256	; 0x100
+  CMU->LFACLKEN0    = _CMU_LFACLKEN0_RESETVALUE;
+  CMU->LFCLKSEL     = _CMU_LFCLKSEL_RESETVALUE;
+  /* Disable LFRCO */
+  CMU->OSCENCMD     = CMU_OSCENCMD_LFRCODIS;
+  /* Disable LE interface */
+  CMU->HFCORECLKEN0 = _CMU_HFCORECLKEN0_RESETVALUE;
+ 50a:	6413      	str	r3, [r2, #64]	; 0x40
+  /* Reset clocks */
+  CMU->HFPERCLKDIV  = _CMU_HFPERCLKDIV_RESETVALUE;
+ 50c:	6091      	str	r1, [r2, #8]
+  CMU->HFPERCLKEN0  = _CMU_HFPERCLKEN0_RESETVALUE;
+ 50e:	6453      	str	r3, [r2, #68]	; 0x44
+
+  /* Set new vector table */
+  SCB->VTOR = (uint32_t) BOOTLOADER_SIZE;
+ 510:	4b06      	ldr	r3, [pc, #24]	; (52c <BOOT_boot+0x54>)
+ 512:	f44f 6200 	mov.w	r2, #2048	; 0x800
+ 516:	609a      	str	r2, [r3, #8]
+void BOOT_jump(uint32_t sp, uint32_t pc)
+{
+  (void) sp;
+  (void) pc;
+  /* Set new MSP, PSP based on SP (r0)*/
+  __asm("msr msp, r0");
+ 518:	f380 8808 	msr	MSP, r0
+  __asm("msr psp, r0");
+ 51c:	f380 8809 	msr	PSP, r0
+
+  /* Jump to PC (r1)*/
+  __asm("mov pc, r1");
+ 520:	468f      	mov	pc, r1
+ 522:	4770      	bx	lr
+ 524:	e000e100 	.word	0xe000e100
+ 528:	40080000 	.word	0x40080000
+ 52c:	e000ed00 	.word	0xe000ed00
+
+00000530 <Default_Handler>:
+
+/*----------------------------------------------------------------------------
+  Default Handler for Exceptions / Interrupts
+ *----------------------------------------------------------------------------*/
+void Default_Handler(void)
+{
+ 530:	e7fe      	b.n	530 <Default_Handler>
+	...
+
+00000534 <Reset_Handler>:
+
+
+/*----------------------------------------------------------------------------
+  Reset Handler called on controller reset
+ *----------------------------------------------------------------------------*/
+void Reset_Handler(void) {
+ 534:	b508      	push	{r3, lr}
+  uint32_t *pSrc, *pDest;
+  uint32_t *pTable __attribute__((unused));
+
+#ifndef __NO_SYSTEM_INIT
+  SystemInit();
+ 536:	f7ff fe25 	bl	184 <SystemInit>
+ *  All addresses must be aligned to 4 bytes boundary.
+ */
+  pSrc  = &__etext;
+  pDest = &__data_start__;
+
+  for ( ; pDest < &__data_end__ ; )
+ 53a:	2300      	movs	r3, #0
+ 53c:	4a05      	ldr	r2, [pc, #20]	; (554 <Reset_Handler+0x20>)
+ 53e:	4906      	ldr	r1, [pc, #24]	; (558 <Reset_Handler+0x24>)
+ 540:	1898      	adds	r0, r3, r2
+ 542:	4288      	cmp	r0, r1
+ 544:	d204      	bcs.n	550 <Reset_Handler+0x1c>
+  {
+    *pDest++ = *pSrc++;
+ 546:	4905      	ldr	r1, [pc, #20]	; (55c <Reset_Handler+0x28>)
+ 548:	5859      	ldr	r1, [r3, r1]
+ 54a:	5099      	str	r1, [r3, r2]
+ 54c:	3304      	adds	r3, #4
+ 54e:	e7f5      	b.n	53c <Reset_Handler+0x8>
+#endif /* __STARTUP_CLEAR_BSS_MULTIPLE || __STARTUP_CLEAR_BSS */
+
+#ifndef __START
+#define __START _start
+#endif
+  __START();
+ 550:	f7ff fdde 	bl	110 <_mainCRTStartup>
+ 554:	20000000 	.word	0x20000000
+ 558:	20000084 	.word	0x20000084
+ 55c:	00000628 	.word	0x00000628
+
+00000560 <exit>:
+ 560:	b508      	push	{r3, lr}
+ 562:	4b07      	ldr	r3, [pc, #28]	; (580 <exit+0x20>)
+ 564:	4604      	mov	r4, r0
+ 566:	b113      	cbz	r3, 56e <exit+0xe>
+ 568:	2100      	movs	r1, #0
+ 56a:	f3af 8000 	nop.w
+ 56e:	4b05      	ldr	r3, [pc, #20]	; (584 <exit+0x24>)
+ 570:	6818      	ldr	r0, [r3, #0]
+ 572:	6a83      	ldr	r3, [r0, #40]	; 0x28
+ 574:	b103      	cbz	r3, 578 <exit+0x18>
+ 576:	4798      	blx	r3
+ 578:	4620      	mov	r0, r4
+ 57a:	f000 f833 	bl	5e4 <_exit>
+ 57e:	bf00      	nop
+ 580:	00000000 	.word	0x00000000
+ 584:	00000618 	.word	0x00000618
+
+00000588 <__libc_init_array>:
+ 588:	b570      	push	{r4, r5, r6, lr}
+ 58a:	4b0e      	ldr	r3, [pc, #56]	; (5c4 <__libc_init_array+0x3c>)
+ 58c:	4d0e      	ldr	r5, [pc, #56]	; (5c8 <__libc_init_array+0x40>)
+ 58e:	2400      	movs	r4, #0
+ 590:	1aed      	subs	r5, r5, r3
+ 592:	10ad      	asrs	r5, r5, #2
+ 594:	461e      	mov	r6, r3
+ 596:	42ac      	cmp	r4, r5
+ 598:	d004      	beq.n	5a4 <__libc_init_array+0x1c>
+ 59a:	f856 2024 	ldr.w	r2, [r6, r4, lsl #2]
+ 59e:	4790      	blx	r2
+ 5a0:	3401      	adds	r4, #1
+ 5a2:	e7f8      	b.n	596 <__libc_init_array+0xe>
+ 5a4:	f000 f820 	bl	5e8 <_init>
+ 5a8:	4d08      	ldr	r5, [pc, #32]	; (5cc <__libc_init_array+0x44>)
+ 5aa:	4b09      	ldr	r3, [pc, #36]	; (5d0 <__libc_init_array+0x48>)
+ 5ac:	2400      	movs	r4, #0
+ 5ae:	1aed      	subs	r5, r5, r3
+ 5b0:	10ad      	asrs	r5, r5, #2
+ 5b2:	461e      	mov	r6, r3
+ 5b4:	42ac      	cmp	r4, r5
+ 5b6:	d004      	beq.n	5c2 <__libc_init_array+0x3a>
+ 5b8:	f856 2024 	ldr.w	r2, [r6, r4, lsl #2]
+ 5bc:	4790      	blx	r2
+ 5be:	3401      	adds	r4, #1
+ 5c0:	e7f8      	b.n	5b4 <__libc_init_array+0x2c>
+ 5c2:	bd70      	pop	{r4, r5, r6, pc}
+ 5c4:	20000078 	.word	0x20000078
+ 5c8:	20000078 	.word	0x20000078
+ 5cc:	2000007c 	.word	0x2000007c
+ 5d0:	20000078 	.word	0x20000078
+
+000005d4 <memset>:
+ 5d4:	4402      	add	r2, r0
+ 5d6:	4603      	mov	r3, r0
+ 5d8:	4293      	cmp	r3, r2
+ 5da:	d002      	beq.n	5e2 <memset+0xe>
+ 5dc:	f803 1b01 	strb.w	r1, [r3], #1
+ 5e0:	e7fa      	b.n	5d8 <memset+0x4>
+ 5e2:	4770      	bx	lr
+
+000005e4 <_exit>:
+ 5e4:	e7fe      	b.n	5e4 <_exit>
+ 5e6:	bf00      	nop
+
+000005e8 <_init>:
+ 5e8:	b5f8      	push	{r3, r4, r5, r6, r7, lr}
+ 5ea:	bf00      	nop
+ 5ec:	bcf8      	pop	{r3, r4, r5, r6, r7}
+ 5ee:	bc08      	pop	{r3}
+ 5f0:	469e      	mov	lr, r3
+ 5f2:	4770      	bx	lr
+
+000005f4 <_fini>:
+ 5f4:	b5f8      	push	{r3, r4, r5, r6, r7, lr}
+ 5f6:	bf00      	nop
+ 5f8:	bcf8      	pop	{r3, r4, r5, r6, r7}
+ 5fa:	bc08      	pop	{r3}
+ 5fc:	469e      	mov	lr, r3
+ 5fe:	4770      	bx	lr
+ 600:	0a0d0a0d 	.word	0x0a0d0a0d
+ 604:	2e585600 	.word	0x2e585600
+ 608:	43200058 	.word	0x43200058
+ 60c:	49706968 	.word	0x49706968
+ 610:	00203a44 	.word	0x00203a44
+ 614:	00000043 	.word	0x00000043
+
+00000618 <_global_impure_ptr>:
+ 618:	20000018                                ... 
+
+0000061c <__EH_FRAME_BEGIN__>:
+ 61c:	00000000                                ....
