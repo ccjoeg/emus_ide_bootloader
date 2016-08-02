@@ -31,9 +31,11 @@
  *
  ******************************************************************************/
 
+#include "em_ramfunc.h"
 #include "em_device.h"
 #include "flash.h"
 #include "config.h"
+
 
 /* DMA Control block. We only need 1 block for transfers. */
 /* This control block needs to be aligned to 256 byte boundaries. */
@@ -44,6 +46,8 @@ volatile DMA_DESCRIPTOR_TypeDef descr __attribute__ ((aligned(256)));
 * @brief
 *   Initializes the Flash programmer
 *******************************************************************************/
+
+
 void FLASH_init(void)
 {
   /* Write MSC unlock code to enable interface */
@@ -73,6 +77,7 @@ void FLASH_init(void)
  *
  * This function will not return until the data has been programmed.
  *****************************************************************************/
+RAMFUNC_DEFINITION_BEGIN
  void FLASH_writeWord(uint32_t adr, uint32_t data)
 {
   /* Check for an active transfer. If a transfer is in progress,
@@ -93,6 +98,7 @@ void FLASH_init(void)
   /* Waiting for the write to complete */
   while ((MSC->STATUS & MSC_STATUS_BUSY)) ;
 }
+RAMFUNC_DEFINITION_END
 
 /**************************************************************************//**
  *
@@ -122,6 +128,7 @@ void FLASH_init(void)
  * byte count must both be multiples of four.  It is up to the caller to
  * verify the programmed contents, if such verification is required.
  *****************************************************************************/
+RAMFUNC_DEFINITION_BEGIN
  void FLASH_writeBlock(void *block_start,
                                 uint32_t offset_into_block,
                                 uint32_t count,
@@ -169,6 +176,7 @@ void FLASH_init(void)
   /* Trigger the transfer */
   MSC->WRITECMD = MSC_WRITECMD_WRITETRIG;
 }
+RAMFUNC_DEFINITION_END
 
 
 /**************************************************************************//**
@@ -183,6 +191,7 @@ void FLASH_init(void)
  *
  * This function will not return until the block has been erased.
  *****************************************************************************/
+RAMFUNC_DEFINITION_BEGIN
 void FLASH_eraseOneBlock(uint32_t blockStart)
 {
   uint32_t acc = 0xFFFFFFFF;
@@ -207,4 +216,5 @@ void FLASH_eraseOneBlock(uint32_t blockStart)
   /* Waiting for erase to complete */
   while ((MSC->STATUS & MSC_STATUS_BUSY)) ;
 }
+RAMFUNC_DEFINITION_END
 
