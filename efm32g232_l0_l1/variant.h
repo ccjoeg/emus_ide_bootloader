@@ -22,6 +22,9 @@
 
 uint8_t bl_name[] = "EFM32G232_L0_L1";
 
+volatile unsigned long *TTY0;
+volatile unsigned long *TTY1;
+
 #define LED_PORT   PORTA
 #define LED_PIN       10
 
@@ -52,5 +55,27 @@ uint8_t bl_name[] = "EFM32G232_L0_L1";
 #define TTY1_RXDATAXP_REG LEUART_RXDATAXP_REG
 
 
+__STATIC_INLINE void CONFIG_UsartSetup(void)
+{
+  GPIO->P[TTY0_PORT].DOUT  = (1 << TTY0_TX_PIN);  // To avoid false start, configure output TX as high
+  GPIO_pinMode(TTY0_PORT,  TTY0_TX_PIN, GPIO_MODE_PUSHPULL);
+  GPIO_pinMode(TTY0_PORT,  TTY0_RX_PIN, GPIO_MODE_INPUT);
+  TTY0 = (unsigned long *) TTY0_UART;
+
+  CMU->TTY0_CLK_REG |=  TTY0_CLKEN;
+  TTY0[TTY0_CKDIV_REG] = TTY0_CLKDIV;
+  TTY0[ROUTE_REG] = TTY0_LOCATION | ROUTE_RXPEN_TXPEN;
+  TTY0[TTY0_CMD_REG] = TTY_CMD_RXEN_TXEN;
+
+  GPIO->P[TTY1_PORT].DOUT  = (1 << TTY1_TX_PIN);  // To avoid false start, configure output TX as high
+  GPIO_pinMode(TTY1_PORT,  TTY1_TX_PIN, GPIO_MODE_PUSHPULL);
+  GPIO_pinMode(TTY1_PORT,  TTY1_RX_PIN, GPIO_MODE_INPUT);
+  TTY1 = (unsigned long *) TTY1_UART;
+
+  CMU->TTY1_CLK_REG |=  TTY1_CLKEN;
+  TTY1[TTY1_CKDIV_REG] = TTY1_CLKDIV;
+  TTY1[ROUTE_REG] = TTY1_LOCATION | ROUTE_RXPEN_TXPEN;
+  TTY1[TTY1_CMD_REG] = TTY_CMD_RXEN_TXEN;
+}
 
 

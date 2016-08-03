@@ -22,6 +22,9 @@
 
 uint8_t bl_name[] = "EFM32ZG222_L0USB";
 
+volatile unsigned long *TTY0;
+volatile unsigned long *TTY1;
+
 #define LED_PORT   PORTA
 #define LED_PIN        8
 
@@ -51,3 +54,15 @@ uint8_t bl_name[] = "EFM32ZG222_L0USB";
 #define TTY1_CMD_CLR      USART_CMD_CLEAR
 #define TTY1_RXDATAXP_REG USART_RXDATAXP_REG
 
+__STATIC_INLINE void CONFIG_UsartSetup(void)
+{
+  GPIO->P[TTY0_PORT].DOUT  = (1 << TTY0_TX_PIN);  // To avoid false start, configure output TX as high
+  GPIO_pinMode(TTY0_PORT,  TTY0_TX_PIN, GPIO_MODE_PUSHPULL);
+  GPIO_pinMode(TTY0_PORT,  TTY0_RX_PIN, GPIO_MODE_INPUT);
+  TTY0 = (unsigned long *) TTY0_UART;
+
+  CMU->TTY0_CLK_REG |=  TTY0_CLKEN;
+  TTY0[TTY0_CKDIV_REG] = TTY0_CLKDIV;
+  TTY0[ROUTE_REG] = TTY0_LOCATION | ROUTE_RXPEN_TXPEN;
+  TTY0[TTY0_CMD_REG] = TTY_CMD_RXEN_TXEN;
+}
