@@ -34,13 +34,20 @@
 #ifndef _UART_H
 #define _UART_H
 
+
+#if defined (__ICCARM__)
+#define RAMFUNC __ramfunc
+#else
+#define RAMFUNC __attribute__ ((long_call, section (".ramfunctions")))
+#endif
+
 #include <stdint.h>
 #include "em_device.h"
 
-void USART_printHex(uint32_t integer);
-void USART_txByte(uint8_t data);
-uint8_t USART_rxByte(void);
-void USART_printString(uint8_t *string);
+RAMFUNC void USART_printHex(uint32_t integer);
+RAMFUNC void USART_txByte(uint8_t data);
+RAMFUNC uint8_t USART_rxByte(void);
+RAMFUNC void USART_printString(uint8_t *string);
 void USART_init(uint32_t clkdiv);
 
 #endif

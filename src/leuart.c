@@ -42,7 +42,7 @@
  * @param integer
  *   The integer to be printed.
  ******************************************************************************/
- void USART_printHex(uint32_t integer)
+ RAMFUNC void USART_printHex(uint32_t integer)
 {
   uint8_t c;
   int i, digit;
@@ -63,7 +63,7 @@
 /**************************************************************************//**
  * @brief Transmit single byte to BOOTLOADER_USART
  *****************************************************************************/
- uint8_t USART_rxByte(void)
+RAMFUNC uint8_t USART_rxByte(void)
 {
   uint32_t timer = 1000000;
   while (!(BOOTLOADER_USART->STATUS & LEUART_STATUS_RXDATAV) && --timer ) ;
@@ -81,7 +81,7 @@
 /**************************************************************************//**
  * @brief Transmit single byte to BOOTLOADER_USART
  *****************************************************************************/
- void USART_txByte(uint8_t data)
+RAMFUNC void USART_txByte(uint8_t data)
 {
   /* Check that transmit buffer is empty */
   while (!(BOOTLOADER_USART->STATUS & LEUART_STATUS_TXBL)) ;
@@ -92,7 +92,7 @@
 /**************************************************************************//**
  * @brief Transmit null-terminated string to BOOTLOADER_USART
  *****************************************************************************/
- void USART_printString(uint8_t *string)
+RAMFUNC void USART_printString(uint8_t *string)
 {
   while (*string != 0)
   {

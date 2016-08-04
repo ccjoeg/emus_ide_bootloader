@@ -42,8 +42,7 @@
 #include "flash.h"
 #include "variant.h"
 
-#define BOOTLOADER_VERSION_STRING "VX.X"
-
+#define BOOTLOADER_VERSION_STRING "VX.3"
 
 void commandlineLoop(void);
 void verify(uint32_t start, uint32_t end);
@@ -185,6 +184,9 @@ int main(void)
   uint32_t clkdiv;
   uint32_t tuning;
 
+  //added a slight wait here so the programmer has time to start programming after a reset
+  for(volatile int i = 0; i < 500000; i++);
+   
   /* Enable clocks for peripherals. */
   CMU->HFPERCLKDIV = CMU_HFPERCLKDIV_HFPERCLKEN;
   CMU->HFPERCLKEN0 = CMU_HFPERCLKEN0_GPIO | BOOTLOADER_USART_CLOCKEN;
@@ -223,6 +225,7 @@ int main(void)
 #else
   clkdiv = 0; /// fix me
 #endif
+
 
   /* Initialize the UART */
   USART_init(clkdiv);

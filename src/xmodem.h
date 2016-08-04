@@ -34,6 +34,12 @@
 #ifndef _XMODEM_H
 #define _XMODEM_H
 
+#if defined (__ICCARM__)
+#define RAMFUNC __ramfunc
+#else
+#define RAMFUNC __attribute__ ((long_call, section (".ramfunctions")))
+#endif
+
 #include <stdint.h>
 
 #define XMODEM_SOH                1
@@ -65,6 +71,6 @@ typedef struct
   uint8_t crcLow;
 } XMODEM_packet;
 
-void XMODEM_download(uint32_t baseAddress, uint32_t endAddress);
+RAMFUNC void XMODEM_download(uint32_t baseAddress, uint32_t endAddress);
 
 #endif

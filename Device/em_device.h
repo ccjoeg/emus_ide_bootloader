@@ -41,6 +41,10 @@
 
 #pragma once
 
+#define __IM __I
+#define __OM __O
+#define __IOM __IO
+
 #if defined(EFM32ZG108F32)
 #include "../Device/EFM32ZG/Include/efm32zg108f32.h"
 
@@ -52,6 +56,11 @@
 
 #elif defined(EFM32G232F128)
 #include "../Device/EFM32G/Include/efm32g232f128.h"
+
+#elif defined(EFM32G840F64)
+#include "../Device/EFM32G/Include/efm32g840f64.h"
+
+
 
 #elif defined(EFM32WG840F256)
 #include "../Device/EFM32WG/Include/efm32wg840f256.h"

@@ -37,7 +37,13 @@
 #include <stdint.h>
 #include <stdbool.h>
 
-void BOOT_boot(void);
-bool BOOT_checkFirmwareIsValid(void);
+#if defined (__ICCARM__)
+#define RAMFUNC __ramfunc
+#else
+#define RAMFUNC __attribute__ ((long_call, section (".ramfunctions")))
+#endif
+
+RAMFUNC void BOOT_boot(void);
+RAMFUNC bool BOOT_checkFirmwareIsValid(void);
 
 #endif

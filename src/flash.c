@@ -44,7 +44,7 @@ volatile DMA_DESCRIPTOR_TypeDef descr __attribute__ ((aligned(256)));
 * @brief
 *   Initializes the Flash programmer
 *******************************************************************************/
-void FLASH_init(void)
+RAMFUNC void FLASH_init(void)
 {
   /* Write MSC unlock code to enable interface */
   MSC->LOCK = MSC_UNLOCK_CODE;
@@ -73,7 +73,7 @@ void FLASH_init(void)
  *
  * This function will not return until the data has been programmed.
  *****************************************************************************/
- void FLASH_writeWord(uint32_t adr, uint32_t data)
+ RAMFUNC void FLASH_writeWord(uint32_t adr, uint32_t data)
 {
   /* Check for an active transfer. If a transfer is in progress,
    * we have to delay. Normally, the USART transfer takes more time
@@ -122,7 +122,7 @@ void FLASH_init(void)
  * byte count must both be multiples of four.  It is up to the caller to
  * verify the programmed contents, if such verification is required.
  *****************************************************************************/
- void FLASH_writeBlock(void *block_start,
+RAMFUNC  void FLASH_writeBlock(void *block_start,
                                 uint32_t offset_into_block,
                                 uint32_t count,
                                 uint8_t const *buffer)
@@ -165,7 +165,7 @@ void FLASH_init(void)
 
   /* Activate channel 0 */
   DMA->CHENS = DMA_CHENS_CH0ENS;
-
+  
   /* Trigger the transfer */
   MSC->WRITECMD = MSC_WRITECMD_WRITETRIG;
 }
@@ -183,7 +183,7 @@ void FLASH_init(void)
  *
  * This function will not return until the block has been erased.
  *****************************************************************************/
-void FLASH_eraseOneBlock(uint32_t blockStart)
+RAMFUNC void FLASH_eraseOneBlock(uint32_t blockStart)
 {
   uint32_t acc = 0xFFFFFFFF;
   uint32_t *ptr;

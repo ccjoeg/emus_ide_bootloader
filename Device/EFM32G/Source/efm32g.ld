@@ -11,7 +11,7 @@
 
 MEMORY
 {
-  FLASH (rx) : ORIGIN = 0x00000000, LENGTH = 131072
+  FLASH (rx) : ORIGIN = 0x00000000, LENGTH = 2048
   RAM (rwx)  : ORIGIN = 0x20000000, LENGTH = 16384
 }
 
@@ -161,6 +161,9 @@ SECTIONS
     KEEP(*(.jcr*))
     . = ALIGN(4);
     /* All data end */
+	
+	*(.ramfunctions) /* !!!! Placing functions in .ramfunctions section in RAM */
+	
     __data_end__ = .;
 
   } > RAM

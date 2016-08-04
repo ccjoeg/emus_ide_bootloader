@@ -34,20 +34,22 @@
 #ifndef FLASH_H
 #define FLASH_H
 
+#define RAMFUNC __attribute__ ((long_call, section (".ramfunctions")))
+
 /*
  * Flash programming hardware interface
  *
  */
 
 /* Helper functions */
-void FLASH_writeWord(uint32_t address, uint32_t data);
-void FLASH_writeBlock(void *block_start,
+RAMFUNC void FLASH_writeWord(uint32_t address, uint32_t data);
+RAMFUNC void FLASH_writeBlock(void *block_start,
                                 uint32_t offset_into_block,
                                 uint32_t count,
                                 uint8_t const *buffer);
-void FLASH_eraseOneBlock(uint32_t blockStart);
-void FLASH_init(void);
-void FLASH_CalcPageSize(void);
+RAMFUNC void FLASH_eraseOneBlock(uint32_t blockStart);
+RAMFUNC void FLASH_init(void);
+RAMFUNC void FLASH_CalcPageSize(void);
 
 extern uint32_t flashPageSize;
 #endif

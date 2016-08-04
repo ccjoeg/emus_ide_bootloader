@@ -51,7 +51,7 @@ uint8_t rawPacket[2][ALIGNMENT(sizeof(XMODEM_packet),4)] __attribute__ ((aligned
  * @param sequenceNumber The current sequence number.
  * @returns -1 on packet error, 0 otherwise
  *****************************************************************************/
- __INLINE int XMODEM_verifyPacketChecksum(XMODEM_packet *pkt, int sequenceNumber)
+RAMFUNC __INLINE int XMODEM_verifyPacketChecksum(XMODEM_packet *pkt, int sequenceNumber)
 {
   uint16_t packetCRC;
   uint16_t calculatedCRC;
@@ -88,7 +88,7 @@ uint8_t rawPacket[2][ALIGNMENT(sizeof(XMODEM_packet),4)] __attribute__ ((aligned
  * @param endAddress
  *   The last address. This is only used for clearing the flash
  *****************************************************************************/
- void XMODEM_download(uint32_t baseAddress, uint32_t endAddress)
+ RAMFUNC void XMODEM_download(uint32_t baseAddress, uint32_t endAddress)
 {
   XMODEM_packet *pkt;
   uint32_t      i;
@@ -100,6 +100,7 @@ uint8_t rawPacket[2][ALIGNMENT(sizeof(XMODEM_packet),4)] __attribute__ ((aligned
   {
     FLASH_eraseOneBlock(addr);
   }
+  USART_txByte('#');
   /* Send one start transmission packet. Wait for a response. If there is no
    * response, we resend the start transmission packet.
    * Note: This is a fairly long delay between retransmissions(~6 s). */

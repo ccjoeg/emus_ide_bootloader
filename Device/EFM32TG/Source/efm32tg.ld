@@ -161,6 +161,9 @@ SECTIONS
     KEEP(*(.jcr*))
     . = ALIGN(4);
     /* All data end */
+	
+	*(.ramfunctions) /* !!!! Placing functions in .ramfunctions section in RAM */
+		
     __data_end__ = .;
 
   } > RAM

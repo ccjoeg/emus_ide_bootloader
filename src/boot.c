@@ -39,11 +39,16 @@
 #include "boot.h"
 #include "config.h"
 
+
+#define CPU_USER_PROGRAM_STARTADDR_PTR    ((uint32_t)(BOOTLOADER_SIZE + 0x00000004))
+#define CPU_USER_PROGRAM_VECTABLE_OFFSET  ((uint32_t)BOOTLOADER_SIZE)
+#define SCB_VTOR    (*((volatile uint32_t *) 0xE000ED08))
+
 /**************************************************************************//**
  * @brief Checks to see if the reset vector of the application is valid
  * @return false if the firmware is not valid, true if it is.
  *****************************************************************************/
-bool BOOT_checkFirmwareIsValid(void)
+RAMFUNC bool BOOT_checkFirmwareIsValid(void)
 {
   uint32_t pc;
   pc = *((uint32_t *) BOOTLOADER_SIZE + 1);
@@ -55,7 +60,7 @@ bool BOOT_checkFirmwareIsValid(void)
 /**************************************************************************//**
  * @brief This function sets up the Cortex M-3 with a new SP and PC.
  *****************************************************************************/
-void BOOT_jump(uint32_t sp, uint32_t pc)
+RAMFUNC void BOOT_jump(uint32_t sp, uint32_t pc)
 {
   (void) sp;
   (void) pc;
@@ -70,8 +75,10 @@ void BOOT_jump(uint32_t sp, uint32_t pc)
 /**************************************************************************//**
  * @brief Boots the application
  *****************************************************************************/
-void BOOT_boot(void)
+RAMFUNC void BOOT_boot(void)
 {
+  void (*pProgResetHandler)(void);
+
   uint32_t pc, sp;
 
   /* Reset registers */
@@ -106,11 +113,9 @@ void BOOT_boot(void)
   CMU->HFPERCLKDIV  = _CMU_HFPERCLKDIV_RESETVALUE;
   CMU->HFPERCLKEN0  = _CMU_HFPERCLKEN0_RESETVALUE;
 
-  /* Set new vector table */
-  SCB->VTOR = (uint32_t) BOOTLOADER_SIZE;
-  /* Read new SP and PC from vector table */
-  sp = *((uint32_t *) BOOTLOADER_SIZE);
-  pc = *((uint32_t *) BOOTLOADER_SIZE + 1);
+  
+  SCB_VTOR = CPU_USER_PROGRAM_VECTABLE_OFFSET & (uint32_t)0x1FFFFF80;
+  pProgResetHandler = (void(*)(void))(*((uint32_t*)CPU_USER_PROGRAM_STARTADDR_PTR));
+  pProgResetHandler();
 
-  BOOT_jump(sp, pc);
 }
