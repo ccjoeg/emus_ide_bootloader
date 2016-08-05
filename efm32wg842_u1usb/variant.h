@@ -20,13 +20,11 @@
 
 #pragma once
 
-uint8_t bl_name[] = "EFM32WG842_U1_L0";
+volatile unsigned long *TTY0;
+volatile unsigned long *TTY1;
 
 #define LED_PORT   PORTA
 #define LED_PIN       15
-
-volatile unsigned long *TTY0;
-volatile unsigned long *TTY1;
 
 #define TTY0_UART         USART1_BASE_ADDR
 #define TTY0_CLK_REG      HFPERCLKEN0
@@ -40,6 +38,10 @@ volatile unsigned long *TTY1;
 #define TTY0_CMD_REG      USART_CMD_REG
 #define TTY0_CMD_CLR      USART_CMD_CLEAR
 #define TTY0_RXDATAXP_REG USART_RXDATAXP_REG
+#define TTY0_TXDATA_REG USART_TXDATA_REG
+#define TTY0_STATUS_REG USART_STATUS_REG
+#define TTY0_STATUS_RXDATAV USART_STATUS_RXDATAV
+#define TTY0_STATUS_TXBL USART_STATUS_TXBL
 
 #define TTY1_UART         0
 #define TTY1_CLK_REG      HFPERCLKEN0
@@ -53,6 +55,10 @@ volatile unsigned long *TTY1;
 #define TTY1_CMD_REG      USART_CMD_REG
 #define TTY1_CMD_CLR      USART_CMD_CLEAR
 #define TTY1_RXDATAXP_REG USART_RXDATAXP_REG
+#define TTY1_TXDATA_REG USART_TXDATA_REG
+#define TTY1_STATUS_REG USART_STATUS_REG
+#define TTY1_STATUS_RXDATAV USART_STATUS_RXDATAV
+#define TTY1_STATUS_TXBL USART_STATUS_TXBL
 
 __STATIC_INLINE void CONFIG_UsartSetup(void)
 {
