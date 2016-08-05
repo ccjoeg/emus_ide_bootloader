@@ -70,7 +70,7 @@ override ASMFLAGS += -g -gdwarf-2 -x assembler-with-cpp -D$(DEVICE) -Wall -Wextr
 # NOTE: The -Wl,--gc-sections flag may interfere with debugging using gdb.
 #
 override LDFLAGS +=  -g -gdwarf-2 -Xlinker -Map=$(LST_DIR)/$(PROJECTNAME).map -mcpu=cortex-m3 \
--mthumb -T../src/efm32_4K4K.ld -Wl,--gc-sections --specs=nano.specs
+-mthumb -T../Device/EFM32TG/Source/efm32tg.ld -Wl,--gc-sections --specs=nano.specs
 
 LIBS = -Wl,--start-group -lgcc -lc -lnosys -Wl,--end-group
 
@@ -79,7 +79,6 @@ INCLUDEPATHS += \
 -I../Device \
 -I../CMSIS \
 -I../emlib/inc \
--I../inc \
 -I.
 
 ####################################################################
@@ -88,18 +87,18 @@ INCLUDEPATHS += \
 
 C_SRC +=  \
 ../Device/EFM32TG/Source/system_efm32tg.c \
-../src/boot.c \
-../src/crc.c \
-../src/flash.c \
-../src/main.c \
-../src/serial.c \
 ../src/xmodem.c \
-../src/init.c \
+../src/leuart.c \
+../src/flash.c \
+../src/crc.c \
+../src/bootloader.c \
+../src/boot.c
 
 s_SRC +=  \
-../Device/EFM32TG/Source/startup_gcc_efm32tg.s
 
-S_SRC += 
+S_SRC += \
+../Device/EFM32TG/Source/startup_efm32tg.S
+
 
 ####################################################################
 # Rules                                                            #
