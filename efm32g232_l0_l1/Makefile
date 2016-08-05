@@ -102,6 +102,7 @@ override TA_LDFLAGS +=  -g -gdwarf-2 -Xlinker -Map=$(LST_DIR)/$(PROJECTNAME).map
 LIBS = -Wl,--start-group -lgcc -lc -lnosys -Wl,--end-group
 
 INCLUDEPATHS += \
+-I.. \
 -I../Device \
 -I../CMSIS \
 -I../emlib/inc \

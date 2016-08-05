@@ -11,6 +11,7 @@
 
 DEVICE = EFM32TG110F32
 PROJECTNAME = efmtg110
+TA_PROJECTNAME = efmg110TA
 
 OBJ_DIR = build
 EXE_DIR = exe
@@ -40,6 +41,15 @@ ifeq (clean,$(findstring clean, $(MAKECMDGOALS)))
   endif
 endif
 
+
+# Create directories and do a clean which is compatible with parallell make
+$(shell mkdir ta>$(NULLDEVICE) 2>&1)
+$(shell mkdir ta/$(OBJ_DIR)>$(NULLDEVICE) 2>&1)
+ifeq (clean,$(findstring clean, $(MAKECMDGOALS)))
+  ifneq ($(filter $(MAKECMDGOALS),all debug release),)
+	$(shell $(RM) ta/$(OBJ_DIR)/*>$(NULLDEVICE) 2>&1)
+  endif
+endif
 CC      = $(QUOTE)$(TOOLDIR)/bin/arm-none-eabi-gcc$(QUOTE)
 LD      = $(QUOTE)$(TOOLDIR)/bin/arm-none-eabi-ld$(QUOTE)
 AR      = $(QUOTE)$(TOOLDIR)/bin/arm-none-eabi-ar$(QUOTE)
@@ -56,12 +66,23 @@ SIZE    = $(QUOTE)$(TOOLDIR)/bin/arm-none-eabi-size$(QUOTE)
 # -MF  : Specify a file to write the dependencies to.
 DEPFLAGS = -MMD -MP -MF $(@:.o=.d)
 
+BUILD_NUMBER_FILE=build-number.txt
+
+#since the build number is incremented at the end of the build we should use 
+# build number + 1 in the define and then it will match after it is built
+BUILD_NUMBER=$(shell cat $(BUILD_NUMBER_FILE))
+$(eval BUILD_NUMBER=$(shell echo $$(($(BUILD_NUMBER)+1))))
 #
 # Add -Wa,-ahld=$(LST_DIR)/$(@F:.o=.lst) to CFLAGS to produce assembly list files
 #
 override CFLAGS += -D$(DEVICE) -Wall -Wextra  -g -gdwarf-2 -mcpu=cortex-m3 -mthumb '-DEFM32TG110F32=1' \
 -Os -Wall -c -fmessage-length=0 -mno-sched-prolog -fno-builtin -ffunction-sections -fdata-sections -std=c99 \
--MMD -MP -ldrd -fomit-frame-pointer $(DEPFLAGS)
+-MMD -MP -ldrd -fomit-frame-pointer $(DEPFLAGS) -D__BUILD_NUMBER=\"$(BUILD_NUMBER)\"
+
+override TA_CFLAGS += -D$(DEVICE) -Wall -Wextra  -g -gdwarf-2 -mcpu=cortex-m3 -mthumb '-DEFM32TG110F32=1' \
+-Os -Wall -c -fmessage-length=0 -mno-sched-prolog -fno-builtin -ffunction-sections -fdata-sections -std=c99 \
+-MMD -MP -ldrd -fomit-frame-pointer $(DEPFLAGS) -D__BUILD_NUMBER=\"TA1\"
+
 
 override ASMFLAGS += -g -gdwarf-2 -x assembler-with-cpp -D$(DEVICE) -Wall -Wextra -mcpu=cortex-m3 -mthumb
 
@@ -71,6 +92,8 @@ override ASMFLAGS += -g -gdwarf-2 -x assembler-with-cpp -D$(DEVICE) -Wall -Wextr
 #
 override LDFLAGS +=  -g -gdwarf-2 -Xlinker -Map=$(LST_DIR)/$(PROJECTNAME).map -mcpu=cortex-m3 \
 -mthumb -T../Device/EFM32TG/Source/efm32tg.ld -Wl,--gc-sections --specs=nano.specs
+override TA_LDFLAGS +=  -g -gdwarf-2 -Xlinker -Map=$(LST_DIR)/$(PROJECTNAME).map -mcpu=cortex-m3 \
+-mthumb -T../Device/EFM32TG/Source/efm32tg_ta.ld -Wl,--gc-sections --specs=nano.specs
 
 LIBS = -Wl,--start-group -lgcc -lc -lnosys -Wl,--end-group
 
@@ -79,6 +102,7 @@ INCLUDEPATHS += \
 -I../Device \
 -I../CMSIS \
 -I../emlib/inc \
+-I../inc \
 -I.
 
 ####################################################################
@@ -88,7 +112,7 @@ INCLUDEPATHS += \
 C_SRC +=  \
 ../Device/EFM32TG/Source/system_efm32tg.c \
 ../src/xmodem.c \
-../src/leuart.c \
+../src/usart.c \
 ../src/flash.c \
 ../src/crc.c \
 ../src/bootloader.c \
@@ -116,12 +140,18 @@ s_OBJS = $(if $(s_SRC), $(addprefix $(OBJ_DIR)/, $(S_FILES:.s=.o)))
 C_DEPS = $(addprefix $(OBJ_DIR)/, $(C_FILES:.c=.d))
 OBJS = $(C_OBJS) $(S_OBJS) $(s_OBJS)
 
+TA_C_OBJS = $(addprefix ta/$(OBJ_DIR)/, $(C_FILES:.c=.o))
+TA_S_OBJS = $(if $(S_SRC), $(addprefix ta/$(OBJ_DIR)/, $(S_FILES:.S=.o)))
+TA_s_OBJS = $(if $(s_SRC), $(addprefix ta/$(OBJ_DIR)/, $(S_FILES:.s=.o)))
+TA_C_DEPS = $(addprefix ta/$(OBJ_DIR)/, $(C_FILES:.c=.d))
+TA_OBJS = $(TA_C_OBJS) $(TA_S_OBJS) $(TA_s_OBJS)
 vpath %.c $(C_PATHS)
 vpath %.s $(S_PATHS)
 vpath %.S $(S_PATHS)
 
 # Default build is debug build
-all:      release
+all: release testapp
+
 
 release:  CFLAGS += -g3 -Os
 release:  $(EXE_DIR)/$(PROJECTNAME).bin
@@ -145,6 +175,8 @@ $(EXE_DIR)/$(PROJECTNAME).out: $(OBJS)
 	@echo "Linking target: $@"
 	$(CC) $(LDFLAGS) $(OBJS) $(LIBS) -o $(EXE_DIR)/$(PROJECTNAME).out
 
+
+	
 # Create binary file
 $(EXE_DIR)/$(PROJECTNAME).bin: $(EXE_DIR)/$(PROJECTNAME).out
 	@echo "Creating binary file"
@@ -153,12 +185,48 @@ $(EXE_DIR)/$(PROJECTNAME).bin: $(EXE_DIR)/$(PROJECTNAME).out
 	$(DUMP) -h -S -C $(EXE_DIR)/$(PROJECTNAME).out>$(LST_DIR)/$(PROJECTNAME)out.lst
 # Print the size
 	$(SIZE) $(EXE_DIR)/$(PROJECTNAME).out
+#increment the build number for the next build
+	@if ! test -f $(BUILD_NUMBER_FILE); then echo 1 > $(BUILD_NUMBER_FILE); fi
+	@echo $$(($$(cat $(BUILD_NUMBER_FILE))+1)) > $(BUILD_NUMBER_FILE)
+	
+	
+testapp:   $(EXE_DIR)/$(TA_PROJECTNAME).bin
+
+# Create objects from C SRC files
+ta/$(OBJ_DIR)/%.o: %.c
+	@echo "Building file ta: $<"
+	$(CC) $(TA_CFLAGS) $(INCLUDEPATHS) -c -o $@ $<
+
+# Assemble .s/.S files
+ta/$(OBJ_DIR)/%.o: %.s
+	@echo "Assembling ta$<"
+	$(CC) $(ASMFLAGS) $(INCLUDEPATHS) -c -o $@ $<
+
+ta/$(OBJ_DIR)/%.o: %.S
+	@echo "Assembling ta$<"
+	$(CC) $(ASMFLAGS) $(INCLUDEPATHS) -c -o $@ $<
+
+# Link
+$(EXE_DIR)/$(TA_PROJECTNAME).out: $(TA_OBJS)
+	@echo "Linking target: $@"
+	$(CC) $(TA_LDFLAGS) $(TA_OBJS) $(LIBS) -o $(EXE_DIR)/$(TA_PROJECTNAME).out
+	
+# Create binary file
+$(EXE_DIR)/$(TA_PROJECTNAME).bin: $(EXE_DIR)/$(TA_PROJECTNAME).out
+	@echo "Creating binary file"
+	$(OBJCOPY) -O binary $(EXE_DIR)/$(TA_PROJECTNAME).out $(EXE_DIR)/$(TA_PROJECTNAME).bin
+# Uncomment next line to produce assembly listing of entire program
+	$(DUMP) -h -S -C $(EXE_DIR)/$(TA_PROJECTNAME).out>$(LST_DIR)/$(TA_PROJECTNAME)out.lst
+# Print the size
+	$(SIZE) $(EXE_DIR)/$(TA_PROJECTNAME).out
+
 
 prog:
 	start-eACommander.sh --verify --flash exe/efmtg110.bin --reset
 
 clean:
 ifeq ($(filter $(MAKECMDGOALS),all debug release),)
+	$(RM) ta/$(OBJ_DIR)
 	$(RM) $(OBJ_DIR) $(LST_DIR) $(EXE_DIR)
 endif
 
