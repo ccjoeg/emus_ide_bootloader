@@ -34,11 +34,7 @@
 #ifndef _XMODEM_H
 #define _XMODEM_H
 
-#if defined (__ICCARM__)
-#define RAMFUNC __ramfunc
-#else
-#define RAMFUNC __attribute__ ((long_call, section (".ramfunctions")))
-#endif
+#include "config.h"
 
 #include <stdint.h>
 

@@ -1,6 +1,6 @@
 /**************************************************************************//**
- * @file usart.c
- * @brief USART code for the EFM32 bootloader
+ * @file leuart.c
+ * @brief LEUART code for the EFM32 bootloader
  * @author Silicon Labs
  * @version x.xx
  ******************************************************************************
@@ -33,7 +33,7 @@
 
 #include "em_device.h"
 #include "usart.h"
-#include "config.h"
+#include "variant.h"
 
 /***************************************************************************//**
  * @brief
@@ -42,7 +42,7 @@
  * @param integer
  *   The integer to be printed.
  ******************************************************************************/
- void USART_printHex(uint32_t integer)
+ RAMFUNC void USART_printHex(uint32_t integer)
 {
   uint8_t c;
   int i, digit;
@@ -61,15 +61,62 @@
 }
 
 /**************************************************************************//**
+ * @brief Transmit null-terminated string to BOOTLOADER_USART
+ *****************************************************************************/
+RAMFUNC void USART_printString(uint8_t *string)
+{
+  while (*string != 0)
+  {
+    USART_txByte(*string++);
+  }
+}
+
+
+RAMFUNC uint8_t USART_rxReady(void)
+{
+	if(TTY1 != 0)
+	  {
+		  if(TTY1[TTY1_STATUS_REG] & TTY1_STATUS_RXDATAV)
+		  {
+			  TTY0 = 0;
+			  return 1;
+		  }
+	  }
+	  if(TTY0 != 0)
+	  {
+		  if(TTY0[TTY0_STATUS_REG] & TTY0_STATUS_RXDATAV)
+		  {
+			  TTY1 = 0;
+			  return 1;
+		  }
+	  }	    
+	  return 0;
+}
+
+/**************************************************************************//**
  * @brief Transmit single byte to BOOTLOADER_USART
  *****************************************************************************/
- uint8_t USART_rxByte(void)
+RAMFUNC uint8_t USART_rxByte(void)
 {
   uint32_t timer = 1000000;
-  while (!(BOOTLOADER_USART->STATUS & USART_STATUS_RXDATAV) && --timer ) ;
+  while(--timer ) 
+  {
+	 if(USART_rxReady())
+	 {
+		 break;
+	 }
+  }  
+  
   if (timer > 0)
   {
-    return((uint8_t)(BOOTLOADER_USART->RXDATA & 0xFF));
+	 if(TTY0 != 0)
+	 {
+		return((uint8_t)(TTY0[RXDATA_REG] & 0xFF));
+	 }
+	 else
+	 {
+		 return((uint8_t)(TTY1[RXDATA_REG] & 0xFF));
+	 }
   }
   else
   {
@@ -81,46 +128,23 @@
 /**************************************************************************//**
  * @brief Transmit single byte to BOOTLOADER_USART
  *****************************************************************************/
- void USART_txByte(uint8_t data)
+RAMFUNC void USART_txByte(uint8_t data)
 {
   /* Check that transmit buffer is empty */
-  while (!(BOOTLOADER_USART->STATUS & USART_STATUS_TXBL)) ;
 
-  BOOTLOADER_USART->TXDATA = (uint32_t) data;
-}
-
-/**************************************************************************//**
- * @brief Transmit null-terminated string to BOOTLOADER_USART
- *****************************************************************************/
- void USART_printString(uint8_t *string)
-{
-  while (*string != 0)
+  //check if TTY0 is valid and send to it if it is
+  if(TTY0 != 0)
   {
-    USART_txByte(*string++);
+	  while (!(TTY0[TTY0_STATUS_REG] & TTY0_STATUS_TXBL)) ;
+	  TTY0[TTY0_TXDATA_REG] = (uint32_t) data;
   }
+  
+  //check if TTY1 is valid and send to it if it is
+  if(TTY1 != 0)
+  {
+	  while (!(TTY1[TTY1_STATUS_REG] & TTY1_STATUS_TXBL)) ;
+	  TTY1[TTY1_TXDATA_REG] = (uint32_t) data;
+  }
+  
 }
 
-/**************************************************************************//**
- * @brief Intializes BOOTLOADER_USART
- *
- * @param clkdiv
- *   The clock divisor to use.
- *****************************************************************************/
-void USART_init(uint32_t clkdiv)
-{
-  /* Configure BOOTLOADER_USART */
-  /* USART default to 1 stop bit, no parity, 8 data bits, so not
-   * explicitly set */
-
-  /* Set the clock division */
-  BOOTLOADER_USART->CLKDIV = clkdiv;
-
-
-  /* Enable RX and TX pins and set location 0 */
-  BOOTLOADER_USART->ROUTE = BOOTLOADER_USART_LOCATION |
-                 USART_ROUTE_RXPEN | USART_ROUTE_TXPEN;
-
-  /* Clear RX/TX buffers, Enable RX/TX */
-  BOOTLOADER_USART->CMD = USART_CMD_CLEARRX | USART_CMD_CLEARTX
-                          | USART_CMD_RXEN | USART_CMD_TXEN;
-}

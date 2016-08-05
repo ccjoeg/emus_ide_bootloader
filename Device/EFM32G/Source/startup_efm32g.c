@@ -55,7 +55,6 @@ extern uint32_t __StackTop;
  *----------------------------------------------------------------------------*/
 typedef void( *pFunc )( void );
 
-
 /*----------------------------------------------------------------------------
   External References
  *----------------------------------------------------------------------------*/
@@ -139,8 +138,6 @@ void LCD_IRQHandler(void) __attribute__ ((weak, alias("Default_Handler")));
 void MSC_IRQHandler(void) __attribute__ ((weak, alias("Default_Handler")));
 void AES_IRQHandler(void) __attribute__ ((weak, alias("Default_Handler")));
 
-
-
 /*----------------------------------------------------------------------------
   Exception / Interrupt Vector table
  *----------------------------------------------------------------------------*/
@@ -198,7 +195,6 @@ const pFunc __Vectors[] __attribute__ ((section(".vectors"))) = {
   Default_Handler,                          /*  30 - Reserved      */
 
 };
-
 
 /*----------------------------------------------------------------------------
   Reset Handler called on controller reset

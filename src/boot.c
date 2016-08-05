@@ -37,40 +37,10 @@
 #include "xmodem.h"
 #include "em_device.h"
 #include "boot.h"
-#include "config.h"
-
 
 #define CPU_USER_PROGRAM_STARTADDR_PTR    ((uint32_t)(BOOTLOADER_SIZE + 0x00000004))
 #define CPU_USER_PROGRAM_VECTABLE_OFFSET  ((uint32_t)BOOTLOADER_SIZE)
 #define SCB_VTOR    (*((volatile uint32_t *) 0xE000ED08))
-
-/**************************************************************************//**
- * @brief Checks to see if the reset vector of the application is valid
- * @return false if the firmware is not valid, true if it is.
- *****************************************************************************/
-RAMFUNC bool BOOT_checkFirmwareIsValid(void)
-{
-  uint32_t pc;
-  pc = *((uint32_t *) BOOTLOADER_SIZE + 1);
-  if (pc < MAX_SIZE_OF_FLASH)
-    return true;
-  return false;
-}
-
-/**************************************************************************//**
- * @brief This function sets up the Cortex M-3 with a new SP and PC.
- *****************************************************************************/
-RAMFUNC void BOOT_jump(uint32_t sp, uint32_t pc)
-{
-  (void) sp;
-  (void) pc;
-  /* Set new MSP, PSP based on SP (r0)*/
-  __asm("msr msp, r0");
-  __asm("msr psp, r0");
-
-  /* Jump to PC (r1)*/
-  __asm("mov pc, r1");
-}
 
 /**************************************************************************//**
  * @brief Boots the application
@@ -78,9 +48,7 @@ RAMFUNC void BOOT_jump(uint32_t sp, uint32_t pc)
 RAMFUNC void BOOT_boot(void)
 {
   void (*pProgResetHandler)(void);
-
-  uint32_t pc, sp;
-
+  
   /* Reset registers */
 
 #ifdef USART_OVERLAPS_WITH_BOOTLOADER

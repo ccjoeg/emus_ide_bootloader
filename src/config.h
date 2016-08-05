@@ -143,7 +143,7 @@ void GPIO_pinMode(uint32_t port, uint32_t pin, uint32_t mode);
 /******************************************************************************
  * The size of the bootloader flash image                                     *
  ******************************************************************************/
-#define BOOTLOADER_SIZE      (2048)
+#define BOOTLOADER_SIZE      (4096)
 
 
 
@@ -175,6 +175,12 @@ void GPIO_pinMode(uint32_t port, uint32_t pin, uint32_t mode);
 #define BOOTLOADER_USART_LOCATION  USART_ROUTE_LOCATION_LOC0
 #endif
 
+//setup the ramfunction
+#if defined (__ICCARM__)
+#define RAMFUNC __ramfunc
+#else
+#define RAMFUNC __attribute__ ((long_call, section (".ramfunctions")))
+#endif
 
 
 

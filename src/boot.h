@@ -36,14 +36,8 @@
 
 #include <stdint.h>
 #include <stdbool.h>
-
-#if defined (__ICCARM__)
-#define RAMFUNC __ramfunc
-#else
-#define RAMFUNC __attribute__ ((long_call, section (".ramfunctions")))
-#endif
+#include "config.h"
 
 RAMFUNC void BOOT_boot(void);
-RAMFUNC bool BOOT_checkFirmwareIsValid(void);
 
 #endif

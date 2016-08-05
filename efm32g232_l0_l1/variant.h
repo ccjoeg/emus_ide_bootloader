@@ -20,13 +20,11 @@
 
 #pragma once
 
-uint8_t bl_name[] = "EFM32G232_L0_L1";
-
 volatile unsigned long *TTY0;
 volatile unsigned long *TTY1;
 
 #define LED_PORT   PORTA
-#define LED_PIN       10
+#define LED_PIN       9
 
 #define TTY0_UART         LEUART0_BASE_ADDR
 #define TTY0_CLK_REG      LFBCLKEN0
@@ -40,6 +38,11 @@ volatile unsigned long *TTY1;
 #define TTY0_CMD_REG      LEUART_CMD_REG
 #define TTY0_CMD_CLR      LEUART_CMD_CLEAR
 #define TTY0_RXDATAXP_REG LEUART_RXDATAXP_REG
+#define TTY0_TXDATA_REG LEUART_TXDATA_REG
+#define TTY0_STATUS_REG LEUART_STATUS_REG
+#define TTY0_STATUS_RXDATAV LEUART_STATUS_RXDATAV
+#define TTY0_STATUS_TXBL LEUART_STATUS_TXBL
+
 
 #define TTY1_UART         LEUART1_BASE_ADDR
 #define TTY1_CLK_REG      LFBCLKEN0
@@ -53,8 +56,12 @@ volatile unsigned long *TTY1;
 #define TTY1_CMD_REG      LEUART_CMD_REG
 #define TTY1_CMD_CLR      LEUART_CMD_CLEAR
 #define TTY1_RXDATAXP_REG LEUART_RXDATAXP_REG
+#define TTY1_TXDATA_REG LEUART_TXDATA_REG
+#define TTY1_STATUS_REG LEUART_STATUS_REG
+#define TTY1_STATUS_RXDATAV LEUART_STATUS_RXDATAV
+#define TTY1_STATUS_TXBL LEUART_STATUS_TXBL
 
-
+//setup the 2 UARTS
 __STATIC_INLINE void CONFIG_UsartSetup(void)
 {
   GPIO->P[TTY0_PORT].DOUT  = (1 << TTY0_TX_PIN);  // To avoid false start, configure output TX as high
@@ -76,12 +83,6 @@ __STATIC_INLINE void CONFIG_UsartSetup(void)
   TTY1[TTY1_CKDIV_REG] = TTY1_CLKDIV;
   TTY1[ROUTE_REG] = TTY1_LOCATION | ROUTE_RXPEN_TXPEN;
   TTY1[TTY1_CMD_REG] = TTY_CMD_RXEN_TXEN;
-  
-  
-  //GPIO->P[2].MODEL = GPIO_P_MODEL_MODE6_PUSHPULL | GPIO_P_MODEL_MODE7_INPUT;
-  
-  //GPIO->P[0].DOUT = 0;
-  //GPIO->P[0].MODEH = GPIO_P_MODEH_MODE9_PUSHPULL;
   
 }
 

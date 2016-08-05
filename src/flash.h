@@ -34,7 +34,7 @@
 #ifndef FLASH_H
 #define FLASH_H
 
-#define RAMFUNC __attribute__ ((long_call, section (".ramfunctions")))
+#include "config.h"
 
 /*
  * Flash programming hardware interface

@@ -33,7 +33,6 @@
 
 #include <stdbool.h>
 #include "em_device.h"
-#include "em_gpio.h"
 #include "usart.h"
 #include "xmodem.h"
 #include "boot.h"
@@ -42,10 +41,7 @@
 #include "flash.h"
 #include "variant.h"
 
-#define BOOTLOADER_VERSION_STRING "VX.3"
-
-void commandlineLoop(void);
-void verify(uint32_t start, uint32_t end);
+#define BOOTLOADER_VERSION_STRING "V0." __BUILD_NUMBER
 
 /**************************************************************************//**
  * Strings.
@@ -75,18 +71,15 @@ void GPIO_pinMode(uint32_t port, uint32_t pin, uint32_t mode)
 }
 
 /* LED functions */
-void ledOn(void)  {GPIO_PinOutClear(LED_PORT, LED_PIN);}
-void ledOff(void) {GPIO_PinOutSet(LED_PORT, LED_PIN);}
+void ledOn(void)  {GPIO->P[LED_PORT].DOUT = ~(1 << LED_PIN);}
+void ledOff(void) {GPIO->P[LED_PORT].DOUT = 1 << LED_PIN;}
 
 void led_cycle(uint32_t on_cnt, uint32_t off_cnt)
 {
   static uint8_t on = 0;
   static uint32_t ledcnt = 0;
 
-  if(ledcnt++ == 0) {
-    ledOff();
-    on = 0;
-  } else if((on == 0) && (ledcnt++ < off_cnt)) {
+  if((on == 0) && (ledcnt++ < off_cnt)) {
     return;
   } else if((on == 0) && (ledcnt++ >= off_cnt)) {
     ledOn();
@@ -127,7 +120,7 @@ void commandlineLoop(void)
 {
   uint32_t flashSize;
   uint8_t  c;
-
+  uint32_t shouldBoot = 1;
   /* Find the size of the flash. DEVINFO->MSIZE is the
    * size in KB so left shift by 10. */
   flashSize = ((DEVINFO->MSIZE & _DEVINFO_MSIZE_FLASH_MASK) >> _DEVINFO_MSIZE_FLASH_SHIFT) << 10;
@@ -135,7 +128,15 @@ void commandlineLoop(void)
   /* The main command loop */
   while (1) {
     /* Retrieve new character */
-    c = USART_rxByte();
+	if(USART_rxReady())
+	{
+		c = USART_rxByte();
+		shouldBoot = 0;
+	}else
+	{
+		c = 0;
+	}
+    
     /* Echo */
     if (c != 0) {
       USART_txByte(c);
@@ -172,8 +173,22 @@ void commandlineLoop(void)
       /* Timeout waiting for RX - avoid printing the unknown string. */
       USART_printString(unknownString);
     }
+	
+	if(shouldBoot != 0)
+	{
+		shouldBoot++;
+	}
+	
+	//wait for keypress for about 5 seconds
+	if(shouldBoot == 1000000)
+	{
+		BOOT_boot();
+	}
+	
+	//turn the led on for about .5 second then off for about .5 seconds
+	led_cycle(100000, 100000);
   }
-  led_cycle(5000, 5000);
+  
 }
 
 /**************************************************************************//**
@@ -181,7 +196,6 @@ void commandlineLoop(void)
  *****************************************************************************/
 int main(void)
 {
-  uint32_t clkdiv;
   uint32_t tuning;
 
   //added a slight wait here so the programmer has time to start programming after a reset
@@ -189,7 +203,7 @@ int main(void)
    
   /* Enable clocks for peripherals. */
   CMU->HFPERCLKDIV = CMU_HFPERCLKDIV_HFPERCLKEN;
-  CMU->HFPERCLKEN0 = CMU_HFPERCLKEN0_GPIO | BOOTLOADER_USART_CLOCKEN;
+  CMU->HFPERCLKEN0 = CMU_HFPERCLKEN0_GPIO;
 
   /* Enable LE and DMA interface */
   CMU->HFCORECLKEN0 = CMU_HFCORECLKEN0_LE | CMU_HFCORECLKEN0_DMA;
@@ -198,11 +212,6 @@ int main(void)
   CMU->OSCENCMD = CMU_OSCENCMD_LFRCOEN;
   /* Setup LFA to use LFRCRO */
   CMU->LFCLKSEL = CMU_LFCLKSEL_LFA_LFRCO | CMU_LFCLKSEL_LFB_HFCORECLKLEDIV2;
-
-#if defined( BOOTLOADER_LEUART_CLOCKEN )
-  /* Enable LEUART */
-  CMU->LFBCLKEN0 = BOOTLOADER_LEUART_CLOCKEN;
-#endif
 
   /* Change to 21MHz internal osciallator to increase speed of
    * bootloader */
@@ -216,28 +225,14 @@ int main(void)
 
   /* Setup pins for USART */
   CONFIG_UsartSetup();
-
-#define EFMZG_LEUART_CLKDIV 0x59D0
   
-#if defined( BOOTLOADER_LEUART_CLOCKEN )
-  clkdiv = EFMZG_LEUART_CLKDIV; /// fix me
-  GPIO->ROUTE = 0;
-#else
-  clkdiv = 0; /// fix me
-#endif
-
-
-  /* Initialize the UART */
-  USART_init(clkdiv);
-
   /* Print a message to show that we are in bootloader mode */
-  USART_printString((uint8_t*) "\r\n\r\n");
+  USART_printString(newLineString);
   USART_printString((uint8_t*)BOOTLOADER_VERSION_STRING);
   USART_printString((uint8_t*)" ChipID: ");
   /* Print the chip ID. This is useful for production tracking */
   USART_printHex(DEVINFO->UNIQUEH);
   USART_printHex(DEVINFO->UNIQUEL);
-  USART_printString((uint8_t*)"\r\n");
 
   /* Initialize flash for writing */
   FLASH_init();

@@ -38,7 +38,7 @@
 #include "usart.h"
 #include "flash.h"
 #include "crc.h"
-#include "config.h"
+
 
 #define ALIGNMENT(base,align) (((base)+((align)-1))&(~((align)-1)))
 
@@ -107,13 +107,9 @@ RAMFUNC __INLINE int XMODEM_verifyPacketChecksum(XMODEM_packet *pkt, int sequenc
   while (1)
   {
     USART_txByte(XMODEM_NCG);
-    for (i = 0; i < 10000000; i++)
+    for (i = 0; i < 1000000; i++)
     {
-#if defined( BOOTLOADER_LEUART_CLOCKEN )
-      if (BOOTLOADER_USART->STATUS & LEUART_STATUS_RXDATAV)
-#else
-      if (BOOTLOADER_USART->STATUS & USART_STATUS_RXDATAV)
-#endif
+	   if(USART_rxReady())
       {
         goto xmodem_transfer;
       }
