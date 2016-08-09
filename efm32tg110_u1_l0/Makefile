@@ -66,12 +66,7 @@ SIZE    = $(QUOTE)$(TOOLDIR)/bin/arm-none-eabi-size$(QUOTE)
 # -MF  : Specify a file to write the dependencies to.
 DEPFLAGS = -MMD -MP -MF $(@:.o=.d)
 
-BUILD_NUMBER_FILE=build-number.txt
-
-#since the build number is incremented at the end of the build we should use 
-# build number + 1 in the define and then it will match after it is built
-BUILD_NUMBER=$(shell cat $(BUILD_NUMBER_FILE))
-$(eval BUILD_NUMBER=$(shell echo $$(($(BUILD_NUMBER)+1))))
+BUILD_NUMBER=$(shell git log --pretty=format:"%h" -1)
 
 #
 # Add -Wa,-ahld=$(LST_DIR)/$(@F:.o=.lst) to CFLAGS to produce assembly list files
@@ -82,7 +77,7 @@ override CFLAGS += -D$(DEVICE) -Wall -Wextra  -g -gdwarf-2 -mcpu=cortex-m3 -mthu
 
 override TA_CFLAGS += -D$(DEVICE) -Wall -Wextra  -g -gdwarf-2 -mcpu=cortex-m3 -mthumb '-DEFM32TG110F32=1' \
 -Os -Wall -c -fmessage-length=0 -mno-sched-prolog -fno-builtin -ffunction-sections -fdata-sections -std=c99 \
--MMD -MP -ldrd -fomit-frame-pointer $(DEPFLAGS) -D__BUILD_NUMBER=\"TA1\"
+-MMD -MP -ldrd -fomit-frame-pointer $(DEPFLAGS) -D__BUILD_NUMBER=\"TA:$(BUILD_NUMBER)\"
 
 
 override ASMFLAGS += -g -gdwarf-2 -x assembler-with-cpp -D$(DEVICE) -Wall -Wextra -mcpu=cortex-m3 -mthumb
@@ -186,9 +181,6 @@ $(EXE_DIR)/$(PROJECTNAME).bin: $(EXE_DIR)/$(PROJECTNAME).out
 	$(DUMP) -h -S -C $(EXE_DIR)/$(PROJECTNAME).out>$(LST_DIR)/$(PROJECTNAME)out.lst
 # Print the size
 	$(SIZE) $(EXE_DIR)/$(PROJECTNAME).out
-#increment the build number for the next build
-	@if ! test -f $(BUILD_NUMBER_FILE); then echo 1 > $(BUILD_NUMBER_FILE); fi
-	@echo $(BUILD_NUMBER) > $(BUILD_NUMBER_FILE)
 	
 	
 testapp:   $(EXE_DIR)/$(TA_PROJECTNAME).bin
