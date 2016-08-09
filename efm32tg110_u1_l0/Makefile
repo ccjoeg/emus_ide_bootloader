@@ -72,6 +72,7 @@ BUILD_NUMBER_FILE=build-number.txt
 # build number + 1 in the define and then it will match after it is built
 BUILD_NUMBER=$(shell cat $(BUILD_NUMBER_FILE))
 $(eval BUILD_NUMBER=$(shell echo $$(($(BUILD_NUMBER)+1))))
+
 #
 # Add -Wa,-ahld=$(LST_DIR)/$(@F:.o=.lst) to CFLAGS to produce assembly list files
 #
@@ -187,7 +188,7 @@ $(EXE_DIR)/$(PROJECTNAME).bin: $(EXE_DIR)/$(PROJECTNAME).out
 	$(SIZE) $(EXE_DIR)/$(PROJECTNAME).out
 #increment the build number for the next build
 	@if ! test -f $(BUILD_NUMBER_FILE); then echo 1 > $(BUILD_NUMBER_FILE); fi
-	@echo $$(($$(cat $(BUILD_NUMBER_FILE))+1)) > $(BUILD_NUMBER_FILE)
+	@echo $(BUILD_NUMBER) > $(BUILD_NUMBER_FILE)
 	
 	
 testapp:   $(EXE_DIR)/$(TA_PROJECTNAME).bin
