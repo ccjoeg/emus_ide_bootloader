@@ -33,6 +33,7 @@
 
 #include <stdbool.h>
 #include "em_device.h"
+#include "em_gpio.h"
 #include "usart.h"
 #include "xmodem.h"
 #include "boot.h"
@@ -128,14 +129,14 @@ void commandlineLoop(void)
   /* The main command loop */
   while (1) {
     /* Retrieve new character */
-	if(USART_rxReady())
-	{
-		c = USART_rxByte();
-		shouldBoot = 0;
-	}else
-	{
-		c = 0;
-	}
+    if(USART_rxReady())
+      {
+	c = USART_rxByte();
+	shouldBoot = 0;
+      }else
+      {
+	c = 0;
+      }
     
     /* Echo */
     if (c != 0) {
@@ -174,21 +175,20 @@ void commandlineLoop(void)
       USART_printString(unknownString);
     }
 	
-	if(shouldBoot != 0)
-	{
-		shouldBoot++;
-	}
+    if(shouldBoot != 0)
+      {
+	shouldBoot++;
+      }
 	
-	//wait for keypress for about 5 seconds
-	if(shouldBoot == 1000000)
-	{
-		BOOT_boot();
-	}
+    //wait for keypress for about 5 seconds
+    if((shouldBoot == 1000000) && (GPIO_PinInGet(PORTF,2) == 0))
+      {
+	BOOT_boot();
+      }
 	
-	//turn the led on for about .5 second then off for about .5 seconds
-	led_cycle(100000, 100000);
+    //turn the led on for about .5 second then off for about .5 seconds
+    led_cycle(100000, 100000);
   }
-  
 }
 
 /**************************************************************************//**
@@ -213,7 +213,7 @@ int main(void)
   /* Setup LFA to use LFRCRO */
   CMU->LFCLKSEL = CMU_LFCLKSEL_LFA_LFRCO | CMU_LFCLKSEL_LFB_HFCORECLKLEDIV2;
 
-  /* Change to 21MHz internal osciallator to increase speed of
+  /* Change to 21MHz internal oscillator to increase speed of
    * bootloader */
   tuning = ((DEVINFO->HFRCOCAL1 & _DEVINFO_HFRCOCAL1_BAND21_MASK)
            >> _DEVINFO_HFRCOCAL1_BAND21_SHIFT);
@@ -223,6 +223,10 @@ int main(void)
   /* Setup LED pin */
   GPIO_pinMode(LED_PORT, LED_PIN, GPIO_MODE_PUSHPULL); // set up led pin
 
+  /* set up pin for bootloader recovery */
+  GPIO_pinMode(PORTF,  2, GPIO_MODE_INPUTPULL);
+  GPIO_PinOutClear(PORTF,2);
+  
   /* Setup pins for USART */
   CONFIG_UsartSetup();
   
