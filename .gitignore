@@ -4,4 +4,5 @@ an/*
 */build/*
 */exe/*
 */lst/*
+*.pyc
 
