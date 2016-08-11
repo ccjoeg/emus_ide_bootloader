@@ -95,7 +95,17 @@ void led_cycle(uint32_t on_cnt, uint32_t off_cnt)
   }
 }
 
-
+void check_for_break(void)
+{
+  if(TTY0[TTY0_RXDATAXP_REG] & RXDATAXP_FERRP) {
+    SCB->AIRCR = 0x05FA0004;
+  }
+  if(TTY1) {
+    if(TTY1[TTY1_RXDATAXP_REG] & RXDATAXP_FERRP) {
+      SCB->AIRCR = 0x05FA0004;
+    }
+  }
+}
 
 /**************************************************************************//**
  * @brief
@@ -129,15 +139,12 @@ void commandlineLoop(void)
   /* The main command loop */
   while (1) {
     /* Retrieve new character */
-    if(USART_rxReady())
-      {
-	c = USART_rxByte();
-	shouldBoot = 0;
-      }else
-      {
-	c = 0;
-      }
-    
+    if(USART_rxReady()) {
+      c = USART_rxByte();
+      shouldBoot = 0;
+    } else {
+      c = 0;
+    }
     /* Echo */
     if (c != 0) {
       USART_txByte(c);
@@ -174,22 +181,20 @@ void commandlineLoop(void)
       /* Timeout waiting for RX - avoid printing the unknown string. */
       USART_printString(unknownString);
     }
-	
-    if(shouldBoot != 0)
-      {
-	shouldBoot++;
-      }
-	
+    if(shouldBoot != 0) {
+      shouldBoot++;
+    }
     //wait for keypress for about 5 seconds
-    if((shouldBoot == 1000000) && (GPIO_PinInGet(PORTF,2) == 0))
-      {
-	BOOT_boot();
-      }
-	
+    if((shouldBoot == 1000000) && (GPIO_PinInGet(PORTF,2) == 0)) {
+      BOOT_boot();
+    }
     //turn the led on for about .5 second then off for about .5 seconds
     led_cycle(100000, 100000);
+    // check for break condition and reset
+    check_for_break();
   }
 }
+
 
 /**************************************************************************//**
  * @brief  Main function
@@ -244,3 +249,4 @@ int main(void)
   /* Start executing command line */
   commandlineLoop();
 }
+

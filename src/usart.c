@@ -66,31 +66,31 @@
 RAMFUNC void USART_printString(uint8_t *string)
 {
   while (*string != 0)
-  {
-    USART_txByte(*string++);
-  }
+    {
+      USART_txByte(*string++);
+    }
 }
 
 
 RAMFUNC uint8_t USART_rxReady(void)
 {
-	if(TTY1 != 0)
-	  {
-		  if(TTY1[TTY1_STATUS_REG] & TTY1_STATUS_RXDATAV)
-		  {
-			  TTY0 = 0;
-			  return 1;
-		  }
-	  }
-	  if(TTY0 != 0)
-	  {
-		  if(TTY0[TTY0_STATUS_REG] & TTY0_STATUS_RXDATAV)
-		  {
-			  TTY1 = 0;
-			  return 1;
-		  }
-	  }	    
-	  return 0;
+  if(TTY1 != 0)
+    {
+      if(TTY1[TTY1_STATUS_REG] & TTY1_STATUS_RXDATAV)
+	{
+	  TTY0 = 0;
+	  return 1;
+	}
+    }
+  if(TTY0 != 0)
+    {
+      if(TTY0[TTY0_STATUS_REG] & TTY0_STATUS_RXDATAV)
+	{
+	  TTY1 = 0;
+	  return 1;
+	}
+    }	    
+  return 0;
 }
 
 /**************************************************************************//**
@@ -100,28 +100,28 @@ RAMFUNC uint8_t USART_rxByte(void)
 {
   uint32_t timer = 1000000;
   while(--timer ) 
-  {
-	 if(USART_rxReady())
-	 {
-		 break;
-	 }
-  }  
+    {
+      if(USART_rxReady())
+	{
+	  break;
+	}
+    }  
   
   if (timer > 0)
-  {
-	 if(TTY0 != 0)
-	 {
-		return((uint8_t)(TTY0[RXDATA_REG] & 0xFF));
-	 }
-	 else
-	 {
-		 return((uint8_t)(TTY1[RXDATA_REG] & 0xFF));
-	 }
-  }
+    {
+      if(TTY0 != 0)
+	{
+	  return((uint8_t)(TTY0[RXDATA_REG] & 0xFF));
+	}
+      else
+	{
+	  return((uint8_t)(TTY1[RXDATA_REG] & 0xFF));
+	}
+    }
   else
-  {
-    return 0;
-  }
+    {
+      return 0;
+    }
 }
 
 
@@ -134,17 +134,16 @@ RAMFUNC void USART_txByte(uint8_t data)
 
   //check if TTY0 is valid and send to it if it is
   if(TTY0 != 0)
-  {
-	  while (!(TTY0[TTY0_STATUS_REG] & TTY0_STATUS_TXBL)) ;
-	  TTY0[TTY0_TXDATA_REG] = (uint32_t) data;
-  }
+    {
+      while (!(TTY0[TTY0_STATUS_REG] & TTY0_STATUS_TXBL));
+      TTY0[TTY0_TXDATA_REG] = (uint32_t) data;
+    }
   
   //check if TTY1 is valid and send to it if it is
   if(TTY1 != 0)
-  {
-	  while (!(TTY1[TTY1_STATUS_REG] & TTY1_STATUS_TXBL)) ;
-	  TTY1[TTY1_TXDATA_REG] = (uint32_t) data;
-  }
-  
+    {
+      while (!(TTY1[TTY1_STATUS_REG] & TTY1_STATUS_TXBL));
+      TTY1[TTY1_TXDATA_REG] = (uint32_t) data;
+    }
 }
 
