@@ -22,3 +22,5 @@ $(TARGETS) : % : $(addsuffix %,$(SUBDIRS))
 #   $(@F:.%=%) is just all
 $(SUBDIRS_TARGETS) :
 	$(MAKE) -C $(@D) $(@F:.%=%)
+
+

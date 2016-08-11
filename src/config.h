@@ -85,12 +85,6 @@
 #define USART_CLKDIV_REG    5
 #define LEUART_CLKDIV_REG   3
 
-#define USART_IEN_REG       19
-#define LEUART_IEN_REG      14
- 
-#define USART_IFC_REG       18
-#define LEUART_IFC_REG      13
- 
 #define USART_CMD_REG       3
 #define LEUART_CMD_REG      1
  
@@ -103,8 +97,6 @@
 #define EFMWG_USART_CLKDIV  3633
 
 #define ROUTE_RXPEN_TXPEN   0x0003
-
-#define READCTRL_MODE_WS1   0x1
 
 #define LEUART_STATUS_TXBL    (0x1UL << 4)
 #define USART_STATUS_TXBL   (0x1UL << 6)
@@ -123,12 +115,6 @@
 #define WG_CMU_HFPERCLKEN0_USART1   (0x1UL << 1)
 #define WG_CMU_HFPERCLKEN0_USART2   (0x1UL << 2)
  
-#define LEUART_IFC_MASK        (0x000007F9UL)
-#define USART_IFC_MASK         (0x00001FF9UL)
- 
-#define IEN_RXDATAV            (0x1UL << 2)
-#define IEN_TXBL               (0x1UL << 1)
-
 void ledOn(void);
 void ledOff(void);
 void led_cycle(uint32_t on_cnt, uint32_t off_cnt);
@@ -136,44 +122,10 @@ void GPIO_pinMode(uint32_t port, uint32_t pin, uint32_t mode);
 
 
 /******************************************************************************
- ** Frequency of the LF clock                                                 *
- ******************************************************************************/
-#define LFRCO_FREQ           (32768)
-
-/******************************************************************************
  * The size of the bootloader flash image                                     *
  ******************************************************************************/
 #define BOOTLOADER_SIZE      (4096)
 
-
-
-/******************************************************************************
- * USART used for communication.                                              *
- ******************************************************************************/
-#if defined( _EZR32_LEOPARD_FAMILY )
-#define BOOTLOADER_USART           USART1
-#define BOOTLOADER_USART_CLOCKEN   CMU_HFPERCLKEN0_USART1
-#define BOOTLOADER_USART_LOCATION  USART_ROUTE_LOCATION_LOC2
-
-#elif defined( _EFM32_ZERO_FAMILY ) || defined( EFM32TG108F4 ) || \
-      defined( _EFM32_HAPPY_FAMILY )
-#define BOOTLOADER_USART           LEUART0
-#define BOOTLOADER_USART_CLOCKEN   0
-#define BOOTLOADER_LEUART_CLOCKEN  CMU_LFBCLKEN0_LEUART0
-#define BOOTLOADER_USART_LOCATION  LEUART_ROUTE_LOCATION_LOC3
-
-#elif defined( _EFM32_GECKO_FAMILY )
-#define BOOTLOADER_USART           LEUART1
-#define BOOTLOADER_USART_CLOCKEN   0
-#define BOOTLOADER_LEUART_CLOCKEN  CMU_LFBCLKEN0_LEUART1
-#define BOOTLOADER_USART_LOCATION  LEUART_ROUTE_LOCATION_LOC0
-        
-
-#else
-#define BOOTLOADER_USART           USART0
-#define BOOTLOADER_USART_CLOCKEN   CMU_HFPERCLKEN0_USART0
-#define BOOTLOADER_USART_LOCATION  USART_ROUTE_LOCATION_LOC0
-#endif
 
 //setup the ramfunction
 #if defined (__ICCARM__)
