@@ -22,6 +22,7 @@
 
 volatile unsigned long *TTY0;
 volatile unsigned long *TTY1;
+volatile unsigned long *TTY2;
 
 #define LED_PORT   PORTA
 #define LED_PIN       12
@@ -60,6 +61,23 @@ volatile unsigned long *TTY1;
 #define TTY1_STATUS_RXDATAV LEUART_STATUS_RXDATAV
 #define TTY1_STATUS_TXBL  LEUART_STATUS_TXBL
 
+#define TTY2_UART         LEUART0_BASE_ADDR
+#define TTY2_CLK_REG      LFBCLKEN0
+#define TTY2_CLKEN        CMU_LFBCLKEN_LEUART0
+#define TTY2_PORT         PORTE
+#define TTY2_TX_PIN           14
+#define TTY2_RX_PIN           15
+#define TTY2_LOCATION     LEUART_ROUTE_LOCATION_LOC2
+#define TTY2_CKDIV_REG    LEUART_CLKDIV_REG
+#define TTY2_CLKDIV       EFMZG_LEUART_CLKDIV
+#define TTY2_CMD_REG      LEUART_CMD_REG
+#define TTY2_CMD_CLR      LEUART_CMD_CLEAR
+#define TTY2_RXDATAXP_REG LEUART_RXDATAXP_REG
+#define TTY2_TXDATA_REG   LEUART_TXDATA_REG
+#define TTY2_STATUS_REG   LEUART_STATUS_REG
+#define TTY2_STATUS_RXDATAV LEUART_STATUS_RXDATAV
+#define TTY2_STATUS_TXBL  LEUART_STATUS_TXBL
+
 __STATIC_INLINE void CONFIG_UsartSetup(void)
 {
   GPIO->P[TTY0_PORT].DOUT  = (1 << TTY0_TX_PIN);  // To avoid false start, configure output TX as high
@@ -81,6 +99,16 @@ __STATIC_INLINE void CONFIG_UsartSetup(void)
   TTY1[TTY1_CKDIV_REG] = TTY1_CLKDIV;
   TTY1[ROUTE_REG] = TTY1_LOCATION | ROUTE_RXPEN_TXPEN;
   TTY1[TTY1_CMD_REG] = TTY_CMD_RXEN_TXEN;
+  
+  GPIO->P[TTY2_PORT].DOUT  = (1 << TTY2_TX_PIN);  // To avoid false start, configure output TX as high
+  GPIO_pinMode(TTY2_PORT,  TTY2_TX_PIN, GPIO_MODE_PUSHPULL);
+  GPIO_pinMode(TTY2_PORT,  TTY2_RX_PIN, GPIO_MODE_INPUT);
+  TTY2 = (unsigned long *) TTY2_UART;
+
+  CMU->TTY2_CLK_REG |=  TTY2_CLKEN;
+  TTY2[TTY2_CKDIV_REG] = TTY2_CLKDIV;
+  TTY2[ROUTE_REG] = TTY2_LOCATION | ROUTE_RXPEN_TXPEN;
+  TTY2[TTY2_CMD_REG] = TTY_CMD_RXEN_TXEN;
 }
 
 

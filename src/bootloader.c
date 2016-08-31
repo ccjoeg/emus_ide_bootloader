@@ -105,6 +105,15 @@ void check_for_break(void)
       SCB->AIRCR = 0x05FA0004;
     }
   }
+  
+#ifdef TTY2_RXDATAXP_REG
+  if(TTY2) {
+    if(TTY2[TTY2_RXDATAXP_REG] & RXDATAXP_FERRP) {
+      SCB->AIRCR = 0x05FA0004;
+    }
+  }
+#endif
+
 }
 
 /**************************************************************************//**

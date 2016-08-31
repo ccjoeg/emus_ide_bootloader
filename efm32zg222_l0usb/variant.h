@@ -22,6 +22,7 @@
 
 volatile unsigned long *TTY0;
 volatile unsigned long *TTY1;
+volatile unsigned long *TTY2;
 
 #define LED_PORT   PORTA
 #define LED_PIN        8
@@ -73,4 +74,5 @@ __STATIC_INLINE void CONFIG_UsartSetup(void)
   TTY0[TTY0_CMD_REG] = TTY_CMD_RXEN_TXEN;
 
   TTY1 = 0;//no tty1 on this board.
+  TTY2 = 0;//no tty2 on this board.
 }

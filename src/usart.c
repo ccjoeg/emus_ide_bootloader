@@ -79,6 +79,7 @@ RAMFUNC uint8_t USART_rxReady(void)
       if(TTY1[TTY1_STATUS_REG] & TTY1_STATUS_RXDATAV)
 	{
 	  TTY0 = 0;
+	  TTY2 = 0;
 	  return 1;
 	}
     }
@@ -87,9 +88,21 @@ RAMFUNC uint8_t USART_rxReady(void)
       if(TTY0[TTY0_STATUS_REG] & TTY0_STATUS_RXDATAV)
 	{
 	  TTY1 = 0;
+	  TTY2 = 0;
 	  return 1;
 	}
     }	    
+	#ifdef TTY2_STATUS_REG
+	if(TTY2 != 0)
+    {
+      if(TTY2[TTY2_STATUS_REG] & TTY2_STATUS_RXDATAV)
+	{
+	  TTY0 = 0;
+	  TTY1 = 0;
+	  return 1;
+	}
+    }
+	#endif
   return 0;
 }
 
@@ -109,14 +122,18 @@ RAMFUNC uint8_t USART_rxByte(void)
   
   if (timer > 0)
     {
-      if(TTY0 != 0)
-	{
-	  return((uint8_t)(TTY0[RXDATA_REG] & 0xFF));
-	}
-      else
-	{
-	  return((uint8_t)(TTY1[RXDATA_REG] & 0xFF));
-	}
+		if(TTY0 != 0)
+		{
+		  return((uint8_t)(TTY0[RXDATA_REG] & 0xFF));
+		}
+		else if(TTY1 != 0)
+		{
+		  return((uint8_t)(TTY1[RXDATA_REG] & 0xFF));
+		}
+		else
+		{
+		  return((uint8_t)(TTY2[RXDATA_REG] & 0xFF));
+		}
     }
   else
     {
@@ -145,5 +162,13 @@ RAMFUNC void USART_txByte(uint8_t data)
       while (!(TTY1[TTY1_STATUS_REG] & TTY1_STATUS_TXBL));
       TTY1[TTY1_TXDATA_REG] = (uint32_t) data;
     }
+	#ifdef TTY2_STATUS_REG
+	//check if TTY1 is valid and send to it if it is
+  if(TTY2 != 0)
+    {
+      while (!(TTY2[TTY2_STATUS_REG] & TTY2_STATUS_TXBL));
+      TTY2[TTY2_TXDATA_REG] = (uint32_t) data;
+    }
+	#endif
 }
 

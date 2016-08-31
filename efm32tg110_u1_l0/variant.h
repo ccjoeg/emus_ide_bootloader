@@ -22,6 +22,7 @@
 
 volatile unsigned long *TTY0;
 volatile unsigned long *TTY1;
+volatile unsigned long *TTY2;
 
 #define LED_PORT   PORTB
 #define LED_PIN       11
@@ -81,5 +82,7 @@ __STATIC_INLINE void CONFIG_UsartSetup(void)
   TTY1[TTY1_CKDIV_REG] = TTY1_CLKDIV;
   TTY1[ROUTE_REG] = TTY1_LOCATION | ROUTE_RXPEN_TXPEN;
   TTY1[TTY1_CMD_REG] = TTY_CMD_RXEN_TXEN;
+  
+  TTY2 = 0;
 }
 
