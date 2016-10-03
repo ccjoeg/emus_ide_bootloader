@@ -54,6 +54,11 @@ uint8_t okString[]      = "\r\nOK\r\n";
 uint8_t failString[]    = "\r\nFail\r\n";
 uint8_t unknownString[] = "\r\n?\r\n";
 
+volatile unsigned long *ORIG_TTY0;
+volatile unsigned long *ORIG_TTY1;
+volatile unsigned long *ORIG_TTY2;
+
+
 
 /* Config pins */
 void GPIO_pinMode(uint32_t port, uint32_t pin, uint32_t mode)
@@ -97,18 +102,18 @@ void led_cycle(uint32_t on_cnt, uint32_t off_cnt)
 
 void check_for_break(void)
 {
-  if(TTY0[TTY0_RXDATAXP_REG] & RXDATAXP_FERRP) {
+  if(ORIG_TTY0[TTY0_RXDATAXP_REG] & RXDATAXP_FERRP) {
     SCB->AIRCR = 0x05FA0004;
   }
-  if(TTY1) {
-    if(TTY1[TTY1_RXDATAXP_REG] & RXDATAXP_FERRP) {
+  if(ORIG_TTY1) {
+    if(ORIG_TTY1[TTY1_RXDATAXP_REG] & RXDATAXP_FERRP) {
       SCB->AIRCR = 0x05FA0004;
     }
   }
   
 #ifdef TTY2_RXDATAXP_REG
-  if(TTY2) {
-    if(TTY2[TTY2_RXDATAXP_REG] & RXDATAXP_FERRP) {
+  if(ORIG_TTY2) {
+    if(ORIG_TTY2[TTY2_RXDATAXP_REG] & RXDATAXP_FERRP) {
       SCB->AIRCR = 0x05FA0004;
     }
   }
@@ -243,6 +248,12 @@ int main(void)
   
   /* Setup pins for USART */
   CONFIG_UsartSetup();
+  
+  //keep around the original pointers so they can all receive break commands.
+  ORIG_TTY0 = TTY0;
+  ORIG_TTY1 = TTY1;
+  ORIG_TTY2 = TTY2;
+
   
   /* Print a message to show that we are in bootloader mode */
   USART_printString(newLineString);
