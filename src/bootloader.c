@@ -102,19 +102,28 @@ void led_cycle(uint32_t on_cnt, uint32_t off_cnt)
 
 void check_for_break(void)
 {
-  if(ORIG_TTY0[TTY0_RXDATAXP_REG] & RXDATAXP_FERRP) {
-    SCB->AIRCR = 0x05FA0004;
+  if(ORIG_TTY0[TTY0_RXDATAXP_REG] & RXDATAXP_FERRP
+	&& TTY0 != ORIG_TTY0) {
+    TTY0 = ORIG_TTY0;
+	TTY1 = 0;
+	TTY2 = 0;
   }
   if(ORIG_TTY1) {
-    if(ORIG_TTY1[TTY1_RXDATAXP_REG] & RXDATAXP_FERRP) {
-      SCB->AIRCR = 0x05FA0004;
+    if(ORIG_TTY1[TTY1_RXDATAXP_REG] & RXDATAXP_FERRP
+	&& TTY1 != ORIG_TTY1) {
+	  TTY1 = ORIG_TTY1;
+	  TTY0 = 0;
+	  TTY2 = 0;
     }
   }
   
 #ifdef TTY2_RXDATAXP_REG
   if(ORIG_TTY2) {
-    if(ORIG_TTY2[TTY2_RXDATAXP_REG] & RXDATAXP_FERRP) {
-      SCB->AIRCR = 0x05FA0004;
+    if(ORIG_TTY2[TTY2_RXDATAXP_REG] & RXDATAXP_FERRP
+	&& TTY2 != ORIG_TTY2) {
+      TTY2 = ORIG_TTY2;
+	  TTY0 = 0;
+	  TTY1 = 0;
     }
   }
 #endif
@@ -204,7 +213,7 @@ void commandlineLoop(void)
     }
     //turn the led on for about .5 second then off for about .5 seconds
     led_cycle(100000, 100000);
-    // check for break condition and reset
+    // check for break condition which turns on a TTY or switches to a different one.
     check_for_break();
   }
 }
@@ -253,7 +262,6 @@ int main(void)
   ORIG_TTY0 = TTY0;
   ORIG_TTY1 = TTY1;
   ORIG_TTY2 = TTY2;
-
   
   /* Print a message to show that we are in bootloader mode */
   USART_printString(newLineString);
@@ -266,6 +274,11 @@ int main(void)
   /* Initialize flash for writing */
   FLASH_init();
 
+  //clear the pointers until we recieve a break command on one of them
+  TTY0 = 0;
+  TTY1 = 0;
+  TTY2 = 0;
+  
   /* Start executing command line */
   commandlineLoop();
 }

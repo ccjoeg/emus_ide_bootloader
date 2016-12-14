@@ -111,6 +111,12 @@ RAMFUNC uint8_t USART_rxReady(void)
  *****************************************************************************/
 RAMFUNC uint8_t USART_rxByte(void)
 {
+	if(!TTY0 && !TTY1 && !TTY2)
+	{
+		return 0;
+	}
+	
+	
   uint32_t timer = 1000000;
   while(--timer ) 
     {
