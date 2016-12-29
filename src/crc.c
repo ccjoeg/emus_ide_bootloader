@@ -56,7 +56,7 @@
  * @return
  *   The computed CRC value.
  *****************************************************************************/
- uint16_t CRC_calc(uint8_t *start, uint8_t *end)
+RAMFUNC uint16_t CRC_calc(uint8_t *start, uint8_t *end)
 {
   uint16_t crc = 0x0;
   uint8_t  *data;

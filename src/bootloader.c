@@ -42,7 +42,7 @@
 #include "flash.h"
 #include "variant.h"
 
-#define BOOTLOADER_VERSION_STRING "V0." __BUILD_NUMBER
+#define BOOTLOADER_VERSION_STRING __BUILD_NUMBER
 
 /**************************************************************************//**
  * Strings.
@@ -54,11 +54,13 @@ uint8_t okString[]      = "\r\nOK\r\n";
 uint8_t failString[]    = "\r\nFail\r\n";
 uint8_t unknownString[] = "\r\n?\r\n";
 
+uint8_t unlockString[] = "EngimusingUnlock";
+
 volatile unsigned long *ORIG_TTY0;
 volatile unsigned long *ORIG_TTY1;
 volatile unsigned long *ORIG_TTY2;
 
-
+bool bootloaderUnlocked = false;
 
 /* Config pins */
 void GPIO_pinMode(uint32_t port, uint32_t pin, uint32_t mode)
@@ -145,12 +147,40 @@ void verify(uint32_t start, uint32_t end)
   USART_printString(newLineString);
 }
 
+void checkUnlockCode()
+{
+    uint8_t curChar = 0;
+    USART_printString((uint8_t*)"\r\nUnlock Code:");
+    uint8_t c = USART_rxByte();
+    USART_txByte(c);
+    
+    while( curChar < sizeof(unlockString) - 1 && c == unlockString[curChar])
+    {
+        curChar++;
+        if(curChar < sizeof(unlockString) - 1)
+        { 
+            c = USART_rxByte();
+            USART_txByte(c);
+        }
+    }
+    
+    if(curChar == sizeof(unlockString) - 1)
+    {
+        bootloaderUnlocked = true;
+        USART_printString((uint8_t*)"\r\nBootloader Unlocked!\r\n");
+    }else
+    {
+        USART_printString((uint8_t*)"\r\nIncorrect Bootloader Unlock Code!\r\n");
+    }
+}
+
+
 /**************************************************************************//**
  * @brief
  *   The main command line loop. Placed in Ram so that it can still run after
  *   a destructive write operation.
  *****************************************************************************/
-void commandlineLoop(void)
+RAMFUNC void commandlineLoop(void)
 {
   uint32_t flashSize;
   uint8_t  c;
@@ -177,6 +207,22 @@ void commandlineLoop(void)
     case 'u':
       USART_printString(readyString);
       XMODEM_download(BOOTLOADER_SIZE, flashSize);
+      break;
+    case 'd':
+      if(bootloaderUnlocked)
+      {
+        USART_printString( readyString );
+        XMODEM_download( 0, flashSize);
+        USART_printString((uint8_t*)"\r\nBootloader Upload Complete!\r\nResetting Board\r\n");
+        SCB->AIRCR = 0x05FA0004;
+      }
+      else
+      {
+          USART_printString((uint8_t*)"\r\nBootloader Locked! Use 'l' command to unlock.\r\n");
+      }
+      break;
+    case 'l':
+      checkUnlockCode();
       break;
       /* Boot into new program */
     case 'b':

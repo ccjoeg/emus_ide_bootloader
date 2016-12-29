@@ -115,6 +115,14 @@
 #define WG_CMU_HFPERCLKEN0_USART1   (0x1UL << 1)
 #define WG_CMU_HFPERCLKEN0_USART2   (0x1UL << 2)
  
+ //setup the ramfunction
+#if defined (__ICCARM__)
+#define RAMFUNC __ramfunc
+#else
+#define RAMFUNC __attribute__ ((long_call, section (".ramfunctions")))
+#endif
+
+
 void ledOn(void);
 void ledOff(void);
 void led_cycle(uint32_t on_cnt, uint32_t off_cnt);
@@ -127,13 +135,6 @@ void check_for_break(void);
  ******************************************************************************/
 #define BOOTLOADER_SIZE      (4096)
 
-
-//setup the ramfunction
-#if defined (__ICCARM__)
-#define RAMFUNC __ramfunc
-#else
-#define RAMFUNC __attribute__ ((long_call, section (".ramfunctions")))
-#endif
 
 
 
