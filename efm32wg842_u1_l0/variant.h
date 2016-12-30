@@ -24,6 +24,8 @@ volatile unsigned long *TTY0;
 volatile unsigned long *TTY1;
 volatile unsigned long *TTY2;
 
+#define BOARD_TYPE "EFM32WG842"
+
 #define LED_PORT   PORTA
 #define LED_PIN       15
 

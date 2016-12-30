@@ -316,7 +316,11 @@ int main(void)
   /* Print the chip ID. This is useful for production tracking */
   USART_printHex(DEVINFO->UNIQUEH);
   USART_printHex(DEVINFO->UNIQUEL);
-
+  
+  USART_printString((uint8_t*)"\r\nType:");
+  USART_printString((uint8_t*)BOARD_TYPE);
+  USART_printString(newLineString);
+  
   /* Initialize flash for writing */
   FLASH_init();
 
