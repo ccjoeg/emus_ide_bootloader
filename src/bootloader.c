@@ -59,6 +59,8 @@ uint8_t unlockString[] = "EngimusingUnlock";
 volatile unsigned long *ORIG_TTY0;
 volatile unsigned long *ORIG_TTY1;
 volatile unsigned long *ORIG_TTY2;
+volatile unsigned long *ORIG_TTY3;
+volatile unsigned long *ORIG_TTY4;
 
 bool bootloaderUnlocked = false;
 
@@ -109,6 +111,8 @@ void check_for_break(void)
     TTY0 = ORIG_TTY0;
 	TTY1 = 0;
 	TTY2 = 0;
+    TTY3 = 0;
+    TTY4 = 0;
   }
   if(ORIG_TTY1) {
     if(ORIG_TTY1[TTY1_RXDATAXP_REG] & RXDATAXP_FERRP
@@ -116,6 +120,8 @@ void check_for_break(void)
 	  TTY1 = ORIG_TTY1;
 	  TTY0 = 0;
 	  TTY2 = 0;
+      TTY3 = 0;
+      TTY4 = 0;
     }
   }
   
@@ -126,6 +132,34 @@ void check_for_break(void)
       TTY2 = ORIG_TTY2;
 	  TTY0 = 0;
 	  TTY1 = 0;
+      TTY3 = 0;
+      TTY4 = 0;
+    }
+  }
+#endif
+
+#ifdef TTY3_RXDATAXP_REG
+  if(ORIG_TTY3) {
+    if(ORIG_TTY3[TTY3_RXDATAXP_REG] & RXDATAXP_FERRP
+	&& TTY3 != ORIG_TTY3) {
+      TTY3 = ORIG_TTY3;
+	  TTY0 = 0;
+	  TTY1 = 0;
+      TTY2 = 0;
+      TTY4 = 0;
+    }
+  }
+#endif
+
+#ifdef TTY4_RXDATAXP_REG
+  if(ORIG_TTY4) {
+    if(ORIG_TTY4[TTY4_RXDATAXP_REG] & RXDATAXP_FERRP
+	&& TTY4 != ORIG_TTY4) {
+      TTY4 = ORIG_TTY4;
+	  TTY0 = 0;
+	  TTY1 = 0;
+      TTY2 = 0;
+      TTY3 = 0;
     }
   }
 #endif
@@ -308,7 +342,9 @@ int main(void)
   ORIG_TTY0 = TTY0;
   ORIG_TTY1 = TTY1;
   ORIG_TTY2 = TTY2;
-  
+  ORIG_TTY3 = TTY3;
+  ORIG_TTY4 = TTY4;
+   
   /* Print a message to show that we are in bootloader mode */
   USART_printString(newLineString);
   USART_printString((uint8_t*)BOOTLOADER_VERSION_STRING);
@@ -328,6 +364,8 @@ int main(void)
   TTY0 = 0;
   TTY1 = 0;
   TTY2 = 0;
+  TTY3 = 0;
+  TTY4 = 0;
   
   /* Start executing command line */
   commandlineLoop();

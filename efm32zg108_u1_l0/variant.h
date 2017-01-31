@@ -23,6 +23,8 @@
 volatile unsigned long *TTY0;
 volatile unsigned long *TTY1;
 volatile unsigned long *TTY2;
+volatile unsigned long *TTY3;
+volatile unsigned long *TTY4;
 
 #define BOARD_TYPE "EFM32ZG108"
 
@@ -86,6 +88,8 @@ __STATIC_INLINE void CONFIG_UsartSetup(void)
   TTY1[TTY1_CMD_REG] = TTY_CMD_RXEN_TXEN;
   
   TTY2 = 0;
+  TTY3 = 0;
+  TTY4 = 0;
 }
 
 

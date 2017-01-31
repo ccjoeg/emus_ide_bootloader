@@ -23,6 +23,8 @@
 volatile unsigned long *TTY0;
 volatile unsigned long *TTY1;
 volatile unsigned long *TTY2;
+volatile unsigned long *TTY3;
+volatile unsigned long *TTY4;
 
 #define BOARD_TYPE "EFM32ZGUSB"
 
@@ -77,4 +79,6 @@ __STATIC_INLINE void CONFIG_UsartSetup(void)
 
   TTY1 = 0;//no tty1 on this board.
   TTY2 = 0;//no tty2 on this board.
+  TTY3 = 0;//no tty3 on this board.
+  TTY4 = 0;//no tty4 on this board.
 }

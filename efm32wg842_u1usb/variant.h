@@ -23,6 +23,8 @@
 volatile unsigned long *TTY0;
 volatile unsigned long *TTY1;
 volatile unsigned long *TTY2;
+volatile unsigned long *TTY3;
+volatile unsigned long *TTY4;
 
 #define BOARD_TYPE "EFM32WG842USB"
 
@@ -111,6 +113,9 @@ __STATIC_INLINE void CONFIG_UsartSetup(void)
   TTY2[TTY2_CKDIV_REG] = TTY2_CLKDIV;
   TTY2[ROUTE_REG] = TTY2_LOCATION | ROUTE_RXPEN_TXPEN;
   TTY2[TTY2_CMD_REG] = TTY_CMD_RXEN_TXEN;
+  
+  TTY3 = 0;
+  TTY4 = 0;
 }
 
 

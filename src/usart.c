@@ -74,24 +74,28 @@ RAMFUNC void USART_printString(uint8_t *string)
 
 RAMFUNC uint8_t USART_rxReady(void)
 {
-  if(TTY1 != 0)
-    {
-      if(TTY1[TTY1_STATUS_REG] & TTY1_STATUS_RXDATAV)
-	{
-	  TTY0 = 0;
-	  TTY2 = 0;
-	  return 1;
-	}
-    }
   if(TTY0 != 0)
     {
       if(TTY0[TTY0_STATUS_REG] & TTY0_STATUS_RXDATAV)
 	{
 	  TTY1 = 0;
 	  TTY2 = 0;
+      TTY3 = 0;
+      TTY4 = 0;
 	  return 1;
 	}
     }	    
+    if(TTY1 != 0)
+    {
+      if(TTY1[TTY1_STATUS_REG] & TTY1_STATUS_RXDATAV)
+	{
+	  TTY0 = 0;
+	  TTY2 = 0;
+      TTY3 = 0;
+      TTY4 = 0;
+	  return 1;
+	}
+    }
 	#ifdef TTY2_STATUS_REG
 	if(TTY2 != 0)
     {
@@ -99,6 +103,34 @@ RAMFUNC uint8_t USART_rxReady(void)
 	{
 	  TTY0 = 0;
 	  TTY1 = 0;
+      TTY3 = 0;
+      TTY4 = 0;
+	  return 1;
+	}
+    }
+	#endif
+    #ifdef TTY3_STATUS_REG
+	if(TTY3 != 0)
+    {
+      if(TTY3[TTY3_STATUS_REG] & TTY3_STATUS_RXDATAV)
+	{
+	  TTY0 = 0;
+	  TTY1 = 0;
+      TTY2 = 0;
+      TTY4 = 0;
+	  return 1;
+	}
+    }
+	#endif
+    #ifdef TTY4_STATUS_REG
+	if(TTY4 != 0)
+    {
+      if(TTY4[TTY4_STATUS_REG] & TTY4_STATUS_RXDATAV)
+	{
+	  TTY0 = 0;
+	  TTY1 = 0;
+      TTY2 = 0;
+      TTY3 = 0;
 	  return 1;
 	}
     }
@@ -111,7 +143,7 @@ RAMFUNC uint8_t USART_rxReady(void)
  *****************************************************************************/
 RAMFUNC uint8_t USART_rxByte(void)
 {
-	if(!TTY0 && !TTY1 && !TTY2)
+	if(!TTY0 && !TTY1 && !TTY2 && !TTY3 && !TTY4)
 	{
 		return 0;
 	}
@@ -136,9 +168,17 @@ RAMFUNC uint8_t USART_rxByte(void)
 		{
 		  return((uint8_t)(TTY1[RXDATA_REG] & 0xFF));
 		}
-		else
+        else if(TTY2 != 0)
 		{
 		  return((uint8_t)(TTY2[RXDATA_REG] & 0xFF));
+		}
+        else if(TTY3 != 0)
+		{
+		  return((uint8_t)(TTY3[RXDATA_REG] & 0xFF));
+		}
+		else
+		{
+		  return((uint8_t)(TTY4[RXDATA_REG] & 0xFF));
 		}
     }
   else
@@ -169,11 +209,27 @@ RAMFUNC void USART_txByte(uint8_t data)
       TTY1[TTY1_TXDATA_REG] = (uint32_t) data;
     }
 	#ifdef TTY2_STATUS_REG
-	//check if TTY1 is valid and send to it if it is
+	//check if TTY2 is valid and send to it if it is
   if(TTY2 != 0)
     {
       while (!(TTY2[TTY2_STATUS_REG] & TTY2_STATUS_TXBL));
       TTY2[TTY2_TXDATA_REG] = (uint32_t) data;
+    }
+	#endif
+    #ifdef TTY3_STATUS_REG
+	//check if TTY3 is valid and send to it if it is
+  if(TTY3 != 0)
+    {
+      while (!(TTY3[TTY3_STATUS_REG] & TTY3_STATUS_TXBL));
+      TTY3[TTY3_TXDATA_REG] = (uint32_t) data;
+    }
+	#endif
+    #ifdef TTY4_STATUS_REG
+	//check if TTY4 is valid and send to it if it is
+  if(TTY4 != 0)
+    {
+      while (!(TTY4[TTY4_STATUS_REG] & TTY4_STATUS_TXBL));
+      TTY4[TTY4_TXDATA_REG] = (uint32_t) data;
     }
 	#endif
 }
