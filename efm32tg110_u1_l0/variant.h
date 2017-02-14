@@ -26,7 +26,7 @@ volatile unsigned long *TTY2;
 volatile unsigned long *TTY3;
 volatile unsigned long *TTY4;
 
-#define BOARD_TYPE "EFM32TG108"
+#define BOARD_TYPE "EFM32TG110"
 
 #define LED_PORT   PORTB
 #define LED_PIN       11
