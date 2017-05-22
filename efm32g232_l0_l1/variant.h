@@ -28,8 +28,8 @@ volatile unsigned long *TTY4;
 
 #define BOARD_TYPE "EFM32G232"
 
-#define LED_PORT   PORTA
-#define LED_PIN       9
+#define LED_PORT   PORTD
+#define LED_PIN       7
 
 #define TTY0_UART         USART0_BASE_ADDR
 #define TTY0_CLK_REG      HFPERCLKEN0
