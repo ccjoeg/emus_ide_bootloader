@@ -61,7 +61,7 @@ volatile unsigned long *ORIG_TTY1;
 volatile unsigned long *ORIG_TTY2;
 volatile unsigned long *ORIG_TTY3;
 volatile unsigned long *ORIG_TTY4;
-
+uint32_t currentHandshakeTty;
 bool bootloaderUnlocked = false;
 
 /* Config pins */
@@ -104,66 +104,121 @@ void led_cycle(uint32_t on_cnt, uint32_t off_cnt)
   }
 }
 
-void check_for_break(void)
+int32_t check_for_break()
 {
-  if(ORIG_TTY0[TTY0_RXDATAXP_REG] & RXDATAXP_FERRP
-	&& TTY0 != ORIG_TTY0) {
+  if(ORIG_TTY0[TTY0_RXDATAXP_REG] & RXDATAXP_FERRP) 
+  {
     TTY0 = ORIG_TTY0;
 	TTY1 = 0;
 	TTY2 = 0;
     TTY3 = 0;
     TTY4 = 0;
+    return 0;
   }
   if(ORIG_TTY1) {
-    if(ORIG_TTY1[TTY1_RXDATAXP_REG] & RXDATAXP_FERRP
-	&& TTY1 != ORIG_TTY1) {
+    if(ORIG_TTY1[TTY1_RXDATAXP_REG] & RXDATAXP_FERRP) {
 	  TTY1 = ORIG_TTY1;
 	  TTY0 = 0;
 	  TTY2 = 0;
       TTY3 = 0;
       TTY4 = 0;
+      return 1;
     }
   }
   
 #ifdef TTY2_RXDATAXP_REG
   if(ORIG_TTY2) {
-    if(ORIG_TTY2[TTY2_RXDATAXP_REG] & RXDATAXP_FERRP
-	&& TTY2 != ORIG_TTY2) {
+    if(ORIG_TTY2[TTY2_RXDATAXP_REG] & RXDATAXP_FERRP) {
       TTY2 = ORIG_TTY2;
 	  TTY0 = 0;
 	  TTY1 = 0;
       TTY3 = 0;
       TTY4 = 0;
+      return 2;
     }
   }
 #endif
 
 #ifdef TTY3_RXDATAXP_REG
   if(ORIG_TTY3) {
-    if(ORIG_TTY3[TTY3_RXDATAXP_REG] & RXDATAXP_FERRP
-	&& TTY3 != ORIG_TTY3) {
+    if(ORIG_TTY3[TTY3_RXDATAXP_REG] & RXDATAXP_FERRP) {
       TTY3 = ORIG_TTY3;
 	  TTY0 = 0;
 	  TTY1 = 0;
       TTY2 = 0;
       TTY4 = 0;
+      return 3;
     }
   }
 #endif
 
 #ifdef TTY4_RXDATAXP_REG
   if(ORIG_TTY4) {
-    if(ORIG_TTY4[TTY4_RXDATAXP_REG] & RXDATAXP_FERRP
-	&& TTY4 != ORIG_TTY4) {
+    if(ORIG_TTY4[TTY4_RXDATAXP_REG] & RXDATAXP_FERRP) {
       TTY4 = ORIG_TTY4;
 	  TTY0 = 0;
 	  TTY1 = 0;
       TTY2 = 0;
       TTY3 = 0;
+      return 4;
     }
   }
 #endif
+   return -1;
+}
 
+//states of the handshake process
+#define NOUART 0
+#define FIRSTBREAK 1
+#define FOUNDSPACE 2
+#define UARTRDY 3
+
+uint32_t processSerialHandshake(uint32_t state)
+{
+    int32_t breakedTty = check_for_break();
+    
+    //found a different break state so lets restart the handshake.
+    if(breakedTty >= 0 && breakedTty != currentHandshakeTty)
+    {
+        currentHandshakeTty = breakedTty;
+        state = NOUART;
+    }
+    
+    if(state == NOUART)
+    {
+        if(breakedTty >= 0)
+        {
+          state = FIRSTBREAK;  
+          currentHandshakeTty = breakedTty;
+        }
+    }
+    else if(state == FIRSTBREAK)
+    {
+         if(USART_rxReady()) 
+         {
+             uint8_t c = USART_rxByte();
+            if(c == ' ')
+            {
+                state = FOUNDSPACE;
+            }
+            else if(c == 'r')
+            {
+                /* Write to the Application Interrupt/Reset Command Register to reset
+                * the EFM32. See section 9.3.7 in the reference manual. */
+                SCB->AIRCR = 0x05FA0004;
+            }
+
+        } 
+    }
+    else if(state == FOUNDSPACE)
+    {
+        if(breakedTty >= 0)
+        {
+            state = UARTRDY;
+        }  
+    }
+        
+    return state;
 }
 
 /**************************************************************************//**
@@ -223,66 +278,71 @@ RAMFUNC void commandlineLoop(void)
    * size in KB so left shift by 10. */
   flashSize = ((DEVINFO->MSIZE & _DEVINFO_MSIZE_FLASH_MASK) >> _DEVINFO_MSIZE_FLASH_SHIFT) << 10;
 
+  uint32_t bootloaderState = NOUART;
+  
   /* The main command loop */
   while (1) {
     /* Retrieve new character */
-    if(USART_rxReady()) {
-      c = USART_rxByte();
-      shouldBoot = 0;
-    } else {
-      c = 0;
-    }
-    /* Echo */
-    if (c != 0) {
-      USART_txByte(c);
-    }
-    switch (c) {
-      /* Upload command */
-    case 'u':
-      USART_printString(readyString);
-      XMODEM_download(BOOTLOADER_SIZE, flashSize);
-      break;
-    case 'd':
-      if(bootloaderUnlocked)
-      {
-        USART_printString( readyString );
-        XMODEM_download( 0, flashSize);
-        USART_printString((uint8_t*)"\r\nBootloader Upload Complete!\r\nResetting Board\r\n");
-        SCB->AIRCR = 0x05FA0004;
-      }
-      else
-      {
-          USART_printString((uint8_t*)"\r\nBootloader Locked! Use 'l' command to unlock.\r\n");
-      }
-      break;
-    case 'l':
-      checkUnlockCode();
-      break;
-      /* Boot into new program */
-    case 'b':
-      BOOT_boot();
-      break;
-      /* Verify content by calculating CRC of entire flash */
-    case 'v':
-      verify(0, flashSize);
-      break;
-      /* Verify content by calculating CRC of application area */
-    case 'c':
-      verify(BOOTLOADER_SIZE, flashSize);
-      break;
-      /* Reset command */
-    case 'r':
-      /* Write to the Application Interrupt/Reset Command Register to reset
-       * the EFM32. See section 9.3.7 in the reference manual. */
-      SCB->AIRCR = 0x05FA0004;
-      break;
-    default:
-      break;
-    }
-    if(c != 0) {
-      /* Unknown command */
-      /* Timeout waiting for RX - avoid printing the unknown string. */
-      USART_printString(unknownString);
+    if(bootloaderState == UARTRDY)
+    {
+        if(USART_rxReady()) {
+          c = USART_rxByte();
+          shouldBoot = 0;
+        } else {
+          c = 0;
+        }
+         /* Echo */
+        if (c != 0) {
+          USART_txByte(c);
+        }
+        switch (c) {
+          /* Upload command */
+        case 'u':
+          USART_printString(readyString);
+          XMODEM_download(BOOTLOADER_SIZE, flashSize);
+          break;
+        case 'd':
+          if(bootloaderUnlocked)
+          {
+            USART_printString( readyString );
+            XMODEM_download( 0, flashSize);
+            USART_printString((uint8_t*)"\r\nBootloader Upload Complete!\r\nResetting Board\r\n");
+            SCB->AIRCR = 0x05FA0004;
+          }
+          else
+          {
+              USART_printString((uint8_t*)"\r\nBootloader Locked! Use 'l' command to unlock.\r\n");
+          }
+          break;
+        case 'l':
+          checkUnlockCode();
+          break;
+          /* Boot into new program */
+        case 'b':
+          BOOT_boot();
+          break;
+          /* Verify content by calculating CRC of entire flash */
+        case 'v':
+          verify(0, flashSize);
+          break;
+          /* Verify content by calculating CRC of application area */
+        case 'c':
+          verify(BOOTLOADER_SIZE, flashSize);
+          break;
+          /* Reset command */
+        case 'r':
+          /* Write to the Application Interrupt/Reset Command Register to reset
+           * the EFM32. See section 9.3.7 in the reference manual. */
+          SCB->AIRCR = 0x05FA0004;
+          break;
+        default:
+          break;
+        }
+        if(c != 0) {
+          /* Unknown command */
+          /* Timeout waiting for RX - avoid printing the unknown string. */
+          USART_printString(unknownString);
+        }
     }
     if(shouldBoot != 0) {
       shouldBoot++;
@@ -291,10 +351,13 @@ RAMFUNC void commandlineLoop(void)
     if((shouldBoot == 1000000) && (GPIO_PinInGet(PORTF,2) == 0)) {
       BOOT_boot();
     }
+   
     //turn the led on for about .5 second then off for about .5 seconds
     led_cycle(100000, 100000);
-    // check for break condition which turns on a TTY or switches to a different one.
-    check_for_break();
+    
+    // check for break,space,break handshake condition which turns on a TTY or switches to a different one.
+    bootloaderState = processSerialHandshake(bootloaderState);
+    
   }
 }
 

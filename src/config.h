@@ -127,7 +127,7 @@ void ledOn(void);
 void ledOff(void);
 void led_cycle(uint32_t on_cnt, uint32_t off_cnt);
 void GPIO_pinMode(uint32_t port, uint32_t pin, uint32_t mode);
-void check_for_break(void);
+int32_t check_for_break(void);
 
 
 /******************************************************************************
