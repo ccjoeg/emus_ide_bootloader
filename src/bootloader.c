@@ -81,8 +81,8 @@ void GPIO_pinMode(uint32_t port, uint32_t pin, uint32_t mode)
 }
 
 /* LED functions */
-void ledOn(void)  {GPIO->P[LED_PORT].DOUT = ~(1 << LED_PIN);}
-void ledOff(void) {GPIO->P[LED_PORT].DOUT = 1 << LED_PIN;}
+void ledOn(void)  {GPIO->P[LED_PORT].DOUT &= ~(1 << LED_PIN);}
+void ledOff(void) {GPIO->P[LED_PORT].DOUT |= 1 << LED_PIN;}
 
 void led_cycle(uint32_t on_cnt, uint32_t off_cnt)
 {
