@@ -28,8 +28,8 @@ volatile unsigned long *TTY4;
 
 #define BOARD_TYPE "EFM32GG12B"
 
-#define LED_PORT   PORTC
-#define LED_PIN       15
+#define LED_PORT   PORTD
+#define LED_PIN       7
 
 /* future
 #define TTY0_UART         LEUART0_BASE_ADDR
