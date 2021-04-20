@@ -34,6 +34,7 @@
 #include <stdbool.h>
 #include "em_device.h"
 #include "em_gpio.h"
+#include "em_cmu.h"
 #include "usart.h"
 #include "xmodem.h"
 #include "boot.h"
@@ -317,6 +318,37 @@ RAMFUNC void commandlineLoop(void)
         case 'l':
           checkUnlockCode();
           break;
+//Debugging code for printing out contents of flash
+/*
+        case '4':
+
+          for(int i = 0; i < 1024; i++)
+          {
+              USART_printHex((uint32_t)*((uint32_t*)(0x3000) + i));
+          }
+          break;
+        case '3':
+
+          for(int i = 0; i < 1024; i++)
+          {
+              USART_printHex((uint32_t)*((uint32_t*)(0x2000) + i));
+          }
+          break;
+        case '2':
+
+          for(int i = 0; i < 1024; i++)
+          {
+              USART_printHex((uint32_t)*((uint32_t*)(0x1000) + i));
+          }
+          break;
+        case '1':
+
+          for(int i = 0; i < 1024; i++)
+          {
+              USART_printHex((uint32_t)*((uint32_t*)(0x0000) + i));
+          }
+          break;
+*/
           /* Boot into new program */
         case 'b':
           BOOT_boot();
@@ -362,6 +394,121 @@ RAMFUNC void commandlineLoop(void)
 }
 
 
+void CMU_ClockEnable(CMU_Clock_TypeDef clock, bool enable)
+{
+  volatile uint32_t *reg;
+  uint32_t          bit;
+  uint32_t          sync = 0;
+
+  /* Identify enable register */
+  switch (((unsigned)clock >> CMU_EN_REG_POS) & CMU_EN_REG_MASK) {
+#if defined(_CMU_CTRL_HFPERCLKEN_MASK)
+    case CMU_CTRL_EN_REG:
+      reg = &CMU->CTRL;
+      break;
+#endif
+
+#if defined(_CMU_HFCORECLKEN0_MASK)
+    case CMU_HFCORECLKEN0_EN_REG:
+      reg = &CMU->HFCORECLKEN0;
+#if defined(CMU_MAX_FREQ_HFLE)
+      setHfLeConfig(SystemCoreClockGet());
+#endif
+      break;
+#endif
+
+#if defined(_CMU_HFBUSCLKEN0_MASK)
+    case CMU_HFBUSCLKEN0_EN_REG:
+      reg = &CMU->HFBUSCLKEN0;
+      break;
+#endif
+
+#if defined(_CMU_HFPERCLKDIV_MASK)
+    case CMU_HFPERCLKDIV_EN_REG:
+      reg = &CMU->HFPERCLKDIV;
+      break;
+#endif
+
+    case CMU_HFPERCLKEN0_EN_REG:
+      reg = &CMU->HFPERCLKEN0;
+      break;
+
+#if defined(_CMU_HFPERCLKEN1_MASK)
+    case CMU_HFPERCLKEN1_EN_REG:
+      reg = &CMU->HFPERCLKEN1;
+      break;
+#endif
+
+    case CMU_LFACLKEN0_EN_REG:
+      reg  = &CMU->LFACLKEN0;
+      sync = CMU_SYNCBUSY_LFACLKEN0;
+      break;
+
+    case CMU_LFBCLKEN0_EN_REG:
+      reg  = &CMU->LFBCLKEN0;
+      sync = CMU_SYNCBUSY_LFBCLKEN0;
+      break;
+
+#if defined(_CMU_LFCCLKEN0_MASK)
+    case CMU_LFCCLKEN0_EN_REG:
+      reg = &CMU->LFCCLKEN0;
+      sync = CMU_SYNCBUSY_LFCCLKEN0;
+      break;
+#endif
+
+#if defined(_CMU_LFECLKEN0_MASK)
+    case CMU_LFECLKEN0_EN_REG:
+      reg  = &CMU->LFECLKEN0;
+      sync = CMU_SYNCBUSY_LFECLKEN0;
+      break;
+#endif
+
+#if defined(_CMU_SDIOCTRL_MASK)
+    case CMU_SDIOREF_EN_REG:
+      reg = &CMU->SDIOCTRL;
+      enable = !enable;
+      break;
+#endif
+
+#if defined(_CMU_QSPICTRL_MASK)
+    case CMU_QSPI0REF_EN_REG:
+      reg = &CMU->QSPICTRL;
+      enable = !enable;
+      break;
+#endif
+#if defined(_CMU_USBCTRL_MASK)
+    case CMU_USBRCLK_EN_REG:
+      reg = &CMU->USBCTRL;
+      break;
+#endif
+#if defined(_CMU_PDMCTRL_MASK)
+    case CMU_PDMREF_EN_REG:
+      reg = &CMU->PDMCTRL;
+      break;
+#endif
+
+    case CMU_PCNT_EN_REG:
+      reg = &CMU->PCNTCTRL;
+      break;
+
+    default: /* Cannot enable/disable a clock point. */
+      EFM_ASSERT(false);
+      return;
+  }
+
+  /* Get the bit position used to enable/disable. */
+  bit = ((unsigned)clock >> CMU_EN_BIT_POS) & CMU_EN_BIT_MASK;
+
+  /* LF synchronization required. */
+  /*if (sync > 0UL) {
+    syncReg(sync);
+  }*/
+
+  /* Set/clear bit as requested. */
+  BUS_RegBitWrite(reg, bit, (uint32_t)enable);
+}
+
+
 /**************************************************************************//**
  * @brief  Main function
  *****************************************************************************/
@@ -371,7 +518,21 @@ int main(void)
 
   //added a slight wait here so the programmer has time to start programming after a reset
   for(volatile int i = 0; i < 500000; i++);
-   
+
+// Enable clocks for peripherals.
+#if defined(_SILICON_LABS_32B_SERIES_1)
+  CMU->CTRL        = CMU_CTRL_HFPERCLKEN;
+  CMU->HFBUSCLKEN0 = CMU_HFBUSCLKEN0_GPIO | CMU_HFBUSCLKEN0_LE
+                     | CMU_HFBUSCLKEN0_LDMA;
+
+  // Enable LFRCO for RTC.
+  CMU->LFECLKSEL = CMU_LFECLKSEL_LFE_LFRCO;
+  CMU->LFECLKEN0 = CMU_LFECLKEN0_RTCC;
+  CMU->OSCENCMD  = CMU_OSCENCMD_LFRCOEN;
+  
+  //  CMU->LFACLKSEL = CMU_LFACLKSEL_LFA_LFRCO;
+  CMU->LFBCLKSEL = CMU_LFBCLKSEL_LFB_HFCLKLE;
+#else
   /* Enable clocks for peripherals. */
   CMU->HFPERCLKDIV = CMU_HFPERCLKDIV_HFPERCLKEN;
   CMU->HFPERCLKEN0 = CMU_HFPERCLKEN0_GPIO;
@@ -383,23 +544,60 @@ int main(void)
   CMU->OSCENCMD = CMU_OSCENCMD_LFRCOEN;
   /* Setup LFA to use LFRCRO */
   CMU->LFCLKSEL = CMU_LFCLKSEL_LFA_LFRCO | CMU_LFCLKSEL_LFB_HFCORECLKLEDIV2;
+#endif
 
-  /* Change to 21MHz internal oscillator to increase speed of
-   * bootloader */
+
+#if defined(_SILICON_LABS_32B_SERIES_0)
+#if defined (_DEVINFO_HFRCOCAL1_BAND28_MASK)
+  // Change to 28MHz internal oscillator to increase speed of
+  // bootloader.
+  tuning = (DEVINFO->HFRCOCAL1 & _DEVINFO_HFRCOCAL1_BAND28_MASK)
+           >> _DEVINFO_HFRCOCAL1_BAND28_SHIFT;
+
+  CMU->HFRCOCTRL = CMU_HFRCOCTRL_BAND_28MHZ | tuning;
+#ifndef NDEBUG
+  // Set new clock division based on the 28Mhz clock.
+  DEBUG_USART->CLKDIV = 3634;
+#endif
+
+#elif defined(_DEVINFO_HFRCOCAL1_BAND21_MASK)
+  // Change to 21MHz internal oscillator to increase speed of
+  // bootloader.
   tuning = ((DEVINFO->HFRCOCAL1 & _DEVINFO_HFRCOCAL1_BAND21_MASK)
            >> _DEVINFO_HFRCOCAL1_BAND21_SHIFT);
 
   CMU->HFRCOCTRL = CMU_HFRCOCTRL_BAND_21MHZ | tuning;
+#ifndef NDEBUG
+  // Set new clock division based on the 21Mhz clock.
+  DEBUG_USART->CLKDIV = 2661;
+#endif
+
+#else
+#error "Can not make correct clock selection."
+#endif
+#endif
+
+ // CMU_ClockSelectSet(cmuClock_HF, cmuSelect_HFRCO);
+
+  CMU_ClockEnable(cmuClock_HFLE, true);
+  //CMU_ClockSelectSet(cmuClock_LFA, cmuSelect_LFRCO);
+ // CMU_ClockSelectSet(cmuClock_LFB, cmuSelect_LFRCO);
+  
+  CMU_ClockEnable(cmuClock_GPIO, true);
 
   /* Setup LED pin */
   GPIO_pinMode(LED_PORT, LED_PIN, GPIO_MODE_PUSHPULL); // set up led pin
 
+
+  
   /* set up pin for bootloader recovery */
   GPIO_pinMode(PORTF,  2, GPIO_MODE_INPUTPULL);
   GPIO_PinOutClear(PORTF,2);
   
   /* Setup pins for USART */
   CONFIG_UsartSetup();
+
+  
   
   //keep around the original pointers so they can all receive break commands.
   ORIG_TTY0 = TTY0;
@@ -410,6 +608,7 @@ int main(void)
    
   /* Print a message to show that we are in bootloader mode */
   USART_printString(newLineString);
+  
   USART_printString((uint8_t*)BOOTLOADER_VERSION_STRING);
   USART_printString((uint8_t*)" ChipID: ");
   /* Print the chip ID. This is useful for production tracking */

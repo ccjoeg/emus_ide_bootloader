@@ -61,18 +61,36 @@
 #define GPIO_MODE_WIREDANDDRIVEPULLUP           0x0000000EUL  // WIREDANDDRIVEPULLUP
 #define GPIO_MODE_WIREDANDDRIVEPULLUPFILTER     0x0000000FUL  // WIREDANDDRIVEPULLUPFILTER
 
-#define USART0_BASE_ADDR       (0x4000C000UL)
-#define USART1_BASE_ADDR       (0x4000C400UL)
-#define USART2_BASE_ADDR       (0x4000C800UL)
+#if defined(_SILICON_LABS_32B_SERIES_1) 
+  #define USART0_BASE_ADDR       (0x40010000UL) /**< USART0 base address  */
+  #define USART1_BASE_ADDR       (0x40010400UL) /**< USART1 base address  */
+  #define USART2_BASE_ADDR       (0x40010800UL) /**< USART2 base address  */
+  #define USART3_BASE_ADDR       (0x40010C00UL) /**< USART3 base address  */
+  #define USART4_BASE_ADDR       (0x40011000UL) /**< USART4 base address  */
+#else
+  #define USART0_BASE_ADDR       (0x4000C000UL)
+  #define USART1_BASE_ADDR       (0x4000C400UL)
+  #define USART2_BASE_ADDR       (0x4000C800UL)
+#endif
  
-#define LEUART0_BASE_ADDR      (0x40084000UL)
-#define LEUART1_BASE_ADDR      (0x40084400UL)
+#if defined(_SILICON_LABS_32B_SERIES_1) 
+  #define LEUART0_BASE_ADDR      (0x4006A000UL) /**< LEUART0 base address  */ 
+  #define LEUART1_BASE_ADDR      (0x4006A400UL) /**< LEUART1 base address  */
+#else
+  #define LEUART0_BASE_ADDR      (0x40084000UL)
+  #define LEUART1_BASE_ADDR      (0x40084400UL)
+#endif 
 
 #define TTY_CMD_RXEN_TXEN      (0x00000005UL)
  
 #define RXDATA_REG      6
-#define ROUTE_REG       21
- 
+#if defined(_SILICON_LABS_32B_SERIES_1) 
+  #define ROUTEEN_REG      21
+  #define ROUTELOC_REG       22
+#else
+  #define ROUTE_REG       21
+
+#endif  
 #define USART_STATUS_REG    4
 #define LEUART_STATUS_REG   2
  
@@ -91,7 +109,8 @@
 #define EFMZG_LEUART_CLKDIV 0x59D0
 #define EFMTG_LEUART_CLKDIV 0x77C0
 #define EFMWG_LEUART_CLKDIV 0x77C0
- 
+#define EFMGG_LEUART_CLKDIV 0x5177
+
 #define EFMZG_USART_CLKDIV  0x0A65
 #define EFMTG_USART_CLKDIV  0x0E32
 #define EFMWG_USART_CLKDIV  3633

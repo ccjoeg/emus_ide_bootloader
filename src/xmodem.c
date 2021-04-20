@@ -1,33 +1,15 @@
 /**************************************************************************//**
  * @file xmodem.c
  * @brief XMODEM protocol
- * @author Silicon Labs
- * @version x.xx
+ * @version 1.74
  ******************************************************************************
  * @section License
- * <b>(C) Copyright 2014 Silicon Labs, http://www.silabs.com</b>
+ * <b>Copyright 2015 Silicon Laboratories, Inc. http://www.silabs.com</b>
  *******************************************************************************
  *
- * Permission is granted to anyone to use this software for any purpose,
- * including commercial applications, and to alter it and redistribute it
- * freely, subject to the following restrictions:
- *
- * 1. The origin of this software must not be misrepresented; you must not
- *    claim that you wrote the original software.
- * 2. Altered source versions must be plainly marked as such, and must not be
- *    misrepresented as being the original software.
- * 3. This notice may not be removed or altered from any source distribution.
- *
- * DISCLAIMER OF WARRANTY/LIMITATION OF REMEDIES: Silicon Labs has no
- * obligation to support this Software. Silicon Labs is providing the
- * Software "AS IS", with no express or implied warranties of any kind,
- * including, but not limited to, any implied warranties of merchantability
- * or fitness for any particular purpose or warranties against infringement
- * of any proprietary rights of a third party.
- *
- * Silicon Labs will not be liable for any consequential, incidental, or
- * special damages, or any other relief, or for any claim by any third party,
- * arising from your use of this Software.
+ * This file is licensed under the Silabs License Agreement. See the file
+ * "Silabs_License_Agreement.txt" for details. Before using this software for
+ * any purpose, you must agree to the terms of that agreement.
  *
  ******************************************************************************/
 
@@ -42,8 +24,9 @@
 
 #define ALIGNMENT(base,align) (((base)+((align)-1))&(~((align)-1)))
 
-/* Packet storage. Double buffered version. */
-uint8_t rawPacket[2][ALIGNMENT(sizeof(XMODEM_packet),4)] __attribute__ ((aligned(4)));
+// Packet storage. Double buffered version.
+#pragma data_alignment=4
+uint8_t rawPacket[2][ALIGNMENT(sizeof(XMODEM_packet),4)];
 
 /**************************************************************************//**
  * @brief Verifies checksum, packet numbering and
@@ -51,18 +34,18 @@ uint8_t rawPacket[2][ALIGNMENT(sizeof(XMODEM_packet),4)] __attribute__ ((aligned
  * @param sequenceNumber The current sequence number.
  * @returns -1 on packet error, 0 otherwise
  *****************************************************************************/
-RAMFUNC __INLINE int XMODEM_verifyPacketChecksum(XMODEM_packet *pkt, int sequenceNumber)
+RAMFUNC int XMODEM_verifyPacketChecksum(XMODEM_packet *pkt, int sequenceNumber)
 {
   uint16_t packetCRC;
   uint16_t calculatedCRC;
 
-  /* Check the packet number integrity */
+  // Check the packet number integrity.
   if (pkt->packetNumber + pkt->packetNumberC != 255)
   {
     return -1;
   }
 
-  /* Check that the packet number matches the excpected number */
+  // Check that the packet number matches the excpected number.
   if (pkt->packetNumber != (sequenceNumber % 256))
   {
     return -1;
@@ -71,7 +54,7 @@ RAMFUNC __INLINE int XMODEM_verifyPacketChecksum(XMODEM_packet *pkt, int sequenc
   calculatedCRC = CRC_calc((uint8_t *) pkt->data, (uint8_t *) &(pkt->crcHigh));
   packetCRC     = pkt->crcHigh << 8 | pkt->crcLow;
 
-  /* Check the CRC value */
+  // Check the CRC value.
   if (calculatedCRC != packetCRC)
   {
     return -1;
@@ -118,31 +101,30 @@ RAMFUNC __INLINE int XMODEM_verifyPacketChecksum(XMODEM_packet *pkt, int sequenc
 xmodem_transfer:
   while (1)
   {
-    /* Swap buffer for packet buffer */
+    // Swap buffer for packet buffer.
     pkt = (XMODEM_packet *) rawPacket[sequenceNumber & 1];
 
-    /* Fetch the first byte of the packet explicitly, as it defines the
-     * rest of the packet */
+    // Fetch the first byte of the packet explicitly, as it defines the
+    // rest of the packet.
     pkt->header = USART_rxByte();
 
-    /* Check for end of transfer */
+    // Check for end of transfer.
     if (pkt->header == XMODEM_EOT)
     {
-      /* Acknowledget End of transfer */
+      // Acknowledget End of transfer.
       USART_txByte(XMODEM_ACK);
       break;
     }
 
-    /* If the header is not a start of header (SOH), then cancel *
-     * the transfer. */
+    // If the header is not a start of header (SOH), then cancel
+    // the transfer.
     if (pkt->header != XMODEM_SOH)
     {
       return;
-      //return -1;
     }
 
-    /* Fill the remaining bytes packet */
-    /* Byte 0 is padding, byte 1 is header */
+    // Fill the remaining bytes packet.
+    // Byte 0 is padding, byte 1 is header.
     for (byte = 2; byte < sizeof(XMODEM_packet); byte++)
     {
       *(((uint8_t *) pkt) + byte) = USART_rxByte();
@@ -150,7 +132,7 @@ xmodem_transfer:
 
     if (XMODEM_verifyPacketChecksum(pkt, sequenceNumber) != 0)
     {
-      /* On a malformed packet, we send a NAK, and start over */
+      // On a malformed packet, we send a NAK, and start over.
       USART_txByte(XMODEM_NAK);
       continue;
     }
@@ -164,10 +146,16 @@ xmodem_transfer:
 
 
     sequenceNumber++;
-    /* Send ACK */
+    // Send ACK.
     USART_txByte(XMODEM_ACK);
+    
+
+    
   }
-  /* Wait for the last DMA transfer to finish. */
+  // Wait for the last DMA transfer to finish.
+#if defined(_SILICON_LABS_32B_SERIES_1)
+  while (LDMA->CHEN & 1);
+#else
   while (DMA->CHENS & DMA_CHENS_CH0ENS) ;
-  //return 0;
+
 }
