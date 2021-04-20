@@ -30,8 +30,8 @@
 
 MEMORY
 {
-  FLASH (rx) : ORIGIN = 0x00001000, LENGTH = 1044480
-  RAM (rwx)  : ORIGIN = 0x20000000, LENGTH = 196608
+  FLASH (rx) : ORIGIN = 0x00001000, LENGTH = 0xFF000
+  RAM (rwx)  : ORIGIN = 0x20000000, LENGTH = 0x30000
 }
 
 /* Linker script to place sections and symbol values. Should be used together
@@ -156,9 +156,7 @@ SECTIONS
     *(vtable)
     *(.data*)
     . = ALIGN (4);
-    PROVIDE (__ram_func_section_start = .);
     *(.ram)
-    PROVIDE (__ram_func_section_end = .);
 
     . = ALIGN(4);
     /* preinit data */
@@ -183,6 +181,9 @@ SECTIONS
     KEEP(*(.jcr*))
     . = ALIGN(4);
     /* All data end */
+
+	*(.ramfunctions) /* !!!! Placing functions in .ramfunctions section in RAM */
+
     __data_end__ = .;
 
   } > RAM

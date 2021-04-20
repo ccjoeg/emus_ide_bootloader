@@ -71,6 +71,10 @@
 #elif defined(EFM32WG842F256)
 #include "../Device/EFM32WG/Include/efm32wg842f256.h"
 
+#elif defined(EFM32GG12B110F1024GQ64)
+#include "../Device/EFM32GG12B/Include/efm32gg12b110f1024gq64.h"
+
+
 #else
 #error "em_device.h: PART NUMBER undefined"
 #endif

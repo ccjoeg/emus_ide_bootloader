@@ -156,9 +156,7 @@ SECTIONS
     *(vtable)
     *(.data*)
     . = ALIGN (4);
-    PROVIDE (__ram_func_section_start = .);
     *(.ram)
-    PROVIDE (__ram_func_section_end = .);
 
     . = ALIGN(4);
     /* preinit data */
@@ -183,6 +181,9 @@ SECTIONS
     KEEP(*(.jcr*))
     . = ALIGN(4);
     /* All data end */
+	
+	*(.ramfunctions) /* !!!! Placing functions in .ramfunctions section in RAM */
+
     __data_end__ = .;
 
   } > RAM
