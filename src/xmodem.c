@@ -157,5 +157,5 @@ xmodem_transfer:
   while (LDMA->CHEN & 1);
 #else
   while (DMA->CHENS & DMA_CHENS_CH0ENS) ;
-
+#endif 
 }
