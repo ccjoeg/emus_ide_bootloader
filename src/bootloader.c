@@ -308,6 +308,7 @@ RAMFUNC void commandlineLoop(void)
             USART_printString( readyString );
             XMODEM_download( 0, flashSize);
             USART_printString((uint8_t*)"\r\nBootloader Upload Complete!\r\nResetting Board\r\n");
+            
             SCB->AIRCR = 0x05FA0004;
           }
           else

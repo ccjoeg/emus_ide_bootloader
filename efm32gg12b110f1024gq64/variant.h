@@ -31,7 +31,7 @@ volatile unsigned long *TTY4;
 #define LED_PORT   PORTD
 #define LED_PIN       7
 
-/* future
+
 #define TTY0_UART         LEUART0_BASE_ADDR
 #define TTY0_CLK_REG      LFBCLKEN0
 #define TTY0_CLKEN        CMU_LFBCLKEN_LEUART0
@@ -42,7 +42,7 @@ volatile unsigned long *TTY4;
 #define TTY0_LOCATION_RX     LEUART_ROUTELOC0_RXLOC_LOC5
 #define TTY0_LOCATION_TX    LEUART_ROUTELOC0_TXLOC_LOC5
 #define TTY0_CKDIV_REG    LEUART_CLKDIV_REG
-#define TTY0_CLKDIV       EFMZG_LEUART_CLKDIV
+#define TTY0_CLKDIV       EFMGG_LEUART_CLKDIV
 #define TTY0_CMD_REG      LEUART_CMD_REG
 #define TTY0_CMD_CLR      LEUART_CMD_CLEAR
 #define TTY0_RXDATAXP_REG LEUART_RXDATAXP_REG
@@ -50,8 +50,9 @@ volatile unsigned long *TTY4;
 #define TTY0_STATUS_REG LEUART_STATUS_REG
 #define TTY0_STATUS_RXDATAV LEUART_STATUS_RXDATAV
 #define TTY0_STATUS_TXBL LEUART_STATUS_TXBL
-*/
 
+
+/* Same as default bootloader
 #define TTY0_UART         LEUART0_BASE_ADDR
 #define TTY0_CLK_REG      LFBCLKEN0
 #define TTY0_CLKEN        CMU_LFBCLKEN_LEUART0
@@ -72,7 +73,7 @@ volatile unsigned long *TTY4;
 #define TTY0_STATUS_REG LEUART_STATUS_REG
 #define TTY0_STATUS_RXDATAV LEUART_STATUS_RXDATAV
 #define TTY0_STATUS_TXBL LEUART_STATUS_TXBL
-
+*/
 
 /*Dont use not configured
 #define TTY0_UART         USART1_BASE_ADDR
