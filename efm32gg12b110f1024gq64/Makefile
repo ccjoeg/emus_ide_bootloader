@@ -220,7 +220,7 @@ prog:
 	start-eACommander.sh --verify --flash exe/efmwg842.bin --reset
 
 upload:
-	@python2 efm_uploadBootloader/efm_upload.py  $(EXE_DIR)/$(PROJECTNAME).bin $(filter-out $@,$(MAKECMDGOALS))
+	@python2 ../efm_uploadBootloader/efm_upload_bootloader.py  $(EXE_DIR)/$(PROJECTNAME).bin $(filter-out $@,$(MAKECMDGOALS))
 
 %:
 	@:
