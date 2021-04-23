@@ -216,9 +216,14 @@ $(EXE_DIR)/$(TA_PROJECTNAME).bin: $(EXE_DIR)/$(TA_PROJECTNAME).out
 # Print the size
 	$(SIZE) $(EXE_DIR)/$(TA_PROJECTNAME).out
 
-
 prog:
 	start-eACommander.sh --verify --flash exe/efmwg842.bin --reset
+
+upload:
+	@python2 efm_uploadBootloader/efm_upload.py  $(EXE_DIR)/$(PROJECTNAME).bin $(filter-out $@,$(MAKECMDGOALS))
+
+%:
+	@:
 
 clean:
 ifeq ($(filter $(MAKECMDGOALS),all debug release),)
