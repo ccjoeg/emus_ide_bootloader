@@ -216,10 +216,9 @@ $(EXE_DIR)/$(TA_PROJECTNAME).bin: $(EXE_DIR)/$(TA_PROJECTNAME).out
 # Print the size
 	$(SIZE) $(EXE_DIR)/$(TA_PROJECTNAME).out
 
-prog:
-	start-eACommander.sh --verify --flash exe/efmwg842.bin --reset
-
 upload:
+#To use upload with bash on windows use sudo and ttyS# where # is the same as the # for the COM port
+	@echo "python2 ../efm_uploadBootloader/efm_upload_bootloader.py  $(EXE_DIR)/$(PROJECTNAME).bin $(filter-out $@,$(MAKECMDGOALS))"
 	@python2 ../efm_uploadBootloader/efm_upload_bootloader.py  $(EXE_DIR)/$(PROJECTNAME).bin $(filter-out $@,$(MAKECMDGOALS))
 
 %:
