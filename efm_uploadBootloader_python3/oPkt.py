@@ -13,7 +13,6 @@ Stripped down and modified for this bootloader by Joe George 2015-2016
 from calcCRC import calc_crc
 
 # Protocol bytes
-# SOH = chr(0x01)
 SOH = b'\x01'
 
 packet_size   = 128
@@ -21,16 +20,13 @@ pad           = b'\x1a'
 
 
 def asmPkt(data, sequence):
-    # print(type(data))
-
     while len(data) < packet_size:
-        data.append(pad)
-    # data = data.ljust(packet_size, pad)
+        data += bytearray(pad)
+
     crc = calc_crc(data)
 
-    # print(type(data))
     temp = SOH + bytes([sequence]) + bytes([0xff - sequence]) + data + bytes([crc >> 8]) + bytes([crc & 0xff])
-    # temp = SOH + (chr(sequence)) + (chr(0xff - sequence)) + data + (chr(crc >> 8)) + (chr(crc & 0xff))
+
     return temp
 
 if __name__ == "__main__":

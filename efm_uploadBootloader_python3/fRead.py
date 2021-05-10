@@ -29,14 +29,8 @@ def sendPackets(s, filename):
         sequence = 1
 
         data = stream.read(packet_size)
-        # data = "".join(chr(x) for x in data)
-        # data = "".join(chr(x) for x in bytearray(data))
         data = bytearray(data)
-        # print(data)
-        # print(data[:10])
-        # for b in data:
-        #     print(b)
-        print(type(data))
+
         if not data:
             print("Error: Empty Compiled Script File")
             return False 
@@ -48,23 +42,11 @@ def sendPackets(s, filename):
         
         while 1:
             pkt = asmPkt(data, sequence)
-            print(type(pkt))
-            print(pkt)
             fullcrc = verify(data, fullcrc)
 
-            for ch in pkt:
-                print(ch)
-                # s.write(ch)
-                s.write(chr(ch).encode())
-                if debug: sys.stdout.write(hex(ord(ch))+' ')
-            if debug:
-                print()
-                print()
-            # s.write(pkt)
+            s.write(pkt)
 
             if debug: debugPrint(s)
-
-            print('checking for ACK..')
 
             if checkAck(s) == True:
                 if debug:
@@ -75,8 +57,8 @@ def sendPackets(s, filename):
                     sys.stdout.flush()
                 sequence = (sequence + 1) % 0x100  # increment sequence number
                 if debug: print(sequence)
-                # data = stream.read(packet_size)
-                data = bytearray(stream.read(packet_size)) # TODO IT MAY HAVE BRICKED THE CHIP BC YOU WERE NOT CONVERTING TO BYTEARRAY
+
+                data = bytearray(stream.read(packet_size))
                 if not data:
                     print()
                     print("CRC: " + hex(fullcrc))

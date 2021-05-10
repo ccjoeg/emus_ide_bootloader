@@ -41,14 +41,14 @@ XMODEM 128 byte blocks
 """
 
 # Protocol bytes
-SOH = chr(0x01)
-STX = chr(0x02)
-EOT = chr(0x04)
-ACK = chr(0x06)
-DLE = chr(0x10)
-NAK = chr(0x15)
-CAN = chr(0x18)
-CRC = chr(0x43) # C
+SOH = b'\x01'
+STX = b'\x02'
+EOT = b'\x04'
+ACK = b'\x06'
+DLE = b'\x10'
+NAK = b'\x15'
+CAN = b'\x18'
+CRC = b'\x43' # C
 
 timeout = 10
 
@@ -80,8 +80,6 @@ try:
 
     print("Reset Device")
     sys.stdout.flush()
-    # s.sendBreak(0.25)
-    # s.write('r')
 
     print("Press reset button within next 10 sec")
 
@@ -111,31 +109,11 @@ try:
     print("\nErase Previous Sketch")
     sys.stdout.flush()
     
+    # send upload command
     s.write('u'.encode())
-    # # loop while flash erase printing ....
-    # ch = 0
-    # mustend = time.time() + timeout
-    # while ((ch != '.') and (time.time() < mustend)):
-    #     ch = s.read()
-    #     #if ch == '.' or ch == '#':
-    #     #    sys.stdout.write(ch)
-    #     if(ch == '#'):
-    #         break
-    #     ch = 0
-        
-    # if ch == '#':
-    #     print("Erase Complete")
-    #     sys.stdout.flush()
-    # else:
-    #     print("Erase Error")
-    #     print("Upload Failed")
-    #     s.close()
-    #     sys.exit(-1)
-    
     
     #reset timeout
     mustend = time.time() + timeout
-    
     
     # timeout if C doesn't come
     ch = 0
@@ -149,7 +127,6 @@ try:
         print("Upload Failed to Start")
         s.close()
         sys.exit(-1)
-        
 
     #hide sendPackets print outs from the end user
     if(sendPackets(s, args[0])):
@@ -169,7 +146,7 @@ try:
     #wait until ? is sent or 1 second, this allows the board enough time to finish the upload before we send the b
     wait_until(s, '?', 1) 
     
-    s.write('b')
+    s.write('b'.encode())
 
     s.close()
     print("Upload Completed Successfully")
