@@ -22,6 +22,16 @@ def getArgs():
 
     return (filename, tty)
 
+def getArgs2():
+    '''
+    Get filename and serial port arguments
+
+    '''
+
+    script, filename1, filename2, tty = argv
+
+    return (filename1, filename2, tty)
+
 if __name__ == "__main__":
     args = getArgs()
     print(args[0])

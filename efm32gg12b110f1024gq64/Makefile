@@ -216,6 +216,10 @@ $(EXE_DIR)/$(TA_PROJECTNAME).bin: $(EXE_DIR)/$(TA_PROJECTNAME).out
 # Print the size
 	$(SIZE) $(EXE_DIR)/$(TA_PROJECTNAME).out
 
+test:
+	@echo "python ../efm_uploadBootloader_python3/test_uploads.py $(EXE_DIR)/$(PROJECTNAME).bin $(EXE_DIR)/$(TA_PROJECTNAME).bin $(filter-out $@,$(MAKECMDGOALS))"
+	@python ../efm_uploadBootloader_python3/test_uploads.py  $(EXE_DIR)/$(PROJECTNAME).bin $(EXE_DIR)/$(TA_PROJECTNAME).bin $(filter-out $@,$(MAKECMDGOALS))
+
 upload_python3:
 	@echo "python ../efm_uploadBootloader_python3/efm_uploadBootloader.py  $(EXE_DIR)/$(PROJECTNAME).bin $(filter-out $@,$(MAKECMDGOALS))"
 	@python ../efm_uploadBootloader_python3/efm_uploadBootloader.py  $(EXE_DIR)/$(PROJECTNAME).bin $(filter-out $@,$(MAKECMDGOALS))

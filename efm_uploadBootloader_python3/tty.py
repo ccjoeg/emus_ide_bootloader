@@ -21,9 +21,17 @@ def wait_until(s, ch, timeout):
             sys.stdout.write(c)
             if (c == ch):
                 return True
-                sys.stdout.write(ch)
-                c = 0
-                return False
+
+
+def wait_until_checksum(s, ch, timeout):
+    mustend = time.time() + timeout
+    c = ''
+    while time.time() < mustend:
+        if s.inWaiting() > 0:
+            c += s.read().decode('utf-8')
+            if (ch in c):
+                print('Checksum verified:', c)
+                return True
 
 
 def checkAck(s):
