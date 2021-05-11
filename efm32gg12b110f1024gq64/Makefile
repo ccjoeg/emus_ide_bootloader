@@ -217,8 +217,8 @@ $(EXE_DIR)/$(TA_PROJECTNAME).bin: $(EXE_DIR)/$(TA_PROJECTNAME).out
 	$(SIZE) $(EXE_DIR)/$(TA_PROJECTNAME).out
 
 upload_python3:
-	@echo "python ../efm_uploadBootloader_python3/efm_upload.py  $(EXE_DIR)/$(PROJECTNAME).bin $(filter-out $@,$(MAKECMDGOALS))"
-	@python ../efm_uploadBootloader_python3/efm_upload.py  $(EXE_DIR)/$(PROJECTNAME).bin $(filter-out $@,$(MAKECMDGOALS))
+	@echo "python ../efm_uploadBootloader_python3/efm_uploadBootloader.py  $(EXE_DIR)/$(PROJECTNAME).bin $(filter-out $@,$(MAKECMDGOALS))"
+	@python ../efm_uploadBootloader_python3/efm_uploadBootloader.py  $(EXE_DIR)/$(PROJECTNAME).bin $(filter-out $@,$(MAKECMDGOALS))
 
 upload:
 #To use upload with bash on windows use sudo and ttyS# where # is the same as the # for the COM port
